@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
+import NavBar from "../../navbar/NavBar";
 
 interface Props {
   children: React.ReactNode;
@@ -13,9 +14,12 @@ const AuthChecker = ({ children }: Props) => {
     if (!auth.currentUser) {
       navigate("/login");
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [navigate]);
 
-  return <>{children}</>;
+  return <>
+    <NavBar/>
+    {children}
+  </>;
 };
 
 export default AuthChecker;

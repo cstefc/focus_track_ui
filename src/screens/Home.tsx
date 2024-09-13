@@ -1,19 +1,16 @@
-import { useEffect } from "react";
 import Logout from "../components/auth/Logout";
 import Center from "../components/utils/Center";
-import { auth, Providers } from "../config/firebase";
+import {auth} from "../config/firebase";
 
-interface Props {}
-
-const Home = ({}: Props) => {
-  useEffect(() => {}, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  return (
-    <Center>
-        <h1>Welcome {auth.currentUser?.displayName}!</h1>
-      <Logout />
-    </Center>
-  );
+const Home = () => {
+    return (
+        <div>
+            <Center>
+                <h1>Welcome {auth.currentUser?.displayName}!</h1>
+                <Logout/>
+            </Center>
+        </div>
+    );
 };
 
 export default Home;

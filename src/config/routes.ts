@@ -1,5 +1,6 @@
 import Home from "../screens/Home";
 import Login from "../screens/Login";
+import Calendar from "../screens/Calendar";
 
 interface RouteType {
   path: string;
@@ -20,6 +21,12 @@ const routes: RouteType[] = [
     component: Login,
     name: "Login Screen",
     protected: false,
+  },
+  {
+    path: "/calendar",
+    component: Calendar,
+    name: "Calendar Screen",
+    protected: true,
   },
 ];
 
