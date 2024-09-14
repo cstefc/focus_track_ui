@@ -23,7 +23,7 @@ function NavBar() {
                         </Navbar.Brand>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link onClick={() => navigate('/')}>Home</Nav.Link>
+                        <Nav.Link onClick={() => navigate('/dashboard')}>Home</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link onClick={() => navigate('/calendar')}>Calendar</Nav.Link>
@@ -35,7 +35,7 @@ function NavBar() {
                             <Logout/>
                         </NavDropdown>}
 
-                    {auth.currentUser === null && <Nav.Link align-right href={'/login'}>
+                    {auth.currentUser === null && <Nav.Link align-right onClick={() => navigate('/')}>
                         Log In
                     </Nav.Link>}
                 </Nav>

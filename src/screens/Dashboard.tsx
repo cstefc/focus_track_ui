@@ -4,7 +4,7 @@ import {Container} from "react-bootstrap";
 
 const Dashboard = () => {
     return (
-        <Container id='dashboard' className={'d-flex '}>
+        <Container id='dashboard'>
             <Center>
                 <h1>Welcome {auth.currentUser?.displayName}!</h1>
             </Center>

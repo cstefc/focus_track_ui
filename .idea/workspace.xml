@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b832d9a-928a-4302-956f-9e5b0ed14bd2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/AuthChecker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/AuthChecker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/Logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Logout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navbar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sections/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sections/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sections/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -102,7 +103,8 @@
       <workItem from="1698874583651" duration="1401000" />
       <workItem from="1708593664259" duration="22000" />
       <workItem from="1726147657133" duration="320000" />
-      <workItem from="1726147983971" duration="20830000" />
+      <workItem from="1726147983971" duration="24326000" />
+      <workItem from="1726314204356" duration="2580000" />
     </task>
     <servers />
   </component>
