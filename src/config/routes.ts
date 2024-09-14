@@ -1,6 +1,6 @@
-import Home from "../screens/Home";
-import Login from "../screens/Login";
-import Calendar from "../screens/Calendar";
+import Dashboard from "../sections/Dashboard";
+import Login from "../sections/Login";
+import Calendar from "../sections/Calendar";
 
 interface RouteType {
   path: string;
@@ -12,7 +12,7 @@ interface RouteType {
 const routes: RouteType[] = [
   {
     path: "",
-    component: Home,
+    component: Dashboard,
     name: "Home Screen",
     protected: true,
   },

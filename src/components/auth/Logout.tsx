@@ -1,21 +1,17 @@
-import React, { useState } from "react";
-import Button from 'react-bootstrap/Button';
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../../config/firebase";
+import React, {useState} from "react";
+import {signOut} from "firebase/auth";
+import {useNavigate} from "react-router-dom";
+import {auth} from "../../config/firebase";
+import {NavDropdown} from "react-bootstrap";
 
-interface Props {
-  navigateTo?: string;
-}
-
-const Logout = ({ navigateTo = "/login" }: Props) => {
+const Logout = () => {
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
     setDisabled(true);
     signOut(auth)
       .then(() => {
-        navigate(navigateTo);
+        navigate('/login');
       })
       .catch((error) => {
         console.error(error);
@@ -25,9 +21,9 @@ const Logout = ({ navigateTo = "/login" }: Props) => {
 
   return (
     <div>
-      <Button variant="primary" className="mr-1" disabled={disabled} onClick={logout}>
+      <NavDropdown.Item disabled={disabled} onClick={logout}>
         Logout
-      </Button>
+      </NavDropdown.Item>
     </div>
   );
 };

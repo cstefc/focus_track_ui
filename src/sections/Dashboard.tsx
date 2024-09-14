@@ -1,16 +1,15 @@
-import Logout from "../components/auth/Logout";
 import Center from "../components/utils/Center";
 import {auth} from "../config/firebase";
+import {Container} from "react-bootstrap";
 
-const Home = () => {
+const Dashboard = () => {
     return (
-        <div>
+        <Container id='dashboard' className={'d-flex '}>
             <Center>
                 <h1>Welcome {auth.currentUser?.displayName}!</h1>
-                <Logout/>
             </Center>
-        </div>
+        </Container>
     );
 };
 
-export default Home;
+export default Dashboard;

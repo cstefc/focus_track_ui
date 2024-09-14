@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
-import NavBar from "../../navbar/NavBar";
 
 interface Props {
   children: React.ReactNode;
@@ -17,7 +16,6 @@ const AuthChecker = ({ children }: Props) => {
   }, [navigate]);
 
   return <>
-    <NavBar/>
     {children}
   </>;
 };

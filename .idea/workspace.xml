@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b832d9a-928a-4302-956f-9e5b0ed14bd2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/navbar/NavBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Calendar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -14,9 +12,10 @@
       <change beforePath="$PROJECT_DIR$/src/components/auth/AuthChecker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/AuthChecker.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/Logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Logout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navbar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,11 +76,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/router" />
       <recent name="$PROJECT_DIR$/src/pages/dashboard" />
       <recent name="$PROJECT_DIR$/src/firebase" />
-      <recent name="$PROJECT_DIR$/src/authentication" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -103,7 +102,7 @@
       <workItem from="1698874583651" duration="1401000" />
       <workItem from="1708593664259" duration="22000" />
       <workItem from="1726147657133" duration="320000" />
-      <workItem from="1726147983971" duration="9025000" />
+      <workItem from="1726147983971" duration="20830000" />
     </task>
     <servers />
   </component>

@@ -1,14 +1,17 @@
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
-import {auth} from "../config/firebase";
+import {auth} from "../../config/firebase";
 import {Container} from "react-bootstrap";
+import Logout from "../auth/Logout";
+import {useNavigate} from "react-router-dom";
 
 function NavBar() {
+    const navigate = useNavigate();
     return (
         <Navbar fixed={'top'} expand={'md'} bg="dark" variant={"dark"}>
             <Container>
                 <Nav>
                     <Nav.Item>
-                        <Navbar.Brand href="/">
+                        <Navbar.Brand onClick={() => navigate("/")}>
                             <img
                                 alt=""
                                 src='/logos/logo192.png'
@@ -20,24 +23,21 @@ function NavBar() {
                         </Navbar.Brand>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link onClick={() => navigate('/')}>Home</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/calendar">Calendar</Nav.Link>
+                        <Nav.Link onClick={() => navigate('/calendar')}>Calendar</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 <Nav>
-                    <NavDropdown align-right menuVariant={'dark'} title={auth.currentUser?.displayName}>
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
-                            Another action
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider/>
-                        <NavDropdown.Item href="#action/3.4">
-                            Separated link
-                        </NavDropdown.Item>
-                    </NavDropdown>
+                    {auth.currentUser !== null &&
+                        <NavDropdown align-right menuVariant={'dark'} title={auth.currentUser?.displayName}>
+                            <Logout/>
+                        </NavDropdown>}
+
+                    {auth.currentUser === null && <Nav.Link align-right href={'/login'}>
+                        Log In
+                    </Nav.Link>}
                 </Nav>
             </Container>
         </Navbar>
