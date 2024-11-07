@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b832d9a-928a-4302-956f-9e5b0ed14bd2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/TaskApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/Task.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/User.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +99,8 @@
       <workItem from="1708593664259" duration="22000" />
       <workItem from="1726147657133" duration="320000" />
       <workItem from="1726147983971" duration="24326000" />
-      <workItem from="1726314204356" duration="2580000" />
+      <workItem from="1726314204356" duration="7834000" />
+      <workItem from="1726576265814" duration="8951000" />
     </task>
     <servers />
   </component>

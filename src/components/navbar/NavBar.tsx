@@ -35,7 +35,7 @@ function NavBar() {
                             <Logout/>
                         </NavDropdown>}
 
-                    {auth.currentUser === null && <Nav.Link align-right onClick={() => navigate('/')}>
+                    {auth.currentUser === null && <Nav.Link align-right onClick={() => navigate('/login')}>
                         Log In
                     </Nav.Link>}
                 </Nav>
