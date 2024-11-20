@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {CircularProgress} from "@mui/material";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import {auth} from "./config/firebase";
 import routes from "./config/routes";
-import Center from "./components/utils/Center";
 import AuthChecker from "./components/auth/AuthChecker";
 import NavBar from "./components/navbar/NavBar";
-import {Container} from "react-bootstrap";
+import {Container, Spinner} from "react-bootstrap";
+import Center from "./components/utils/Center";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -26,12 +25,20 @@ function App() {
     if (loading)
         return (
             <Center>
-                <CircularProgress/>
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
             </Center>
         );
 
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter
+            basename="/"
+            future={{
+                v7_startTransition: true,
+                v7_relativeSplatPath: true,
+            }}
+        >
             <Routes>
                 {routes.map((route, index) => (
                     <Route
@@ -40,7 +47,7 @@ function App() {
                         element={
                             <>
                                 <NavBar/>
-                                <Container style={{marginTop: '56px'}}>
+                                <Container style={{marginLeft: '0px', paddingLeft:'0px', marginTop: '90px'}}>
                                     {route.protected ? (
                                         <AuthChecker>
                                             <route.component/>
