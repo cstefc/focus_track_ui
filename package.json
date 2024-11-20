@@ -3,40 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.16",
-    "@mui/material": "^5.14.16",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^12.1.5",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.60",
-    "@types/react": "^17.0.69",
-    "@types/react-dom": "^17.0.22",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.9.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react-swc": "^3.7.1",
     "bootstrap": "^5.3.3",
-    "firebase": "^9.23.0",
-    "nextui-cli": "^0.3.4",
-    "react": "^17.0.2",
-    "react-bootstrap": "^2.10.4",
-    "react-dom": "^17.0.2",
-    "react-firebase-hooks": "^4.0.2",
-    "react-next": "^0.0.1",
-    "react-router-dom": "^6.18.0",
-    "react-scripts": "^5.0.0",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "firebase": "^11.0.2",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.5",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-svgr": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "serve": "serve -s build",
-    "build-and-serve": "npm run build && npm run serve",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "pull": "git pull && npm i && npm start"
+    "start": "vite",
+    "dev": "vite dev",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage --watch=false"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,6 +45,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "@vitest/coverage-v8": "^2.1.5",
+    "gh-pages": "^6.2.0",
+    "jsdom": "^25.0.1",
+    "vitest": "^2.1.5"
   }
 }

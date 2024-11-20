@@ -14,9 +14,8 @@ const Home = () => {
         <>
             {!auth.currentUser &&
                 <div>
-                <h1> Welcome to my website</h1>
-                <h5>To proceed using this application, you'll have to log in.</h5>
-            </div>}
+                    <h1> Welcome to my website</h1>
+                </div>}
         </>
     )
 }
