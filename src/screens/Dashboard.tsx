@@ -1,6 +1,4 @@
-import Center from "../components/utils/Center";
 import {auth} from "../config/firebase";
-import {Container} from "react-bootstrap";
 import {useEffect, useState} from "react";
 
 const Dashboard = () => {
@@ -17,11 +15,7 @@ const Dashboard = () => {
     }, [token]);
     return (
         <>
-            <Container id='dashboard'>
-                <Center>
-                    <h1>Welcome {auth.currentUser?.displayName}!</h1>
-                </Center>
-            </Container>
+            <h1 className={"text-center"}>Welcome {auth.currentUser?.displayName}!</h1>
         </>
     );
 };

@@ -5,11 +5,14 @@ import {auth} from "./config/firebase";
 import routes from "./config/routes";
 import AuthChecker from "./components/auth/AuthChecker";
 import NavBar from "./components/navbar/NavBar";
-import {Container, Spinner} from "react-bootstrap";
-import Center from "./components/utils/Center";
+import {Spinner, Stack} from "react-bootstrap";
 
 function App() {
     const [loading, setLoading] = useState(true);
+    let height = 100;
+    let useHeight;
+    if (typeof height === "string") useHeight = height;
+    else useHeight = height + "vh";
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
@@ -24,12 +27,21 @@ function App() {
 
     if (loading)
         return (
-            <Center>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    height: useHeight,
+                }}
+            >
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
-            </Center>
-        );
+            </div>
+        )
+            ;
 
     return (
         <BrowserRouter
@@ -45,18 +57,19 @@ function App() {
                         key={index}
                         path={route.path}
                         element={
-                            <>
+                            <Stack
+                                style={{padding: "100px 0 0 0"}}
+                                data-bs-theme="dark"
+                                direction="vertical">
                                 <NavBar/>
-                                <Container style={{marginLeft: '0px', paddingLeft:'0px', marginTop: '90px'}}>
-                                    {route.protected ? (
-                                        <AuthChecker>
-                                            <route.component/>
-                                        </AuthChecker>
-                                    ) : (
+                                {route.protected ? (
+                                    <AuthChecker>
                                         <route.component/>
-                                    )}
-                                </Container>
-                            </>
+                                    </AuthChecker>
+                                ) : (
+                                    <route.component/>
+                                )}
+                            </Stack>
                         }
                     />
                 ))}
