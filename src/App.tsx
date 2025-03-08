@@ -11,8 +11,7 @@ function App() {
     const [loading, setLoading] = useState(true);
     let height = 100;
     let useHeight;
-    if (typeof height === "string") useHeight = height;
-    else useHeight = height + "vh";
+    useHeight = height + "vh";
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {

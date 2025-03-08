@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import AuthContainer from "../auth/AuthContainer";
 import {getAuth} from "firebase/auth";
 import Image from "react-bootstrap/Image";
-import logo from "/logos/TaskRingLogo192.jpeg"
+import logo from "/logos/ChronoLux.png"
 
 function NavBar() {
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ function NavBar() {
                         <Navbar.Brand
                             onClick={() => navigate("/dashboard")}
                         >
-                            TaskRing
+                            ChronoLux
                         </Navbar.Brand>
                     </Nav.Item>
                     <Nav.Item>

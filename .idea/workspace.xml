@@ -5,18 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b832d9a-928a-4302-956f-9e5b0ed14bd2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/calendar/DayView.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logos/ChronoLux.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/task.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logos/TaskRingLogo192.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logos/TaskRingLogo512.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar/Day.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar/MonthView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar/MonthView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/utils/Center.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Task.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/User.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.mts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,28 +61,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Docker.Dockerfile.executor": "Run",
-    "Node.js.firebase.ts.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Vitest.All Tests.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "/home/cstefc/Downloads/Browser-1.0.7.zip",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
-    "ts.external.directory.path": "/home/cstefc/Documenten/own_projects/activity_planner/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.firebase.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Vitest.All Tests.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#2 on calendar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cstefc/Documenten/own_projects/Outlier_Projects/Hopper_Code_RLHF/hopper_rlhf_assessment/my-app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/cstefc/Documenten/own_projects/activity_planner/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/logos" />
@@ -141,7 +142,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
       </set>
     </attachedChunks>
   </component>
@@ -170,7 +171,11 @@
       <workItem from="1732173195881" duration="2023000" />
       <workItem from="1732199940524" duration="1574000" />
       <workItem from="1732709622704" duration="137000" />
-      <workItem from="1732709778910" duration="13418000" />
+      <workItem from="1732709778910" duration="14545000" />
+      <workItem from="1734956029489" duration="1025000" />
+      <workItem from="1740704148231" duration="13000" />
+      <workItem from="1741384994152" duration="9912000" />
+      <workItem from="1741436808747" duration="10124000" />
     </task>
     <servers />
   </component>
