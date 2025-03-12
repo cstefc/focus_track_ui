@@ -34,8 +34,8 @@ body {
 }
 
 .btn-primary{
-    border-color: var(--accent);
-    background-color: var(--accent);
+    border-color: var(--tertiary);
+    background-color: var(--tertiary);
 }
 
 .btn-primary:hover{

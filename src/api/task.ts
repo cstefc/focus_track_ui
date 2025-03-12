@@ -45,10 +45,12 @@ export async function getAllTasks(){
     return await response.json() as ApiTask[]
 }
 
+// TODO updateTask
 export async function updateTask(task: ApiTask): Promise<ApiTask | null> {
     return null
 }
 
+// TODO delete task
 export async function deleteTask(id: number): Promise<ApiTask | null> {
     return null
 }

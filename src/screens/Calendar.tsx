@@ -29,7 +29,7 @@ const Calendar = () => {
                 {/* TODO: The edit space for managing calendar events */}
                 <Col className={"h-100 w-100 justify-item-center"}>
                     <Container className={"justify-content-center align-items-center w-100 h-100"}>
-                        <h1 className={"text"}> TODO: Add tools to create and remove events</h1>
+                        <h1 className={"m-4 text"}> TODO: Add tools to create and remove events</h1>
                     </Container>
                 </Col>
             </Row>

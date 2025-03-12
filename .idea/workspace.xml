@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b832d9a-928a-4302-956f-9e5b0ed14bd2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/screens/Tasks.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/activity_planner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/activity_planner.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/category.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar/DayView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar/DayView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar/MonthView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar/MonthView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/task.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/TaskApi.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Tasks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Tasks.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -71,7 +66,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "Vitest.All Tests.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "#2 on calendar",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/cstefc/Documenten/own_projects/Outlier_Projects/Hopper_Code_RLHF/hopper_rlhf_assessment/my-app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
