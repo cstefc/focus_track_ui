@@ -2,6 +2,7 @@ import Login from "../screens/Login";
 import Calendar from "../screens/Calendar";
 import Home from "../screens/Home";
 import Dashboard from "../screens/Dashboard";
+import Tasks from "../screens/Tasks";
 
 interface RouteType {
     path: string;
@@ -16,7 +17,9 @@ const routes: RouteType[] = [
 
     {
         path: "/login",
-        component: Login,
+        // TODO
+        // component: Login,
+        component: Home,
         name: "Login Screen",
         protected: false,
     },
@@ -38,7 +41,13 @@ const routes: RouteType[] = [
     {
         path: "/dashboard",
         component: Dashboard,
-        name: "Calendar Screen",
+        name: "Dashboard/Overview Screen",
+        protected: true,
+    },
+    {
+        path: "/tasks",
+        component: Tasks,
+        name: "Task Screen",
         protected: true,
     },
 ];

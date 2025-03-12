@@ -1,35 +1,44 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import {auth} from "./config/firebase";
 import routes from "./config/routes";
 import AuthChecker from "./components/auth/AuthChecker";
 import NavBar from "./components/navbar/NavBar";
-import {Container, Spinner} from "react-bootstrap";
-import Center from "./components/utils/Center";
+import {Spinner, Stack} from "react-bootstrap";
 
 function App() {
     const [loading, setLoading] = useState(true);
+    let height = 100;
+    let useHeight;
+    useHeight = height + "vh";
 
-    useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.info("User detected.");
-            } else {
-                console.info("No user detected");
-            }
-            setLoading(false);
-        });
-    }, []);
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            console.info("User detected.");
+        } else {
+            console.info("No user detected");
+        }
+        setLoading(false);
+    });
 
     if (loading)
         return (
-            <Center>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    height: useHeight,
+                }}
+            >
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
-            </Center>
-        );
+            </div>
+        )
+            ;
 
     return (
         <BrowserRouter
@@ -45,18 +54,24 @@ function App() {
                         key={index}
                         path={route.path}
                         element={
-                            <>
+                            <Stack
+                                style={{
+                                    padding: "65px 0 0 0",
+                                    backgroundImage: "/background.jpg",
+                                }}
+                                data-bs-theme="dark"
+                                direction="vertical"
+                                className={"align-content-center"}
+                            >
                                 <NavBar/>
-                                <Container style={{marginLeft: '0px', paddingLeft:'0px', marginTop: '90px'}}>
-                                    {route.protected ? (
-                                        <AuthChecker>
-                                            <route.component/>
-                                        </AuthChecker>
-                                    ) : (
+                                {route.protected ? (
+                                    <AuthChecker>
                                         <route.component/>
-                                    )}
-                                </Container>
-                            </>
+                                    </AuthChecker>
+                                ) : (
+                                    <route.component/>
+                                )}
+                            </Stack>
                         }
                     />
                 ))}

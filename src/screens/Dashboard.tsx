@@ -1,7 +1,7 @@
-import Center from "../components/utils/Center";
 import {auth} from "../config/firebase";
-import {Container} from "react-bootstrap";
 import {useEffect, useState} from "react";
+import {Button, Col, Container, Row} from "react-bootstrap";
+import {CreateTask, createTask, getAllTasks} from "../api/task";
 
 const Dashboard = () => {
     const [token, setToken] = useState('')
@@ -9,7 +9,6 @@ const Dashboard = () => {
         async function getToken() {
             if (!token) {
                 setToken(await auth.currentUser?.getIdToken() || "")
-                console.log(await auth.currentUser?.getIdToken())
             }
         }
 
@@ -17,10 +16,22 @@ const Dashboard = () => {
     }, [token]);
     return (
         <>
-            <Container id='dashboard'>
-                <Center>
-                    <h1>Welcome {auth.currentUser?.displayName}!</h1>
-                </Center>
+            <Container className={"align-content-center flex justify-content"}>
+                <h1 className={"text-center text m-3"}>Welcome {auth.currentUser?.displayName}!</h1>
+                <Row className={"w-100"}>
+                    <Col className={"w-100"}>
+                        <Button
+                            variant={"dark primary m-5"}
+                            //onClick={() => {void createUser()}}
+                            onClick={async () => {
+                                let response = await getAllTasks()
+                                console.log(response)
+                            }
+
+                            }
+                        >Click me to test api call!</Button>
+                    </Col>
+                </Row>
             </Container>
         </>
     );
