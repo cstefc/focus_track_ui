@@ -10,8 +10,7 @@ const CalendarDay = (props: CalendarDayProps) => {
     return (
         <Card
             key={date.getDate()}
-            style={{width: '150px', height: "150px", padding: "5px", margin: "5px"}}
-            className={"justify-content-md-center"}>
+            style={{width: '150px', height: "150px", padding: "5px", margin: "5px"}}>
             <Card.Body className="text-center">
                 <Card.Title
                     style={{

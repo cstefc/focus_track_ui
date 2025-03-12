@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import {auth} from "./config/firebase";
@@ -13,16 +13,14 @@ function App() {
     let useHeight;
     useHeight = height + "vh";
 
-    useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.info("User detected.");
-            } else {
-                console.info("No user detected");
-            }
-            setLoading(false);
-        });
-    }, []);
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            console.info("User detected.");
+        } else {
+            console.info("No user detected");
+        }
+        setLoading(false);
+    });
 
     if (loading)
         return (

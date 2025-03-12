@@ -46,6 +46,9 @@ function NavBar() {
                     <Nav.Item>
                         <Nav.Link onClick={() => navigate('/calendar')}>Calendar</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link onClick={() => navigate('/tasks')}>Tasks</Nav.Link>
+                    </Nav.Item>
                 </Nav>
                 <Nav className={"ms-auto"}>
                     {auth.currentUser &&
