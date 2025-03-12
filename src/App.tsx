@@ -57,9 +57,14 @@ function App() {
                         path={route.path}
                         element={
                             <Stack
-                                style={{padding: "100px 0 0 0"}}
+                                style={{
+                                    padding: "65px 0 0 0",
+                                    backgroundImage: "/background.jpg",
+                                }}
                                 data-bs-theme="dark"
-                                direction="vertical">
+                                direction="vertical"
+                                className={"align-content-center"}
+                            >
                                 <NavBar/>
                                 {route.protected ? (
                                     <AuthChecker>

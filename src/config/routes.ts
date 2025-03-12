@@ -16,7 +16,9 @@ const routes: RouteType[] = [
 
     {
         path: "/login",
-        component: Login,
+        // TODO
+        // component: Login,
+        component: Home,
         name: "Login Screen",
         protected: false,
     },
@@ -38,7 +40,7 @@ const routes: RouteType[] = [
     {
         path: "/dashboard",
         component: Dashboard,
-        name: "Calendar Screen",
+        name: "Dashboard/Overview Screen",
         protected: true,
     },
 ];

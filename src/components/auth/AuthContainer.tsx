@@ -19,8 +19,7 @@ const AuthContainer = (props: Props) => {
         signInWithPopup(auth, Providers.google)
             .then(() => {
                 setDisabledLogout(false)
-                console.info("TODO: navigate to authenticated screen");
-                navigate("/");
+                navigate("/dashboard");
             })
             .catch((error) => {
                 setErrorMessage(error.code + ": " + error.message);
@@ -43,16 +42,21 @@ const AuthContainer = (props: Props) => {
 
     return (
         <>
-            {!disabledLogin && <NavDropdown.Item onClick={signInWithGoogle}>
-                {<Image src={"https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"}/>}
-                Google Sign In
-            </NavDropdown.Item>}
-            {!disabledLogout && <NavDropdown.Item onClick={logout}>
-                Logout
-            </NavDropdown.Item>}
-            <h1 color={"red"}>
-                {errorMessage}
-            </h1>
+            {!disabledLogin &&
+                <NavDropdown.Item
+                    onClick={signInWithGoogle}>
+                    {<Image
+                        style={{
+                            margin: "0 10px 0 0"
+                        }}
+                        src={"https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"}/>}
+                    Google Sign In
+                </NavDropdown.Item>
+            }
+            {!disabledLogout &&
+                <NavDropdown.Item onClick={logout}>
+                    Logout
+                </NavDropdown.Item>}
         </>
 
     );

@@ -3,29 +3,41 @@ import {useNavigate} from "react-router-dom";
 import AuthContainer from "../auth/AuthContainer";
 import {getAuth} from "firebase/auth";
 import Image from "react-bootstrap/Image";
-import logo from "/logos/ChronoLux.png"
 
 function NavBar() {
     const navigate = useNavigate();
     const auth = getAuth();
     return (
-        <Navbar fixed={'top'} expand={'md'} bg="dark" variant={"dark"}>
-            <Container>
-                <Image
-                    alt=""
-                    src={logo}
-                    className="d-inline-block align-top"
-                    onClick={() => navigate("/dashboard")}
-                    height={75}
-                    width={75}
-                    roundedCircle
-                />
-                <Nav>
+        <Navbar fixed={'top'} expand={'md'} bg="dark" variant={"dark"} style={{
+            opacity: "90%"
+        }}>
+
+            <Container className={"m-auto"}>
+                <Nav
+                    className={"me-4"}
+                >
+                    <Nav.Item>
+                        <Image
+                            alt=""
+                            src={"/calendar.png"}
+                            width={50}
+                            height={50}
+                            className="d-inline-block align-top fluid"
+                            onClick={() => navigate("/dashboard")}
+                        />
+                    </Nav.Item>
+                </Nav>
+                <Nav
+                    className={"align-content-center align-items-center"}
+                    style={{
+                    height: "50px",
+                    width: "50px",
+                }}>
                     <Nav.Item>
                         <Navbar.Brand
                             onClick={() => navigate("/dashboard")}
                         >
-                            ChronoLux
+                            Activity Planner
                         </Navbar.Brand>
                     </Nav.Item>
                     <Nav.Item>
@@ -38,7 +50,7 @@ function NavBar() {
                 <Nav className={"ms-auto"}>
                     {auth.currentUser &&
                         <Image
-                            src="https://lh3.googleusercontent.com/a/ACg8ocK4osZpMOuXm4xFg8-CHeHKqqrkOhtfVWv2aA7VskOn9go=s96-c"
+                            src={auth.currentUser.photoURL || ""}
                             alt={'profile_pic'} roundedCircle
                             width={35}
                             height={35}
@@ -46,7 +58,7 @@ function NavBar() {
                         />
                     }
                     <NavDropdown align-right={"true"} menuVariant={'dark'}
-                                 title={auth.currentUser?.displayName || "Account"}>
+                                 title={auth.currentUser?.displayName || "Log In"}>
                         <AuthContainer/>
                     </NavDropdown>
                 </Nav>
