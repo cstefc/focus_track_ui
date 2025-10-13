@@ -1,7 +1,7 @@
 import React from "react";
 import {Container} from "react-bootstrap";
 
-const Login = () => {
+export default function Login(){
     return (
         <Container m-xl={"auto"}>
             <h1>Welcome</h1>
@@ -9,5 +9,3 @@ const Login = () => {
         </Container>);
 
 };
-
-export default Login;

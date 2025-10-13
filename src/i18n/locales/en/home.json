@@ -1,0 +1,16 @@
+{
+  "cards": {
+    "success": {
+      "title": "Success: The Power of Consistency",
+      "text": "Success isn’t just about big wins—it’s about small, consistent actions that add up over time. By setting clear goals and tracking your progress, you stay motivated and on the right path. Every step forward brings you closer to achieving your dreams."
+    },
+    "productivity": {
+      "title": "Productivity: Work Smarter, Not Harder",
+      "text": "Maximizing productivity is all about focus and efficiency. Planning your activities helps you prioritize what truly matters, avoid distractions, and make steady progress. With  the right system in place, you can achieve more in less time and with less stress."
+    },
+    "tracking": {
+      "title": "The Importance of Tracking: Stay on Course",
+      "text": "Tracking your activities gives you valuable insights into your habits, strengths, and areas for improvement. It helps you stay accountable, celebrate milestones, and make informed decisions. The more you track, the more you grow!"
+    }
+  }
+}

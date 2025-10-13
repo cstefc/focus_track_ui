@@ -1,14 +1,14 @@
-import Login from "../screens/Login";
-import Calendar from "../screens/Calendar";
+import Planning from "../screens/Planning";
 import Home from "../screens/Home";
 import Dashboard from "../screens/Dashboard";
-import Tasks from "../screens/Tasks";
+import Projects from "../screens/Projects";
 
-interface RouteType {
+export interface RouteType {
     path: string;
     component: any;
     name: string;
     protected: boolean;
+    navbar: boolean;
 }
 
 const routes: RouteType[] = [
@@ -20,35 +20,40 @@ const routes: RouteType[] = [
         // TODO
         // component: Login,
         component: Home,
-        name: "Login Screen",
+        name: "Login",
         protected: false,
+        navbar: false,
     },
     {
         path: "",
         component: Home,
-        name: "Home Screen",
+        name: "Home",
         protected: false,
+        navbar: false,
     },
 
     /* -----| Protected Routes |------ */
 
     {
-        path: "/calendar",
-        component: Calendar,
-        name: "Calendar Screen",
-        protected: true,
-    },
-    {
         path: "/dashboard",
         component: Dashboard,
-        name: "Dashboard/Overview Screen",
+        name: "Dashboard",
+        protected: true,
+        navbar: true,
+    },
+    {
+        path: "/planning",
+        component: Planning,
+        name: "Planning",
+        navbar: true,
         protected: true,
     },
     {
-        path: "/tasks",
-        component: Tasks,
-        name: "Task Screen",
+        path: "/projects",
+        component: Projects,
+        name: "Project",
         protected: true,
+        navbar: true,
     },
 ];
 

@@ -4,7 +4,7 @@ export type ApiTask = {
     title: string;
     description: string;
     completed_time: string;
-    user_id: null
+    user_id: number;
     id: number;
 }
 

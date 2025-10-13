@@ -1,23 +1,36 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../../config/firebase";
+import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {auth} from "../../config/firebase";
+import {User} from "firebase/auth";
+import {Spinner} from "react-bootstrap";
 
 interface Props {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
-const AuthChecker = ({ children }: Props) => {
-  const navigate = useNavigate();
+export default function AuthChecker({children}: Props) {
+    const navigate = useNavigate();
+    const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!auth.currentUser) {
-      navigate("/login");
+    useEffect(() => {
+        return auth.onAuthStateChanged((currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
+
+            if (!currentUser) {
+                navigate("/login");
+            }
+        });
+    }, [navigate]);
+
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{height: "100vh"}}>
+                <Spinner animation="border" role="status"/>
+            </div>
+        );
     }
-  }, [navigate]);
 
-  return <>
-    {children}
-  </>;
-};
-
-export default AuthChecker;
+    return (<>{user && children}</>);
+}

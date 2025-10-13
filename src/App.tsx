@@ -4,8 +4,9 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {auth} from "./config/firebase";
 import routes from "./config/routes";
 import AuthChecker from "./components/auth/AuthChecker";
-import NavBar from "./components/navbar/NavBar";
-import {Spinner, Stack} from "react-bootstrap";
+import MyNavbar from "./components/navbar/MyNavbar";
+import {Container, Spinner} from "react-bootstrap";
+import "./layouts/app.css";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -14,11 +15,6 @@ function App() {
     useHeight = height + "vh";
 
     auth.onAuthStateChanged((user) => {
-        if (user) {
-            console.info("User detected.");
-        } else {
-            console.info("No user detected");
-        }
         setLoading(false);
     });
 
@@ -43,10 +39,6 @@ function App() {
     return (
         <BrowserRouter
             basename="/"
-            future={{
-                v7_startTransition: true,
-                v7_relativeSplatPath: true,
-            }}
         >
             <Routes>
                 {routes.map((route, index) => (
@@ -54,16 +46,8 @@ function App() {
                         key={index}
                         path={route.path}
                         element={
-                            <Stack
-                                style={{
-                                    padding: "65px 0 0 0",
-                                    backgroundImage: "/background.jpg",
-                                }}
-                                data-bs-theme="dark"
-                                direction="vertical"
-                                className={"align-content-center"}
-                            >
-                                <NavBar/>
+                            <Container className={"application-container"} fluid data-bs-theme="dark">
+                                <MyNavbar/>
                                 {route.protected ? (
                                     <AuthChecker>
                                         <route.component/>
@@ -71,7 +55,7 @@ function App() {
                                 ) : (
                                     <route.component/>
                                 )}
-                            </Stack>
+                            </Container>
                         }
                     />
                 ))}

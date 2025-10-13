@@ -1,9 +1,16 @@
 import {auth} from "../config/firebase";
 import {useEffect, useState} from "react";
 import {Button, Col, Container, Row} from "react-bootstrap";
-import {CreateTask, createTask, getAllTasks} from "../api/task";
+import {getAllTasks} from "../api/projects";
+import {useNavigate} from "react-router-dom";
 
-const Dashboard = () => {
+export default function Dashboard  ()  {
+    const navigate = useNavigate();
+    if (!auth.currentUser) {
+        navigate("/login");
+        return null;
+    }
+
     const [token, setToken] = useState('')
     useEffect(() => {
         async function getToken() {
@@ -36,5 +43,3 @@ const Dashboard = () => {
         </>
     );
 };
-
-export default Dashboard;
