@@ -1,4 +1,4 @@
-import {signInWithPopup, User} from "firebase/auth";
+import {signInWithPopup} from "firebase/auth";
 import Image from "react-bootstrap/Image";
 import {NavDropdown} from "react-bootstrap";
 import React, {JSX} from "react";

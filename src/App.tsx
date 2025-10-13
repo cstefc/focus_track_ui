@@ -14,7 +14,7 @@ function App() {
     let useHeight;
     useHeight = height + "vh";
 
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(() => {
         setLoading(false);
     });
 
