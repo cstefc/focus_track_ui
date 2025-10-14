@@ -1,7 +1,7 @@
 import {Nav, Navbar} from "react-bootstrap";
 import AuthContainer from "./auth_container/AuthContainer";
 
-import './navbar.css'
+import './my-navbar.css'
 import NavbarLogo from "./NavbarLogo";
 import NavbarRoutes from "./NavbarRoutes";
 import {useState} from "react";

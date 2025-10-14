@@ -1,5 +1,5 @@
 import {Card} from "react-bootstrap";
-import './day.css'
+import './day-view.css'
 
 interface CalendarDayProps {
     date: Date,
