@@ -1,11 +1,11 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {auth} from "../config/firebase";
+import {auth} from "@/config/firebase";
 import {Col, Container, Row} from "react-bootstrap";
 
-import HomeCarousel from "../components/home/HomeCarousel";
-import HomeCard from "../components/home/HomeCard";
-import '../layouts/home.css';
+import HomeCarousel from "@/components/home/HomeCarousel";
+import HomeCard from "@/components/home/HomeCard";
+import '@/layouts/home.css';
 
 
 export default function Home() {

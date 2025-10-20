@@ -1,7 +1,7 @@
 import {NavDropdown} from "react-bootstrap";
 import React, {JSX} from "react";
 import {signOut} from "firebase/auth";
-import {auth} from "../../../config/firebase";
+import {auth} from "@/config/firebase";
 
 export interface AuthContainerGoogleLogoutProps {
     navigate: (destination: string) => void;

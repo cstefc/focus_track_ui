@@ -1,8 +1,8 @@
 import {Col, Row} from "react-bootstrap";
 import React, {useState} from "react";
-import DayView from "../components/day-view/DayView";
-import Calendar from "../components/calendar/Calendar";
-import "../layouts/planning.css"
+import DayView from "@/components/day-view/DayView";
+import Calendar from "@/components/calendar/Calendar";
+import "@/layouts/planning.css"
 
 export default function Planning() {
     const [date, setDate] = useState(new Date());

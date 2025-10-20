@@ -1,6 +1,6 @@
 import {Button, Stack} from "react-bootstrap";
 import React from "react";
-import {months, nextMonth, prevMonth} from "../../utils/calendar";
+import {months, nextMonth, prevMonth} from "@/utils/calendar";
 
 export interface DateSelectorProps {
     date: Date;

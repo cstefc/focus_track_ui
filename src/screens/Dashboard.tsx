@@ -1,7 +1,7 @@
-import {auth} from "../config/firebase";
+import {auth} from "@/config/firebase";
 import {useEffect, useState} from "react";
 import {Button, Col, Container, Row} from "react-bootstrap";
-import {getAllTasks} from "../api/projects";
+import {getAllTasks} from "@/api/projects";
 import {useNavigate} from "react-router-dom";
 
 export default function Dashboard  ()  {

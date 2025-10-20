@@ -2,7 +2,7 @@ import {signInWithPopup} from "firebase/auth";
 import Image from "react-bootstrap/Image";
 import {NavDropdown} from "react-bootstrap";
 import React, {JSX} from "react";
-import {auth, Providers} from "../../../config/firebase";
+import {auth, Providers} from "@/config/firebase";
 
 export interface AuthContainerGoogleLoginProps {
     navigate: (destination: string) => void;

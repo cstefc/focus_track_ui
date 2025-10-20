@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {auth} from "../../../config/firebase";
+import {auth} from "@/config/firebase";
 import {NavDropdown} from "react-bootstrap";
 import DropdownTitle from "./AuthContainerTitle";
 import AuthContainerGoogleLogin from "./AuthContainerGoogleLogin";

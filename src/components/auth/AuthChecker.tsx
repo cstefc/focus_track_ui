@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {auth} from "../../config/firebase";
+import {auth} from "@/config/firebase";
 import {User} from "firebase/auth";
 import {Spinner} from "react-bootstrap";
 

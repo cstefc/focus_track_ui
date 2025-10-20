@@ -1,4 +1,4 @@
-import routes, {RouteType} from "../../config/routes";
+import routes, {RouteType} from "@/config/routes";
 import {Nav} from "react-bootstrap";
 import {getAuth} from "firebase/auth";
 

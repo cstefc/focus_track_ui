@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
-import {calendarList} from "../../utils/calendar";
+import {calendarList} from "@/utils/calendar";
 import DayButton from "./DayButton";
 
 export interface MonthViewProps {
