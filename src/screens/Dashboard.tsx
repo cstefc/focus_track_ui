@@ -1,10 +1,10 @@
 import {auth} from "@/config/firebase";
 import {useEffect, useState} from "react";
 import {Button, Col, Container, Row} from "react-bootstrap";
-import {getAllTasks} from "@/api/projects";
 import {useNavigate} from "react-router-dom";
+import api from "@/config/api";
 
-export default function Dashboard  ()  {
+export default function Dashboard() {
     const navigate = useNavigate();
     if (!auth.currentUser) {
         navigate("/login");
@@ -29,12 +29,10 @@ export default function Dashboard  ()  {
                     <Col className={"w-100"}>
                         <Button
                             variant={"dark primary m-5"}
-                            //onClick={() => {void createUser()}}
                             onClick={async () => {
-                                let response = await getAllTasks()
+                                let response = await api.project.findAll()
                                 console.log(response)
                             }
-
                             }
                         >Click me to test api call!</Button>
                     </Col>
