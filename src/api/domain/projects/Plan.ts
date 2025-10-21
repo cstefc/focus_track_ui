@@ -3,7 +3,7 @@ import {Log} from "@/api/domain/logging/Log";
 import {Step} from "@/api/domain/projects/Step";
 
 export interface Plan {
-    id?: number;
+    id: number;
     goal: string,
     priority: Priority,
     estimate: Date,

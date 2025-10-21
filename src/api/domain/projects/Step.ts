@@ -2,7 +2,7 @@ import {Plan} from "./Plan";
 import {Status} from "./predefined/Status";
 
 export interface Step {
-    id?: number,
+    id: number,
     plan: Plan
     sequence: number,
     objective: string,

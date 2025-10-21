@@ -1,6 +1,7 @@
 export interface AppUser {
-    id?: number;
     uuid: string;
     name: string;
     email: string;
+    authorities: string[];
+    roles: string[];
 }

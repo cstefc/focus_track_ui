@@ -21,7 +21,7 @@ function MyNavbar() {
             <Nav className="ms-3 align-items-center">
                 <NavbarLogo
                     image={"/FocusTrackLogo_600x600.jpg"}
-                    destination={"/dashboard"}/>
+                    destination={"/"}/>
             </Nav>
 
             <Navbar.Toggle aria-controls="main-navbar" className={"me-3"} onClick={() => setExpanded(!expanded)}/>

@@ -1,48 +1,40 @@
-import {Button, Stack} from "react-bootstrap";
+import {Button, Container, Stack} from "react-bootstrap";
 import {useState} from "react";
-import ProjectCard from "@/components/project-card/ProjectCard";
-import {Project} from "@/api/domain/projects/Project";
 import api from "@/config/api";
+import {CreateProject} from "../api/domain/projects/Project";
+import {auth} from "../config/firebase";
+import ProjectModal from "../components/project-modal/ProjectModal";
 
 export default function Projects() {
-    const [project, setProject] = useState<Project>({
-        name: "test", ownerId: 1, description: "test project", plans: []
-    });
-    const [showProject, setShowProject] = useState(false);
-    const [title, setTitle] = useState("");
+    const [showCreateModal, setShowCreateModal] = useState(false);
 
-    async function saveProject() {
-        // TODO
-        const projects = await api.project.findAll();
-        setShowProject(false);
-        for (let project of projects) {
-            console.log(project);
+    async function createProject(data: CreateProject) {
+        if (!auth.currentUser) {
+            throw new Error("Invalid uuid");
         }
+        api.project.create(data);
+        setShowCreateModal(false);
     }
 
     return (
         <>
-            <Stack direction={"horizontal"} gap={4}>
-                <Button
-                    variant={"primary"}
-                    className={"ms-auto"}
-                    onClick={() => {
-                    }}
-                >Create new category</Button>
-                <Button
-                    variant={"primary"}
-                    onClick={() => setShowProject(true)}
-                >Create a new task</Button>
-            </Stack>
-
-            {showProject && <ProjectCard
-                project={project}
-                saveProject={saveProject}
-                showProject={showProject}
-                setShowProject={setShowProject}
-                title={title}
-                setTitle={setTitle}
-            />}
+            <Container className={"p-2"}>
+                <Stack direction={"horizontal"} gap={4}>
+                    <Button
+                        variant={"primary"}
+                        className={"ms-auto"}
+                        onClick={() => {
+                        }}
+                    >Create new category</Button>
+                    <Button
+                        variant={"primary"}
+                        onClick={() => setShowCreateModal(true)}
+                    >Create a new project</Button>
+                </Stack>
+            </Container>
+            <ProjectModal show={showCreateModal}
+                          onClose={() => setShowCreateModal(false)}
+                          onSubmit={createProject}/>
         </>
     );
 };

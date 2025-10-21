@@ -51,7 +51,7 @@ const routes: RouteType[] = [
     {
         path: "/projects",
         component: Projects,
-        name: "Project",
+        name: "Projects",
         protected: true,
         navbar: true,
     },

@@ -1,7 +1,7 @@
 import {Log} from "@/api/domain/logging/Log";
 
 export interface Events {
-    id?: number
+    id: number
     timed: boolean,
     name: string,
     date: Date,

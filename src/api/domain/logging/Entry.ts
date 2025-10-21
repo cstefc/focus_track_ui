@@ -1,6 +1,6 @@
 
 export interface Entry {
-    id?: number;
+    id: number;
     title: string;
     description: string;
     scoring: number;
