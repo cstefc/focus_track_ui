@@ -1,9 +1,7 @@
 import {Entry} from "./Entry";
-import {AppUser} from "@/api/domain/general.json/AppUser";
 
 export interface Log {
-    id?: number,
+    id: number;
+    archived: boolean;
     entries: Entry[];
-    user: AppUser;
 }
-
