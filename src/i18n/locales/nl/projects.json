@@ -1,0 +1,18 @@
+{
+  "create": {
+    "title": "Nieuw project aanmaken",
+    "titleLabel": "Titel",
+    "titlePlaceholder": "Voer een titel in",
+
+    "descriptionLabel": "Beschrijving",
+    "descriptionPlaceholder": "Voer een beschrijving in"
+  },
+
+  "button": {
+    "createProject": "Nieuw project aanmaken",
+    "createCategory": "Nieuwe categorie aanmaken",
+    "cancel": "Annuleren",
+    "save": "Opslaan"
+  }
+
+}

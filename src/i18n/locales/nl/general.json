@@ -1,0 +1,54 @@
+{
+  "routes": {
+    "login": "Aanmelden",
+    "home": "Startpagina",
+    "dashboard": "Dashboard",
+    "planning": "Planning",
+    "projects": "Projecten"
+  },
+  "button": {
+    "confirm": "Bevestigen",
+    "ok": "Oké",
+    "cancel": "Annuleren",
+    "save": "Opslaan"
+  },
+  "calendar": {
+    "date_selector": {
+      "prev_month": "Vorige maand",
+      "next_month": "Volgende maand"
+    },
+    "days": {
+      "monday": "Maandag",
+      "tuesday": "Dinsdag",
+      "wednesday": "Woensdag",
+      "thursday": "Donderdag",
+      "friday": "Vrijdag",
+      "saturday": "Zaterdag",
+      "sunday": "Zondag"
+    },
+    "months": {
+      "january": "Januari",
+      "february": "Februari",
+      "march": "Maart",
+      "april": "April",
+      "may": "Mei",
+      "june": "Juni",
+      "july": "Juli",
+      "august": "Augustus",
+      "september": "September",
+      "october": "Oktober",
+      "november": "November",
+      "december": "December"
+    }
+  },
+  "authentication": {
+    "google": {
+      "signIn": "Aanmelden met Google"
+    },
+    "signIn": "Aanmelden",
+    "signOut": "Afmelden"
+  },
+  "pictures": {
+    "logoAltText": "Logo"
+  }
+}

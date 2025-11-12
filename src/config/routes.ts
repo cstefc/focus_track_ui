@@ -1,7 +1,7 @@
-import Planning from "@/screens/Planning";
-import Home from "@/screens/Home";
-import Dashboard from "@/screens/Dashboard";
-import Projects from "@/screens/Projects";
+import Planning from "@/screens/planning/Planning";
+import Home from "@/screens/home/Home";
+import Dashboard from "@/screens/dashboard/Dashboard";
+import Projects from "@/screens/projects/Projects";
 
 export interface RouteType {
     path: string;
@@ -20,14 +20,14 @@ const routes: RouteType[] = [
         // TODO
         // component: Login,
         component: Home,
-        name: "Login",
+        name: "login",
         protected: false,
         navbar: false,
     },
     {
         path: "",
         component: Home,
-        name: "Home",
+        name: "home",
         protected: false,
         navbar: false,
     },
@@ -37,21 +37,21 @@ const routes: RouteType[] = [
     {
         path: "/dashboard",
         component: Dashboard,
-        name: "Dashboard",
+        name: "dashboard",
         protected: true,
         navbar: true,
     },
     {
         path: "/planning",
         component: Planning,
-        name: "Planning",
-        navbar: true,
+        name: "planning",
         protected: true,
+        navbar: true,
     },
     {
         path: "/projects",
         component: Projects,
-        name: "Projects",
+        name: "projects",
         protected: true,
         navbar: true,
     },

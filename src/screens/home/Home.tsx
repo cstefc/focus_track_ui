@@ -1,8 +1,8 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 
-import HomeCarousel from "@/components/home/HomeCarousel";
-import HomeCard from "@/components/home/HomeCard";
+import HomeCarousel from "./components/HomeCarousel";
+import HomeCard from "./components/HomeCard";
 import '@/layouts/home.css';
 
 

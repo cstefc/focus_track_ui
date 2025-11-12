@@ -3,6 +3,7 @@ import Image from "react-bootstrap/Image";
 import {NavDropdown} from "react-bootstrap";
 import React, {JSX} from "react";
 import {auth, Providers} from "@/config/firebase";
+import {useTranslation} from "react-i18next";
 
 export interface AuthContainerGoogleLoginProps {
     navigate: (destination: string) => void;
@@ -10,6 +11,7 @@ export interface AuthContainerGoogleLoginProps {
 }
 
 export default function AuthContainerGoogleLogin({navigate, destination}: AuthContainerGoogleLoginProps): JSX.Element {
+    const {t} = useTranslation("general");
     async function handleSignInWithGoogle () {
         try {
             await signInWithPopup(auth, Providers.google)
@@ -29,7 +31,7 @@ export default function AuthContainerGoogleLogin({navigate, destination}: AuthCo
                 height={18}
                 src={"https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"}/>
             }
-            Google Sign In
+            {t("authentication.google.signIn")}
         </NavDropdown.Item>
     );
 }

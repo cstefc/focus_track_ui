@@ -1,12 +1,14 @@
 import {Button, Container, Stack} from "react-bootstrap";
 import {useState} from "react";
 import api from "@/config/api";
-import {CreateProject} from "../api/domain/projects/Project";
-import {auth} from "../config/firebase";
-import ProjectModal from "../components/project-modal/ProjectModal";
+import {CreateProject} from "@/api/domain/projects/Project";
+import {auth} from "@/config/firebase";
+import CreateModal from "./components/create-modal/CreateModal";
+import {useTranslation} from "react-i18next";
 
 export default function Projects() {
     const [showCreateModal, setShowCreateModal] = useState(false);
+    const {t} = useTranslation("projects");
 
     async function createProject(data: CreateProject) {
         if (!auth.currentUser) {
@@ -25,16 +27,16 @@ export default function Projects() {
                         className={"ms-auto"}
                         onClick={() => {
                         }}
-                    >Create new category</Button>
+                    >{t("button.createCategory")}</Button>
                     <Button
                         variant={"primary"}
                         onClick={() => setShowCreateModal(true)}
-                    >Create a new project</Button>
+                    >{t("button.createProject")}</Button>
                 </Stack>
             </Container>
-            <ProjectModal show={showCreateModal}
-                          onClose={() => setShowCreateModal(false)}
-                          onSubmit={createProject}/>
+            <CreateModal show={showCreateModal}
+                         onClose={() => setShowCreateModal(false)}
+                         onSubmit={createProject}/>
         </>
     );
 };

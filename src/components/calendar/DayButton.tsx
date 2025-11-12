@@ -13,7 +13,7 @@ export default function DayButton ({date, selected, setSelected}: DayButtonProps
     return (
         <Button
             disabled={date.getMonth() !== selected.getMonth()}
-            variant={selected.getTime() === date.getTime() ? "primary" : "dark"}
+            variant={selected.getDate() === date.getDate() && selected.getMonth() === date.getMonth() ? "primary" : "dark"}
             className={`day-button ${type}`}
             onClick={() => setSelected(date)}
         >

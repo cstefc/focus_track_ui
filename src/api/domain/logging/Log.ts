@@ -1,5 +1,5 @@
 import {Entry} from "./Entry";
-import {AppUser} from "@/api/domain/general/AppUser";
+import {AppUser} from "@/api/domain/general.json/AppUser";
 
 export interface Log {
     id?: number,

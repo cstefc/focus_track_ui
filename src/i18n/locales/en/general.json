@@ -1,0 +1,54 @@
+{
+  "routes": {
+    "login": "Login",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "planning": "Planning",
+    "projects": "Projects"
+  },
+  "button": {
+    "confirm": "Confirm",
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "calendar": {
+    "date_selector": {
+      "prev_month": "Previous Month",
+      "next_month": "Next Month"
+    },
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    }
+  },
+  "authentication": {
+    "google": {
+      "signIn": "Google Sign In"
+    },
+    "signIn": "Log In",
+    "signOut": "Sign Out"
+  },
+  "pictures": {
+    "logoAltText": "Logo"
+  }
+}
