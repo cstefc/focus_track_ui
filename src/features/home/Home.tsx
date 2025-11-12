@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 
 import PictureCarousel from "../../components/ui/PictureCarousel";
 import HomeCard from "./components/HomeCard";
-import '@/layouts/home.css';
+import './home.css';
 
 
 export default function Home() {

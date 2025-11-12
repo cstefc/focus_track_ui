@@ -1,7 +1,7 @@
-import Planning from "@/screens/planning/Planning";
-import Home from "@/screens/home/Home";
-import Dashboard from "@/screens/dashboard/Dashboard";
-import Projects from "@/screens/projects/Projects";
+import Planning from "@/features/planning/Planning";
+import Home from "@/features/home/Home";
+import Dashboard from "@/features/dashboard/Dashboard";
+import Projects from "@/features/projects/Projects";
 
 export interface RouteType {
     path: string;
