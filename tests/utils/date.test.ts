@@ -1,5 +1,5 @@
 import {describe, expect, test} from "vitest";
-import {isLeapYear} from "../../src/utils/calendar";
+import {isLeapYear} from "../../src/lib/date";
 
 describe("isLeapYear()", () => {
    test("classifies year correctly", () => {

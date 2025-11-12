@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
-import './layouts/index.css';
+import './index.css';
 
 import "./i18n"
 import App from './App';

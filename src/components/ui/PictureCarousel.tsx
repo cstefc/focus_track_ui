@@ -1,8 +1,7 @@
 import {Carousel} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 
-const HomeCarousel = (props: {pictures: string[]}) => {
-
+const PictureCarousel = (props: {pictures: string[]}) => {
     return (
         <Carousel fade className={"justify-content-center"}>
             {props.pictures.map((picture, index: number) => (
@@ -13,5 +12,5 @@ const HomeCarousel = (props: {pictures: string[]}) => {
         </Carousel>
     );
 }
-export default HomeCarousel;
+export default PictureCarousel;
 

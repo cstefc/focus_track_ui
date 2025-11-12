@@ -3,10 +3,10 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import {auth} from "./config/firebase";
 import routes from "./config/routes";
-import AuthChecker from "./components/auth/AuthChecker";
-import MyNavbar from "./components/navbar/MyNavbar";
+import AuthChecker from "./components/layout/auth/AuthChecker";
+import MyNavbar from "./components/layout/navbar/MyNavbar";
 import {Container, Spinner} from "react-bootstrap";
-import "./layouts/app.css";
+import "./app.css";
 
 function App() {
     const [loading, setLoading] = useState(true);

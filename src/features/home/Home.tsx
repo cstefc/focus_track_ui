@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 
-import HomeCarousel from "./components/HomeCarousel";
+import PictureCarousel from "../../components/ui/PictureCarousel";
 import HomeCard from "./components/HomeCard";
 import '@/layouts/home.css';
 
@@ -15,7 +15,7 @@ export default function Home() {
             className={"align-content-center home"}
         >
             <Row key={'klj'} className={"m-3"}>
-                <HomeCarousel pictures={pictures}/>
+                <PictureCarousel pictures={pictures}/>
             </Row>
 
             <Row className={"m-2"}>
