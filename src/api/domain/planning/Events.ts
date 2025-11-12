@@ -1,10 +1,26 @@
-import {Log} from "@/api/domain/logging/Log";
+import {boolean, string, z} from "zod/index";
 
 export interface Events {
-    id: number
-    timed: boolean,
-    name: string,
-    date: Date,
-    description: string,
-    log: Log
+    id: number;
+    log_id: number;
+
+    title: string;
+    description: string;
+
+    start: Date;
+    planned_stop: Date;
+    stop: Date;
+    timed: boolean;
 }
+
+export const CreateEventForm = z.object({
+    title: string().min(1, "Event title is required."),
+    description: string().min(1, "Event description is required."),
+
+    start: Date(),
+    planned_stop: Date(),
+
+    timed: boolean(),
+})
+
+export type CreateEvent = z.infer<typeof CreateEventForm>;

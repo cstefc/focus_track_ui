@@ -1,7 +1,8 @@
+import {Role} from "../predefined/Role";
+
 export interface AppUser {
     uuid: string;
     name: string;
     email: string;
-    authorities: string[];
-    roles: string[];
+    roles: Role[];
 }
