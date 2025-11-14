@@ -23,8 +23,8 @@ export default defineConfig({
     test: {
         include: ['tests/**/*.{test,spec}.{ts,tsx}'], // only look inside /tests
         globals: true,
+        setupFiles: 'tests/setup.ts',
         environment: 'jsdom',
-        setupFiles: './tests/setupTests.ts',
         css: true,
         reporters: ['verbose'],
         coverage: {
