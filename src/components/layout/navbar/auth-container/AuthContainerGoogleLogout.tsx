@@ -1,7 +1,6 @@
 import {NavDropdown} from "react-bootstrap";
 import React, {JSX} from "react";
-import {signOut} from "firebase/auth";
-import {auth} from "@/config/firebase";
+import {getAuth, signOut} from "firebase/auth";
 import {useTranslation} from "react-i18next";
 
 export interface AuthContainerGoogleLogoutProps {
@@ -11,9 +10,10 @@ export interface AuthContainerGoogleLogoutProps {
 
 export default function AuthContainerGoogleLogout({navigate, destination}: AuthContainerGoogleLogoutProps): JSX.Element {
     const {t} = useTranslation("general");
+
     async function handleLogout() {
         try {
-            await signOut(auth);
+            await signOut(getAuth());
             navigate(destination);
         } catch (error) {
             console.error("Logout failed:", error);

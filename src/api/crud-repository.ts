@@ -1,4 +1,4 @@
-import {auth} from "../config/firebase";
+import {getAuth} from "firebase/auth";
 
 export interface FetchOptions {
     headers: {},
@@ -73,6 +73,7 @@ export default class CrudRepository<T, C, U> {
 }
 
 async function apiFetch(path: string, options: FetchOptions): Promise<any> {
+    const auth = getAuth();
     const res = await fetch(path, {
         ...options.options,
         headers: {

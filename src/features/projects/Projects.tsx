@@ -2,13 +2,14 @@ import {Button, Container, Stack} from "react-bootstrap";
 import {useState} from "react";
 import api from "@/config/api";
 import {CreateProject} from "@/api/domain/projects/Project";
-import {auth} from "@/config/firebase";
 import CreateModal from "./components/create-modal/CreateModal";
 import {useTranslation} from "react-i18next";
+import {getAuth} from "firebase/auth";
 
 export default function Projects() {
     const [showCreateModal, setShowCreateModal] = useState(false);
     const {t} = useTranslation("projects");
+    const auth = getAuth();
 
     async function createProject(data: CreateProject) {
         if (!auth.currentUser) {

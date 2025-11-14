@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-import {auth} from "./config/firebase";
 import routes from "./config/routes";
 import AuthChecker from "./components/layout/auth/AuthChecker";
 import MyNavbar from "./components/layout/navbar/MyNavbar";
 import {Container, Spinner} from "react-bootstrap";
 import "./app.css";
+import {getAuth} from "firebase/auth";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ function App() {
     let useHeight;
     useHeight = height + "vh";
 
-    auth.onAuthStateChanged(() => {
+    getAuth().onAuthStateChanged(() => {
         setLoading(false);
     });
 

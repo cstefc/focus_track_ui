@@ -1,8 +1,8 @@
-import {signInWithPopup} from "firebase/auth";
+import {getAuth, signInWithPopup} from "firebase/auth";
 import Image from "react-bootstrap/Image";
 import {NavDropdown} from "react-bootstrap";
 import React, {JSX} from "react";
-import {auth, Providers} from "@/config/firebase";
+import {Providers} from "@/config/firebase";
 import {useTranslation} from "react-i18next";
 
 export interface AuthContainerGoogleLoginProps {
@@ -14,7 +14,7 @@ export default function AuthContainerGoogleLogin({navigate, destination}: AuthCo
     const {t} = useTranslation("general");
     async function handleSignInWithGoogle () {
         try {
-            await signInWithPopup(auth, Providers.google)
+            await signInWithPopup(getAuth(), Providers.google)
             navigate(destination);
         } catch (error: any) {
             console.error("Google sign-in failed:", error);

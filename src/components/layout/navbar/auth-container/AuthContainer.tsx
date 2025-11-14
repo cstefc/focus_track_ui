@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {auth} from "@/config/firebase";
 import {NavDropdown} from "react-bootstrap";
 import DropdownTitle from "./AuthContainerTitle";
 import AuthContainerGoogleLogin from "./AuthContainerGoogleLogin";
 import AuthContainerGoogleLogout from "./AuthContainerGoogleLogout";
-import {User} from "firebase/auth";
+import {getAuth, User} from "firebase/auth";
 
 export interface AuthContainerProps {
     navigate: (destination: string) => void
 }
 
 export default function AuthContainer(props: AuthContainerProps) {
+    const auth = getAuth();
     const [user, setUser] = useState<User | null>(auth.currentUser);
 
     useEffect(() => {
