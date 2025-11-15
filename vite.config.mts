@@ -21,7 +21,7 @@ export default defineConfig({
         },
     },
     test: {
-        include: ['tests/**/*.{test,spec}.{ts,tsx}'], // only look inside /tests
+        include: ['tests/**/*.{test,spec}.{ts,tsx}'],
         globals: true,
         setupFiles: 'tests/setup.ts',
         environment: 'jsdom',

@@ -3,7 +3,7 @@ import React from "react";
 import {User} from "firebase/auth";
 import {useTranslation} from "react-i18next";
 
-export default function DropdownTitle(props: { user: User | null }) {
+export default function AuthContainerTitle(props: { user: User | null }) {
     const {t} = useTranslation("general");
     return (
         <>
@@ -17,5 +17,6 @@ export default function DropdownTitle(props: { user: User | null }) {
                     fluid
                 />}
             {props.user?.displayName || t("authentication.signIn")}
-        </>);
+        </>
+    );
 }
