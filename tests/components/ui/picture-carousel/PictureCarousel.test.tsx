@@ -9,7 +9,6 @@ describe("Picture Carousel", () => {
 
         // WHEN
         render(<PictureCarousel pictures={sources}/>);
-        screen.debug()
 
         // THEN
         const images = screen.getAllByRole('img');

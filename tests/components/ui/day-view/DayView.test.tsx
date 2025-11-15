@@ -16,7 +16,6 @@ describe('DayView', () => {
 
         // WHEN
         render(<DayView date={date}/>);
-        screen.debug();
 
         // THEN
         const title = screen.getByText("calendar.days.friday")
@@ -36,7 +35,6 @@ describe('DayView', () => {
 
         // WHEN
         render(<DayView date={date}/>);
-        screen.debug();
 
         // THEN
         const title = screen.getByText("calendar.days.friday");
@@ -55,7 +53,6 @@ describe('DayView', () => {
 
         // WHEN
         render(<DayView date={date}/>);
-        screen.debug();
 
         // THEN
         const title = screen.getByText("calendar.days.sunday");

@@ -9,7 +9,6 @@ describe("DayButton", () => {
 
         // WHEN
         render(<DayButton date={date} selected={date} setSelected={newDate => date = newDate}/>);
-        screen.debug();
 
         // THEN
         const button = screen.getByRole('button');
@@ -23,7 +22,6 @@ describe("DayButton", () => {
 
         // WHEN
         render(<DayButton date={date} selected={date} setSelected={newDate => date = newDate}/>);
-        screen.debug();
 
         // THEN
         const button = screen.getByRole('button');
@@ -39,7 +37,6 @@ describe("DayButton", () => {
 
         // WHEN
         render(<DayButton date={date} selected={selected} setSelected={newDate => selected = newDate}/>);
-        screen.debug();
 
         // THEN
         const button = screen.getByRole('button');
@@ -54,7 +51,6 @@ describe("DayButton", () => {
 
         // WHEN
         render(<DayButton date={date} selected={selected} setSelected={newDate => selected = newDate}/>);
-        screen.debug();
 
         // THEN
         const button = screen.getByRole('button');
@@ -68,7 +64,6 @@ describe("DayButton", () => {
 
         // WHEN
         render(<DayButton date={date} selected={date} setSelected={newDate => date = newDate}/>);
-        screen.debug();
 
         // THEN
         const button = screen.getByRole('button');

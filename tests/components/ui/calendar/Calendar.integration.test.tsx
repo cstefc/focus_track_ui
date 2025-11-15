@@ -12,7 +12,6 @@ describe("Calendar", () => {
 
         // WHEN
         render(<Calendar date={date} setDate={(new_date => date = new_date)}/>);
-        screen.debug();
 
         // THEN
         const button = screen.getByText('calendar.date_selector.prev_month');
@@ -32,7 +31,6 @@ describe("Calendar", () => {
 
         // WHEN
         render(<Wrapper/>);
-        screen.debug();
 
         await user.click(screen.getByText("calendar.date_selector.prev_month"));
 
@@ -51,7 +49,6 @@ describe("Calendar", () => {
 
         // WHEN
         render(<Wrapper/>);
-        screen.debug();
         await user.click(screen.getByText("calendar.date_selector.next_month"));
 
         // THEN
@@ -69,7 +66,6 @@ describe("Calendar", () => {
 
         // WHEN
         render(<Wrapper />);
-        screen.debug();
         await user.click(screen.getByText('20'));
 
 
@@ -85,7 +81,6 @@ describe("Calendar", () => {
 
         // WHEN
         render(<Calendar date={date} setDate={(newDate => date = newDate)}/>);
-        screen.debug();
 
         // THEN
         const button = screen.getByText("15");

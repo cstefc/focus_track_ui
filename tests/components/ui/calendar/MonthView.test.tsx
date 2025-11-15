@@ -8,7 +8,6 @@ describe("MonthView", () => {
 
         // WHEN
         render(<MonthView selected={date} setSelected={newDate => date = newDate}/>);
-        screen.debug();
 
         // THEN
         const buttons = screen.getAllByRole("button");
@@ -21,7 +20,6 @@ describe("MonthView", () => {
 
         // WHEN
         render(<MonthView selected={date} setSelected={newDate => date = newDate}/>)
-        screen.debug();
         screen.getByText("25").click();
 
         // THEN

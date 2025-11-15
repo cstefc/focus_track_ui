@@ -17,7 +17,6 @@ describe("DateSelector", () => {
 
         // WHEN
         render(<DateSelector date={date} setDate={new_date => date = new_date}/>);
-        screen.debug();
 
         // THEN
         const prevBtn = screen.getByText("calendar.date_selector.prev_month");
@@ -41,7 +40,6 @@ describe("DateSelector", () => {
 
         // WHEN
         render(<Wrapper/>);
-        screen.debug();
 
         await user.click(screen.getByText("calendar.date_selector.prev_month"));
 
@@ -60,7 +58,6 @@ describe("DateSelector", () => {
 
         // WHEN
         render(<Wrapper/>);
-        screen.debug();
         await user.click(screen.getByText("calendar.date_selector.next_month"));
 
         // THEN
