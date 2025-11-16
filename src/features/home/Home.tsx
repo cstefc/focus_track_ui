@@ -5,7 +5,6 @@ import PictureCarousel from "../../components/ui/PictureCarousel";
 import HomeCard from "./components/HomeCard";
 import './home.css';
 
-
 export default function Home() {
     const pictures: string[] = ["/productivity1.jpg", "/productivity2.jpg", "/productivity3.jpg", "/productivity4.jpg", "/productivity5.jpg"];
     const cards: string[] = ["success", "productivity", "tracking"]
@@ -14,7 +13,7 @@ export default function Home() {
         <Container
             className={"align-content-center home"}
         >
-            <Row key={'klj'} className={"m-3"}>
+            <Row key={'carousel-row'} className={"m-3"}>
                 <PictureCarousel pictures={pictures}/>
             </Row>
 
