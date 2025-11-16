@@ -7,7 +7,9 @@ export const mockNavigate = vi.fn();
 export const test_user = {
     displayName: "test user",
     photoURL: "https://example.com/",
+    getIdToken: async () => 'mock-token',
 } as User;
+
 export const fakeAuth = (() => {
     let callback: ((user: any) => void) | null = null;
 
@@ -19,6 +21,7 @@ export const fakeAuth = (() => {
         },
         triggerUser: (user: any) => {
             if (callback) callback(user);
+            fakeAuth.currentUser = user;
         },
     };
 })();
@@ -49,6 +52,8 @@ vi.mock('firebase/auth', async () => {
             return {};
         }),
         signInWithPopup: vi.fn().mockResolvedValue(test_user),
-        signOut: vi.fn(),
+        signOut: vi.fn().mockImplementation(async () => {
+            fakeAuth.triggerUser(null);
+        }),
     };
 });

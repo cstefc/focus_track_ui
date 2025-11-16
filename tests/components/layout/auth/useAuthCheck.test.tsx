@@ -1,28 +1,9 @@
 import useAuthCheck from "@/components/layout/auth/useAuthCheck";
-import {renderHook, waitFor} from "@testing-library/react";
+import {act, renderHook, waitFor} from "@testing-library/react";
 import {User} from "firebase/auth";
-import {mockNavigate} from "../../../setup";
+import {fakeAuth, mockNavigate} from "../../../setup";
 
-const fakeAuth = (() => {
-    let callback: ((user: User) => void) | null = null;
 
-    return {
-        onAuthStateChanged: (cb: (user: any) => void) => {
-            callback = cb;
-            return () => {
-            }; // unsubscribe
-        },
-
-        // simulate Firebase login/logout
-        triggerUser: (user: any) => {
-            if (callback) callback(user);
-        }
-    };
-})();
-
-vi.mock("firebase/auth", () => ({
-    getAuth: () => fakeAuth
-}))
 
 describe('useAuthCheck', () => {
     it("should be loading when initialised", () => {
@@ -38,7 +19,9 @@ describe('useAuthCheck', () => {
 
         // THEN
         const fakeUser = {uid: "123", displayName: "Logged in user"} as User;
-        fakeAuth.triggerUser(fakeUser);
+        await act(async () => {
+            fakeAuth.triggerUser(fakeUser);
+        })
 
         // wait for React state to update
         await waitFor(() => {
@@ -53,7 +36,9 @@ describe('useAuthCheck', () => {
         const {result} = renderHook(() => useAuthCheck());
 
         // THEN
-        fakeAuth.triggerUser(null);
+        await act(async () => {
+            fakeAuth.triggerUser(null);
+        })
 
         await waitFor(() => {
             expect(result.current.user).toBe(null);

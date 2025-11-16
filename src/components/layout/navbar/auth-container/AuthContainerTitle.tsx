@@ -10,7 +10,7 @@ export default function AuthContainerTitle(props: { user: User | null }) {
             {props.user &&
                 <Image
                     className="me-3"
-                    src={props.user?.photoURL || ""}
+                    src={props.user?.photoURL || undefined}
                     alt={'profile_pic'} roundedCircle
                     width={50}
                     height={50}

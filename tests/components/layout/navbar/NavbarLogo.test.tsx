@@ -7,7 +7,6 @@ describe("Navbar Logo", () => {
 
         // WHEN
         render(<NavbarLogo destination={"/"} />);
-        screen.debug();
 
         // THEN
         const image = screen.getByRole('img');

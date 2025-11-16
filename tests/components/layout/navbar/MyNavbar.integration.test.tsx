@@ -66,7 +66,6 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(<MyNavbar/>);
-        screen.debug()
         for (const expected of expected_routes) {
             await user.click(screen.getByText("routes." + expected.name));
 

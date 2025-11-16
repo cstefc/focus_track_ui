@@ -46,7 +46,7 @@ describe("AuthContainer", () => {
         const photo = screen.queryByRole('img');
         expect(photo).not.toBeInTheDocument();
 
-        const name = screen.queryByText('user');
+        const name = screen.queryByText('user name');
         expect(name).not.toBeInTheDocument();
 
         const login = screen.getByText("authentication.signIn");

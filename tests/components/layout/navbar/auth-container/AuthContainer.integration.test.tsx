@@ -64,10 +64,7 @@ describe("AuthContainer", () => {
         render(<AuthContainer navigate={navigate}/>)
         await user.click(screen.getByText('test user'));
         await user.click(screen.getByText("authentication.signOut"));
-        await act(async () => {
-            fakeAuth.triggerUser(null)
-        })
-        screen.debug();
+
         // THEN
         const button = screen.getByText("authentication.signIn");
         expect(button).toBeInTheDocument();
