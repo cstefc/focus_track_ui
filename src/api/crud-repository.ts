@@ -2,7 +2,7 @@ import {getAuth} from "firebase/auth";
 
 export interface FetchOptions {
     headers: {},
-    options: {}
+    arguments: {}
 }
 
 export default class CrudRepository<T, C, U> {
@@ -15,7 +15,7 @@ export default class CrudRepository<T, C, U> {
     async findAll(): Promise<T[]> {
         const res = await apiFetch(this.endpoint, {
             headers: {},
-            options: {
+            arguments: {
                 method: 'GET',
             }
         });
@@ -26,7 +26,7 @@ export default class CrudRepository<T, C, U> {
     async findById(id: string): Promise<T> {
         const res = await apiFetch(`${this.endpoint}/${id}`, {
             headers: {},
-            options: {
+            arguments: {
                 method: 'GET',
             }
         });
@@ -39,7 +39,7 @@ export default class CrudRepository<T, C, U> {
             headers: {
                 'Content-Type': 'application/json'
             },
-            options: {
+            arguments: {
                 method: 'POST',
                 body: JSON.stringify(data),
             }
@@ -53,7 +53,7 @@ export default class CrudRepository<T, C, U> {
             headers: {
                 'Content-Type': 'application/json'
             },
-            options: {
+            arguments: {
                 method: 'UPDATE',
                 body: JSON.stringify(data),
             }
@@ -65,7 +65,7 @@ export default class CrudRepository<T, C, U> {
     async delete(id: string) {
         await apiFetch(`${this.endpoint}/${id}`, {
             headers: {},
-            options: {
+            arguments: {
                 method: 'DELETE',
             }
         });
@@ -74,15 +74,18 @@ export default class CrudRepository<T, C, U> {
 
 async function apiFetch(path: string, options: FetchOptions): Promise<any> {
     const auth = getAuth();
-    const res = await fetch(path, {
-        ...options.options,
-        headers: {
-            Authorization: auth.currentUser ? `Bearer ${await auth.currentUser.getIdToken()}` : '',
-            ...options.headers
-        },
-    })
+    if (auth.currentUser) {
+        const res = await fetch(path, {
+            ...options.arguments,
+            headers: {
+                Authorization: auth.currentUser ? `Bearer ${await auth.currentUser.getIdToken()}` : '',
+                ...options.headers
+            },
+        })
 
-    if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
-
-    return await res.json();
+        if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
+        return await res.json();
+    } else {
+        throw new Error('Unauthorized');
+    }
 }

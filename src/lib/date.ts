@@ -6,7 +6,13 @@ export function isLeapYear(year: number): boolean {
 
 export function prevMonth(date: Date) {
     let newDate = new Date(date);
-    if (newDate.getDate() > 0) {
+    if (newDate.getMonth() > 0) {
+        if (months_length[date.getMonth()-1] < date.getDate()){
+            newDate.setDate(months_length[date.getMonth()-1]);
+            if (date.getMonth() === 2 && isLeapYear(date.getFullYear())){
+                newDate.setDate(29);
+            }
+        }
         newDate.setMonth(date.getMonth() - 1);
     } else {
         newDate.setMonth(11);
@@ -18,6 +24,12 @@ export function prevMonth(date: Date) {
 export function nextMonth(date: Date) {
     let newDate = new Date(date);
     if (newDate.getMonth() < 11) {
+        if (date.getDate() > months_length[date.getMonth()+ 1]){
+            newDate.setDate(months_length[date.getMonth()+1]);
+            if (date.getMonth() === 0 && isLeapYear(date.getFullYear())){
+                newDate.setDate(29);
+            }
+        }
         newDate.setMonth(date.getMonth() + 1);
     } else {
         newDate.setMonth(0);

@@ -36,7 +36,7 @@ i18n
                 projects: nlProjects,
             }
         },
-        lng: 'nl',
+        lng: 'en',
         fallbackLng: 'en',
         interpolation: {escapeValue: false},
     });
