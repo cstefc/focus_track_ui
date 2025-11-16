@@ -1,11 +1,7 @@
 import useAuthCheck from "@/components/layout/auth/useAuthCheck";
 import {renderHook, waitFor} from "@testing-library/react";
 import {User} from "firebase/auth";
-
-const mockNavigate = vi.fn();
-vi.mock("react-router-dom", () => ({
-    useNavigate: () => mockNavigate,
-}));
+import {mockNavigate} from "../../../setup";
 
 const fakeAuth = (() => {
     let callback: ((user: User) => void) | null = null;

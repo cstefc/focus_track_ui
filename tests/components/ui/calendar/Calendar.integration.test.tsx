@@ -3,7 +3,6 @@ import Calendar from "../../../../src/components/ui/calendar/Calendar";
 import userEvent from "@testing-library/user-event";
 import {useState} from "react";
 
-
 describe("Calendar", () => {
 
     test("renders without crashing", () => {

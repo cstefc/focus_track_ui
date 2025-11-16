@@ -9,12 +9,11 @@ export interface NavbarRoutesProps {
 }
 
 export default function NavbarRoutes({navigate}: NavbarRoutesProps): JSX.Element {
-    const auth = getAuth()
     const {t} = useTranslation("general");
     return (
         <>
             {routes.map((route: RouteType, index: number) => {
-                if (route.navbar && ((auth.currentUser !== null) === route.protected)) {
+                if (route.navbar && ((getAuth().currentUser !== null) === route.protected)) {
                     return <Nav.Link key={index}
                                      onClick={() => navigate(route.path)}>{t(`routes.${route.name}`)}</Nav.Link>
                 } else {

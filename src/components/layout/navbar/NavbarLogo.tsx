@@ -5,11 +5,10 @@ import {useTranslation} from "react-i18next";
 import {JSX} from "react";
 
 export interface NavbarLogoProps {
-    image: string;
     destination: string;
 }
 
-export default function NavbarLogo({image, destination} :NavbarLogoProps): JSX.Element {
+export default function NavbarLogo({destination} :NavbarLogoProps): JSX.Element {
     const navigate = useNavigate();
     const {t} = useTranslation("general");
 
@@ -20,7 +19,7 @@ export default function NavbarLogo({image, destination} :NavbarLogoProps): JSX.E
         >
             <Image
                 alt={t("pictures.logoAltText")}
-                src={image}
+                src={"/FocusTrackLogo_600x600.jpg"}
                 width={50}
                 height={50}
                 roundedCircle={true}

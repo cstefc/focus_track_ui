@@ -1,13 +1,6 @@
 import {render, screen} from '@testing-library/react';
 import DayView from "@/components/ui/day-view/DayView";
 
-vi.mock('react-i18next', () => ({
-    useTranslation: () => ({
-        t: (key: string) => key, // simply returns the key
-        i18n: {},
-    }),
-}));
-
 describe('DayView', () => {
     test("Component rendering", () => {
         // GIVEN

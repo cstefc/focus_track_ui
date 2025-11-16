@@ -20,7 +20,6 @@ function MyNavbar() {
         <Navbar expanded={expanded} fixed={'top'} bg="dark" expand={"md"}>
             <Nav className="ms-3 align-items-center">
                 <NavbarLogo
-                    image={"/FocusTrackLogo_600x600.jpg"}
                     destination={"/"}/>
             </Nav>
 

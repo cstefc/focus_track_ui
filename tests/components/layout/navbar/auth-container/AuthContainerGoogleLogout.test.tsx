@@ -3,22 +3,6 @@ import AuthContainerGoogleLogout from "@/components/layout/navbar/auth-container
 import userEvent from "@testing-library/user-event";
 import {getAuth, signOut} from "firebase/auth";
 
-vi.mock('react-i18next', () => ({
-    useTranslation: () => ({
-        t: (key: string) => key, // simply returns the key
-        i18n: {},
-    }),
-}));
-
-vi.mock('firebase/auth', async () => {
-    const actual = await import("firebase/auth");
-    return {
-        ...actual,
-        getAuth: vi.fn(() => ({})), // can return empty object
-        signOut: vi.fn() // resolved value to simulate success
-    }
-});
-
 describe("AuthContainerGoogleLogout", () => {
     it("renders without crashing", () => {
         // GIVEN

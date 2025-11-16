@@ -1,17 +1,9 @@
 import {render, screen} from "@testing-library/react";
 import AuthChecker from "@/components/layout/auth/AuthChecker";
 import useAuthCheck from "@/components/layout/auth/useAuthCheck";
-import {useNavigate} from "react-router-dom";
+import {vi} from "vitest";
 
-const mockNavigate = vi.fn();
-vi.mock("react-router-dom", async () => {
-    const actual = await vi.importActual("react-router-dom");
-    return {
-        ...actual,
-        useNavigate: () => mockNavigate, // replace navigate with spy
-    };
-});
-
+const mockedUseAuthCheck = useAuthCheck as unknown as ReturnType<typeof vi.fn>;
 vi.mock("@/components/layout/auth/useAuthCheck", () => ({
     default: vi.fn(),
 }));
@@ -19,7 +11,7 @@ vi.mock("@/components/layout/auth/useAuthCheck", () => ({
 describe("AuthChecker", () => {
     it("does render spinner when loading", () => {
         // GIVEN
-        useAuthCheck.mockReturnValue({user: null, loading: true});
+        mockedUseAuthCheck.mockReturnValue({user: null, loading: true});
 
         // WHEN
         render(<AuthChecker><p>This shouldn't be rendered</p></AuthChecker>);
@@ -33,7 +25,7 @@ describe("AuthChecker", () => {
 
     it("does not render children when no user is found", () => {
         // GIVEN
-        useAuthCheck.mockReturnValue({user: null, loading: false});
+        mockedUseAuthCheck.mockReturnValue({user: null, loading: false});
 
         // WHEN
         render(<AuthChecker><p>This shouldn't be rendered</p></AuthChecker>)
@@ -45,7 +37,7 @@ describe("AuthChecker", () => {
 
     it("does render children when user is found", () => {
         // GIVEN
-        useAuthCheck.mockReturnValue({user: {name: "test"}, loading: false});
+        mockedUseAuthCheck.mockReturnValue({user: {name: "test"}, loading: false});
 
         // WHEN
         render(<AuthChecker>This should be rendered</AuthChecker>);

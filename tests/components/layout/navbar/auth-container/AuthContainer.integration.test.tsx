@@ -2,43 +2,7 @@ import {User} from "firebase/auth";
 import {act, render, screen} from "@testing-library/react";
 import AuthContainer from "@/components/layout/navbar/auth-container/AuthContainer";
 import userEvent from "@testing-library/user-event";
-
-vi.mock('react-i18next', () => ({
-    useTranslation: () => ({
-        t: (key: string) => key, // simply returns the key
-        i18n: {},
-    }),
-}));
-
-const fakeAuth = (() => {
-    let callback: ((user: User) => void) | null = null;
-
-    return {
-        currentUser: null,
-        onAuthStateChanged: (cb: (user: any) => void) => {
-            callback = cb;
-            return () => {
-            }; // unsubscribe
-        },
-
-        // simulate Firebase login/logout
-        triggerUser: (user: any) => {
-            if (callback) callback(user);
-        },
-    };
-})();
-vi.mock("firebase/auth", async () => {
-    const actual = await vi.importActual("firebase/auth");
-    return {
-        ...actual,
-        getAuth: () => fakeAuth,
-        GoogleAuthProvider: vi.fn().mockImplementation(function () {
-            return {};
-        }),
-        signInWithPopup: vi.fn().mockResolvedValue({displayName: "test user"}),
-        signOut: vi.fn()
-    }
-})
+import {fakeAuth, test_user} from "../../../../setup";
 
 describe("AuthContainer", () => {
     it("should show login when current user is null", () => {
@@ -64,7 +28,7 @@ describe("AuthContainer", () => {
         await user.click(screen.getByText('authentication.signIn'));
         await user.click(screen.getByText('authentication.google.signIn'));
         await act(async () => {
-            fakeAuth.triggerUser({displayName: "test user", photoURL: "pic"} as unknown as User)
+            fakeAuth.triggerUser({displayName: "test user", photoURL: "https:"} as unknown as User)
         })
 
         // THEN
@@ -79,8 +43,7 @@ describe("AuthContainer", () => {
         // GIVEN
         const user = userEvent.setup();
         const navigate = vi.fn();
-        // @ts-ignore
-        fakeAuth.currentUser = {displayName: "test user", photoURL: "pic"} as unknown as User;
+        fakeAuth.currentUser = test_user;
 
         // WHEN
         render(<AuthContainer navigate={navigate}/>)
@@ -95,8 +58,7 @@ describe("AuthContainer", () => {
         // GIVEN
         const user = userEvent.setup();
         const navigate = vi.fn();
-        // @ts-ignore
-        fakeAuth.currentUser = {displayName: "test user", photoURL: "pic"} as unknown as User;
+        fakeAuth.currentUser = test_user;
 
         // WHEN
         render(<AuthContainer navigate={navigate}/>)

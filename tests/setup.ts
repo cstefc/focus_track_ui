@@ -1,1 +1,54 @@
 import "@testing-library/jest-dom/vitest";
+
+import { vi } from 'vitest';
+import {User} from "firebase/auth";
+
+export const mockNavigate = vi.fn();
+export const test_user = {
+    displayName: "test user",
+    photoURL: "https://example.com/",
+} as User;
+export const fakeAuth = (() => {
+    let callback: ((user: any) => void) | null = null;
+
+    return {
+        currentUser: null as User | null,
+        onAuthStateChanged: (cb: (user: any) => void) => {
+            callback = cb;
+            return () => {};
+        },
+        triggerUser: (user: any) => {
+            if (callback) callback(user);
+        },
+    };
+})();
+
+vi.mock("react-router-dom", async () => {
+    const actual = await vi.importActual("react-router-dom");
+    return {
+        ...actual,
+        useNavigate: () => mockNavigate, // replace navigate with spy
+    };
+});
+
+// i18n mock
+vi.mock('react-i18next', () => ({
+    useTranslation: () => ({
+        t: (key: string) => key, // returns key directly
+        i18n: {},
+    }),
+}));
+
+// Firebase Auth mock
+vi.mock('firebase/auth', async () => {
+    const actual = await vi.importActual('firebase/auth');
+    return {
+        ...actual,
+        getAuth: () => fakeAuth,
+        GoogleAuthProvider: vi.fn().mockImplementation(function () {
+            return {};
+        }),
+        signInWithPopup: vi.fn().mockResolvedValue(test_user),
+        signOut: vi.fn(),
+    };
+});

@@ -2,13 +2,6 @@ import {render, screen} from "@testing-library/react";
 import AuthContainerTitle from "../../../../../src/components/layout/navbar/auth-container/AuthContainerTitle";
 import {User} from "firebase/auth";
 
-vi.mock('react-i18next', () => ({
-    useTranslation: () => ({
-        t: (key: string) => key, // simply returns the key
-        i18n: {},
-    }),
-}));
-
 describe("AuthContainer", () => {
     it("should render correctly", () => {
         // GIVEN

@@ -3,13 +3,6 @@ import {render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {useState} from "react";
 
-vi.mock('react-i18next', () => ({
-    useTranslation: () => ({
-        t: (key: string) => key, // simply returns the key
-        i18n: {},
-    }),
-}));
-
 describe("DateSelector", () => {
     test("should render correctly", () => {
         // GIVEN friday 14-11-2025

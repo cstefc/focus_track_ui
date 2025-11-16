@@ -4,22 +4,6 @@ import {getAuth, signInWithPopup} from "firebase/auth";
 import {Providers} from "../../../../../src/config/firebase";
 import userEvent from "@testing-library/user-event";
 
-vi.mock('react-i18next', () => ({
-    useTranslation: () => ({
-        t: (key: string) => key, // simply returns the key
-        i18n: {},
-    }),
-}));
-
-vi.mock('firebase/auth', async () => {
-    const actual = await import("firebase/auth");
-    return {
-        ...actual,
-        getAuth: vi.fn(() => ({})), // can return empty object
-        signInWithPopup: vi.fn().mockResolvedValue({uuid: "user"}) // resolved value to simulate success
-    }
-});
-
 describe("AuthContainerGoogleLogin Component", () => {
     it("should render without crashing", () => {
         // GIVEN
