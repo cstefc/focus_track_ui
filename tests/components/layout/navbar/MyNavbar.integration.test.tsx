@@ -1,6 +1,6 @@
 import {render, screen} from "@testing-library/react";
 import MyNavbar from "@/components/layout/navbar/MyNavbar";
-import {fakeAuth, mockNavigate, test_user} from "../../../setup";
+import {fakeAuth, mockChangeLanguage, mockNavigate, test_user} from "../../../setup";
 import routes, {RouteType} from "../../../../src/config/routes";
 import userEvent, {UserEvent} from "@testing-library/user-event";
 
@@ -23,7 +23,7 @@ describe("MyNavbar", () => {
 
         const profile_button = screen.getByText("test user");
         expect(profile_button).toBeInTheDocument();
-    })
+    });
 
     it("renders correctly logged out", () => {
         // GIVEN
@@ -42,7 +42,7 @@ describe("MyNavbar", () => {
 
         const login_button = screen.getByText('authentication.signIn');
         expect(login_button).toBeInTheDocument();
-    })
+    });
 
     it("Logo navigates to home page", async () => {
         // GIVEN
@@ -56,7 +56,7 @@ describe("MyNavbar", () => {
         // THEN
         expect(logo).toBeInTheDocument();
         expect(mockNavigate).toHaveBeenCalledWith("/");
-    })
+    });
 
     it("Routes work", async () => {
         // GIVEN
@@ -73,6 +73,20 @@ describe("MyNavbar", () => {
             expect(mockNavigate).toHaveBeenCalledWith(expected.path);
         }
 
+    });
+
+    it("should be able to change languages", async () =>{
+        // GIVEN
+        const user = userEvent.setup();
+
+        // WHEN
+        render(<MyNavbar/>);
+        await user.click(screen.getByText("languages.en"));
+        screen.debug()
+        await user.click(screen.getByText("languages.nl"));
+
+        // THEN
+        expect(mockChangeLanguage).toHaveBeenCalledWith('nl')
     })
 
 })

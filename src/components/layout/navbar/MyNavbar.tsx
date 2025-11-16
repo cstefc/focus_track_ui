@@ -6,6 +6,7 @@ import NavbarLogo from "./NavbarLogo";
 import NavbarRoutes from "./NavbarRoutes";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import LanguageBox from "./language-box/LanguageBox";
 
 function MyNavbar() {
     const [expanded, setExpanded] = useState(false);
@@ -31,6 +32,10 @@ function MyNavbar() {
                 </Nav>
 
                 <Nav className={"ms-auto me-3"}>
+                    <LanguageBox/>
+                </Nav>
+
+                <Nav>
                     <AuthContainer navigate={handleNavigate}/>
                 </Nav>
 

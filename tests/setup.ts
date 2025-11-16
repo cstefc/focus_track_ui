@@ -1,9 +1,10 @@
 import "@testing-library/jest-dom/vitest";
 
-import { vi } from 'vitest';
+import {vi} from 'vitest';
 import {User} from "firebase/auth";
 
 export const mockNavigate = vi.fn();
+export const mockChangeLanguage = vi.fn();
 export const test_user = {
     displayName: "test user",
     photoURL: "https://example.com/",
@@ -17,7 +18,8 @@ export const fakeAuth = (() => {
         currentUser: null as User | null,
         onAuthStateChanged: (cb: (user: any) => void) => {
             callback = cb;
-            return () => {};
+            return () => {
+            };
         },
         triggerUser: (user: any) => {
             if (callback) callback(user);
@@ -35,12 +37,23 @@ vi.mock("react-router-dom", async () => {
 });
 
 // i18n mock
-vi.mock('react-i18next', () => ({
-    useTranslation: () => ({
-        t: (key: string) => key, // returns key directly
-        i18n: {},
-    }),
-}));
+vi.mock('react-i18next', async () => {
+    return {
+        useTranslation: () => ({
+            t: (key: string) => key, // returns key directly
+            i18n: {
+                changeLanguage: (lang: string) => mockChangeLanguage(lang),
+                resolvedLanguage: "en",
+                options: {
+                    resources: {
+                        en: {},
+                        nl: {}
+                    }
+                },
+            },
+        }),
+    }
+});
 
 // Firebase Auth mock
 vi.mock('firebase/auth', async () => {

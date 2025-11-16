@@ -1,5 +1,7 @@
 import i18n from 'i18next';
-import {initReactI18next}  from "react-i18next";
+import {initReactI18next} from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+
 
 import enGeneral from './locales/en/general.json'
 import enPlanning from './locales/en/planning.json'
@@ -16,6 +18,7 @@ import nlLogin from './locales/nl/login.json'
 import nlProjects from './locales/nl/projects.json'
 
 i18n
+    .use(LanguageDetector)
     .use(initReactI18next)
     .init({
         resources: {
@@ -36,9 +39,13 @@ i18n
                 projects: nlProjects,
             }
         },
-        lng: 'en',
+        load: "languageOnly",
         fallbackLng: 'en',
         interpolation: {escapeValue: false},
+        detection: {
+            order: ['localStorage', 'navigator'],
+            caches: ['localStorage'],
+        },
     });
 
 export default i18n;

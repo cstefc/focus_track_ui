@@ -12,6 +12,10 @@
     "cancel": "Cancel",
     "save": "Save"
   },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands"
+  },
   "calendar": {
     "date_selector": {
       "prev_month": "Previous Month",
