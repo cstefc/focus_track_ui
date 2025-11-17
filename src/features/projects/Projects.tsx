@@ -1,27 +1,13 @@
-import {Button, Container, Tab, Tabs} from "react-bootstrap";
-import {useState} from "react";
+import {Container, Tab, Tabs} from "react-bootstrap";
 import CreateModal from "./components/create-modal/CreateModal";
 import {useTranslation} from "react-i18next";
-import ProjectScreen from "./components/project-screen/ProjectScreen";
+import ProjectCards from "./components/project-cards/ProjectCards";
 
 export default function Projects() {
-    const [showCreateModal, setShowCreateModal] = useState(false);
     const {t} = useTranslation("projects");
 
-    const onCloseModal = (saveStatus: boolean | null) => {
-        if (saveStatus === null) {
-
-        } else if (saveStatus) {
-
-        } else {
-
-        }
-
-        setShowCreateModal(false);
-    }
-
     return (
-        <Container fluid className={"ms-3 mt-3"}>
+        <Container fluid className={"m-3"}>
             <h1>Projects</h1>
             <p>Manage your projects or consult the archived projects</p>
             <Tabs
@@ -31,22 +17,15 @@ export default function Projects() {
                     eventKey={"active"}
                     title={t("tabs.active")}
                 >
-                    <Button
-                        variant={"primary"}
-                        className={"m-3"}
-                        onClick={() => setShowCreateModal(true)}
-                    >
-                        {t("button.createProject")}
-                    </Button>
-                    <ProjectScreen showArchived={false}/>
+                    <CreateModal/>
+                    <ProjectCards showWithArchived={false}/>
                 </Tab>
                 <Tab eventKey={"archived"} title={t("tabs.archived")}>
-                    <ProjectScreen showArchived={true}/>
+                    <ProjectCards showWithArchived={true}/>
                 </Tab>
             </Tabs>
 
 
-            <CreateModal show={showCreateModal} onClose={onCloseModal}/>
         </Container>
     );
 };
