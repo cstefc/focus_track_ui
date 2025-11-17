@@ -3,7 +3,6 @@ import {CreateProject, CreateProjectForm} from "@/api/domain/projects/Project";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
-import {getAuth} from "firebase/auth";
 import api from "../../../../config/api";
 
 

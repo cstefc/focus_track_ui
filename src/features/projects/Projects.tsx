@@ -1,10 +1,7 @@
-import {Button, Container, Stack, Tab, Tabs} from "react-bootstrap";
+import {Button, Container, Tab, Tabs} from "react-bootstrap";
 import {useState} from "react";
-import api from "@/config/api";
-import {CreateProject} from "@/api/domain/projects/Project";
 import CreateModal from "./components/create-modal/CreateModal";
 import {useTranslation} from "react-i18next";
-import {getAuth} from "firebase/auth";
 import ProjectScreen from "./components/project-screen/ProjectScreen";
 
 export default function Projects() {
