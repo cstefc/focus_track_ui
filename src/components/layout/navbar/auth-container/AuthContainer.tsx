@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Nav, NavDropdown} from "react-bootstrap";
+import {NavDropdown} from "react-bootstrap";
 import AuthContainerTitle from "./AuthContainerTitle";
 import AuthContainerGoogleLogin from "./AuthContainerGoogleLogin";
 import AuthContainerGoogleLogout from "./AuthContainerGoogleLogout";
 import {getAuth, User} from "firebase/auth";
-import LanguageBox from "../language-box/LanguageBox";
 
 export interface AuthContainerProps {
     navigate: (destination: string) => void
