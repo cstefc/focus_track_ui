@@ -11,7 +11,7 @@ export interface ThemeContextProps {
     children?: ReactNode;
 }
 export const ThemeProvider = ({children}: ThemeContextProps) => {
-    const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "light");
+    const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "dark");
 
     useEffect(() => {
         document.documentElement.setAttribute("data-bs-theme", theme);

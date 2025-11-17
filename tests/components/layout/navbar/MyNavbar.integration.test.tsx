@@ -4,6 +4,7 @@ import {fakeAuth, mockChangeLanguage, mockNavigate, test_user} from "../../../se
 import routes, {RouteType} from "../../../../src/config/routes";
 import userEvent, {UserEvent} from "@testing-library/user-event";
 import {MemoryRouter} from "react-router-dom";
+import {ThemeProvider} from "@/components/layout/theme/ThemeContext";
 
 
 describe("MyNavbar", () => {
@@ -14,9 +15,11 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <MemoryRouter>
-                <MyNavbar/>
-            </MemoryRouter>
+            <ThemeProvider>
+                <MemoryRouter>
+                    <MyNavbar/>
+                </MemoryRouter>
+            </ThemeProvider>
         );
 
 
@@ -38,9 +41,11 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <MemoryRouter>
-                <MyNavbar/>
-            </MemoryRouter>
+            <ThemeProvider>
+                <MemoryRouter>
+                    <MyNavbar/>
+                </MemoryRouter>
+            </ThemeProvider>
         );
 
         // THEN
@@ -60,9 +65,11 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <MemoryRouter>
-                <MyNavbar/>
-            </MemoryRouter>
+            <ThemeProvider>
+                <MemoryRouter>
+                    <MyNavbar/>
+                </MemoryRouter>
+            </ThemeProvider>
         );
 
         const logo = screen.getByText('Focus Track');
@@ -81,9 +88,11 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <MemoryRouter>
-                <MyNavbar/>
-            </MemoryRouter>
+            <ThemeProvider>
+                <MemoryRouter>
+                    <MyNavbar/>
+                </MemoryRouter>
+            </ThemeProvider>
         );
 
         for (const expected of expected_routes) {
@@ -101,9 +110,11 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <MemoryRouter>
-                <MyNavbar/>
-            </MemoryRouter>
+            <ThemeProvider>
+                <MemoryRouter>
+                    <MyNavbar/>
+                </MemoryRouter>
+            </ThemeProvider>
         );
 
         await user.click(screen.getByText("languages.en"));
@@ -111,6 +122,26 @@ describe("MyNavbar", () => {
 
         // THEN
         expect(mockChangeLanguage).toHaveBeenCalledWith('nl')
+    })
+
+    it("should be able to change themes", async () => {
+        // GIVEN
+        const user = userEvent.setup();
+
+        // WHEN
+        render(
+            <ThemeProvider>
+                <MemoryRouter>
+                    <MyNavbar/>
+                </MemoryRouter>
+            </ThemeProvider>
+        );
+
+        await user.click(screen.getByText("theme.dark"));
+        await user.click(screen.getByText("theme.light"));
+
+        // THEN
+        expect(localStorage.getItem("theme")).toBe('light')
     })
 
 })

@@ -8,13 +8,16 @@ export default function ThemeBox() {
     const {t} = useTranslation("general");
     return (
         <NavDropdown title={t(`theme.${theme}`)}>
-            {themes.map(theme =>
-                <NavDropdown.Item
-                    key={theme}
-                    onClick={() => setTheme(theme)}
-                >
-                    {t(`theme.${theme}`)}
-                </NavDropdown.Item>)}
+            {themes.map(option => {
+                if (option === theme) return null;
+                return (
+                    <NavDropdown.Item
+                        key={option}
+                        onClick={() => setTheme(option)}
+                    >
+                        {t(`theme.${option}`)}
+                    </NavDropdown.Item>)
+            })}
         </NavDropdown>
     )
 }

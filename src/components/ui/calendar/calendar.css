@@ -1,11 +1,10 @@
 .month-text{
     text-align: center;
     font-size: clamp(0.8rem, 1.8vw, 24rem);
-    color: #afb8b8;
 }
 
 .selector-button{
-    color: #afb8b8;
+    color: #afb8b8 !important;
     font-size: clamp(0.8rem, 1.6vw, 24rem);
 }
 
@@ -37,9 +36,9 @@
 }
 
 .weekend-button{
-    color: red;
+    color: red !important;
 }
 
 .weekday-button{
-    color: #afb8b8;
+    color: #afb8b8 !important;
 }
