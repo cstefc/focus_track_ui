@@ -12,6 +12,10 @@
     "cancel": "Annuleren",
     "save": "Opslaan"
   },
+  "theme": {
+    "light": "Licht",
+    "dark": "Donker"
+  },
   "calendar": {
     "date_selector": {
       "prev_month": "Vorige maand",

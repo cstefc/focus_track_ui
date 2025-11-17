@@ -26,7 +26,7 @@ export default function CreateModal({show, onClose, onSubmit}: ProjectModalProps
 
     return (
         <Modal show={show}>
-            <Container className={"bg-dark text-light"}>
+            <Container>
                 <Modal.Header>
                     <Modal.Title>{t("create.title")}</Modal.Title>
                 </Modal.Header>

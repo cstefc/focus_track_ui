@@ -1,4 +1,9 @@
 .navbar {
+    background-color: var(--bs-primary) !important;
+
+    & .text {
+        color: var(--bs-secondary) !important;
+    }
 
     & .navbar-logo {
         display: flex;

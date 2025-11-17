@@ -1,12 +1,12 @@
 .month-text{
     text-align: center;
-    font-size: clamp(0.8rem, 2vw, 24rem);
+    font-size: clamp(0.8rem, 1.8vw, 24rem);
     color: #afb8b8;
 }
 
 .selector-button{
     color: #afb8b8;
-    font-size: clamp(0.8rem, 2vw, 24rem);
+    font-size: clamp(0.8rem, 1.6vw, 24rem);
 }
 
 .month-view {

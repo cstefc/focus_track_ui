@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {NavDropdown} from "react-bootstrap";
+import {Nav, NavDropdown} from "react-bootstrap";
 import AuthContainerTitle from "./AuthContainerTitle";
 import AuthContainerGoogleLogin from "./AuthContainerGoogleLogin";
 import AuthContainerGoogleLogout from "./AuthContainerGoogleLogout";
 import {getAuth, User} from "firebase/auth";
+import LanguageBox from "../language-box/LanguageBox";
 
 export interface AuthContainerProps {
     navigate: (destination: string) => void
@@ -21,10 +22,8 @@ export default function AuthContainer({navigate}: AuthContainerProps) {
 
     return (
         <NavDropdown
-            menuVariant={'dark'}
-            align={"end"}
             title={<AuthContainerTitle user={user}/>}>
-            {!user && <AuthContainerGoogleLogin navigate={navigate} destination={"/dashboard"} />}
+            {!user && <AuthContainerGoogleLogin navigate={navigate} destination={"/dashboard"}/>}
             {user && <AuthContainerGoogleLogout navigate={navigate} destination={"/login"}/>}
         </NavDropdown>
     );

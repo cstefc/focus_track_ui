@@ -3,23 +3,26 @@ import {Nav} from "react-bootstrap";
 import {getAuth} from "firebase/auth";
 import {useTranslation} from "react-i18next";
 import {JSX} from "react";
+import {NavLink} from "react-router-dom";
 
 export interface NavbarRoutesProps {
-    navigate: (destination: string) => void
+    onNavigate: () => void
 }
 
-export default function NavbarRoutes({navigate}: NavbarRoutesProps): JSX.Element {
-    const {t} = useTranslation("general");
-    return (
-        <>
-            {routes.map((route: RouteType, index: number) => {
+export default function NavbarRoutes({onNavigate}: NavbarRoutesProps): JSX.Element {
+    const {t} = useTranslation("general")
+    return <>
+        {routes.map((route: RouteType, index: number) => {
                 if (route.navbar && ((getAuth().currentUser !== null) === route.protected)) {
-                    return <Nav.Link key={index}
-                                     onClick={() => navigate(route.path)}>{t(`routes.${route.name}`)}</Nav.Link>
+                    return <Nav.Link
+                        key={index}
+                        as={NavLink}
+                        to={route.path}
+                        onClick={onNavigate}
+                    >{t(`routes.${route.name}`)}</Nav.Link>
                 } else {
                     return null
                 }
             })}
         </>
-    );
 }

@@ -6,7 +6,9 @@ export default function LanguageBox() {
     const languages: string[] = Object.keys(i18n.options.resources ?? {})
 
     return (
-        <NavDropdown title={t(`languages.${i18n.resolvedLanguage}`)}>
+        <NavDropdown
+            title={t(`languages.${i18n.resolvedLanguage}`)}
+        >
             {languages.map(language => (
                 <NavDropdown.Item
                     key={language}

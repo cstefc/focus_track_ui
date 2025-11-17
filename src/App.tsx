@@ -46,7 +46,7 @@ function App() {
                         key={index}
                         path={route.path}
                         element={
-                            <Container className={"application-container"} fluid data-bs-theme="dark">
+                            <Container className={"application-container"} fluid>
                                 <MyNavbar/>
                                 {route.protected ? (
                                     <AuthChecker>

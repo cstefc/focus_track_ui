@@ -1,18 +1,19 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
-import './index.css';
-
-import "./i18n"
+import "./theme.scss"
 import App from './App';
-
+import React from 'react';
+import "./i18n"
 
 import {createRoot} from 'react-dom/client';
+import {ThemeProvider} from "./components/layout/theme/ThemeContext";
 
 const container = document.getElementById('root');
 const root = createRoot(container!)
 
 root.render(
     <React.StrictMode>
-        <App />
+        <ThemeProvider>
+            <App />
+        </ThemeProvider>
     </React.StrictMode>
 )

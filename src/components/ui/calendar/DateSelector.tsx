@@ -16,7 +16,7 @@ export default function DateSelector({date, setDate}: DateSelectorProps) {
         <Stack direction={"horizontal"} className={"justify-content-between p-2"}>
             <Button
                 className={"selector-button"}
-                variant="dark"
+                variant="secondary"
                 onClick={() => setDate(prevMonth(date))}
             >{t("calendar.date_selector.prev_month")}</Button>
 
@@ -24,7 +24,7 @@ export default function DateSelector({date, setDate}: DateSelectorProps) {
 
             <Button
                 className={"selector-button"}
-                variant={'dark'}
+                variant={'secondary'}
                 onClick={() => setDate(nextMonth(date))}
             >{t("calendar.date_selector.next_month")}</Button>
         </Stack>

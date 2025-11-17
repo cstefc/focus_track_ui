@@ -16,6 +16,10 @@
     "en": "English",
     "nl": "Nederlands"
   },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
   "calendar": {
     "date_selector": {
       "prev_month": "Previous Month",

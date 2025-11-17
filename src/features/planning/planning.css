@@ -2,7 +2,7 @@
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--bs-primary-hover);
     overflow: scroll;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;

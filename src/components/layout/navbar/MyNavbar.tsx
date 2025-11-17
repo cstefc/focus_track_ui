@@ -7,18 +7,18 @@ import NavbarRoutes from "./NavbarRoutes";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import LanguageBox from "./language-box/LanguageBox";
+import ThemeBox from "./theme-box/ThemeBox";
 
 function MyNavbar() {
     const [expanded, setExpanded] = useState(false);
     const navigate = useNavigate();
 
-    const handleNavigate = (path: string) => {
-        navigate(path);
+    const handleNavigate = () => {
         setExpanded(false);
     }
 
     return (
-        <Navbar expanded={expanded} fixed={'top'} bg="dark" expand={"md"}>
+        <Navbar expanded={expanded} fixed={'top'} expand={"md"}>
             <Nav className="ms-3 align-items-center">
                 <NavbarLogo
                     destination={"/"}/>
@@ -28,14 +28,18 @@ function MyNavbar() {
 
             <Navbar.Collapse id="main-navbar" className={"ms-3"}>
                 <Nav>
-                    <NavbarRoutes navigate={handleNavigate}/>
+                    <NavbarRoutes onNavigate={handleNavigate}/>
                 </Nav>
 
-                <Nav className={"ms-auto me-3"}>
+                <Nav className={"ms-auto"}>
                     <LanguageBox/>
                 </Nav>
 
                 <Nav>
+                    <ThemeBox/>
+                </Nav>
+
+                <Nav className={"me-3"}>
                     <AuthContainer navigate={handleNavigate}/>
                 </Nav>
 

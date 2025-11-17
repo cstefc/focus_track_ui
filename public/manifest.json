@@ -41,13 +41,7 @@
       "src": "productivity5.jpg",
       "type": "image/jpg",
       "sizes": "40880x2720"
-    },
-    {
-      "src": "background.jpg",
-      "type": "image/jpg",
-      "sizes": "1920x1600"
     }
-
   ],
   "start_url": ".",
   "display": "standalone",

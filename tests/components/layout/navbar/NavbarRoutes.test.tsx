@@ -2,15 +2,20 @@ import NavbarRoutes from "../../../../src/components/layout/navbar/NavbarRoutes"
 import {render, screen} from "@testing-library/react";
 import routes from "@/config/routes";
 import {fakeAuth, test_user} from "../../../setup";
+import {MemoryRouter} from "react-router-dom";
 
 describe("Navbar Routes", () => {
     it("renders correctly logged in", () => {
         // GIVEN
-        const navigate = vi.fn();
+        const onNavigate = vi.fn();
         // @ts-ignore
         fakeAuth.currentUser = test_user;
         // WHEN
-        render(<NavbarRoutes navigate={navigate}/>);
+        render(
+            <MemoryRouter>
+                <NavbarRoutes onNavigate={onNavigate}/>
+            </MemoryRouter>
+        );
 
         // THEN
         const expectedCount = routes.filter(r => r.navbar && r.protected === true).length;
@@ -21,10 +26,16 @@ describe("Navbar Routes", () => {
 
     it("renders correctly not logged in", () => {
         // GIVEN
-        const navigate = vi.fn();
+        const onNavigate = vi.fn();
+        fakeAuth.currentUser = null;
 
         // WHEN
-        render(<NavbarRoutes navigate={navigate}/>);
+        render(
+            <MemoryRouter>
+                <NavbarRoutes onNavigate={onNavigate}/>
+            </MemoryRouter>
+        );
+        screen.debug()
 
         // THEN
         const expectedCount = routes.filter(r => r.navbar && r.protected === false).length;
