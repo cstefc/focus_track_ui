@@ -1,4 +1,9 @@
 {
+  "tabs": {
+    "active": "Actief",
+    "archived": "Archief"
+  },
+
   "create": {
     "title": "Nieuw project aanmaken",
     "titleLabel": "Titel",

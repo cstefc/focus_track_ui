@@ -3,15 +3,16 @@ import {CreateProject, CreateProjectForm} from "@/api/domain/projects/Project";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
+import {getAuth} from "firebase/auth";
+import api from "../../../../config/api";
 
 
 export interface ProjectModalProps {
     show: boolean;
-    onClose: () => void;
-    onSubmit: (data: CreateProject) => void;
+    onClose: (saved: boolean) => void;
 }
 
-export default function CreateModal({show, onClose, onSubmit}: ProjectModalProps) {
+export default function CreateModal({show, onClose}: ProjectModalProps) {
     const {t} = useTranslation("projects");
 
     const {register, handleSubmit, formState: {errors, isSubmitting}, reset} = useForm<CreateProject>({
@@ -19,9 +20,9 @@ export default function CreateModal({show, onClose, onSubmit}: ProjectModalProps
     });
 
     async function submitHandler(data: CreateProject) {
-        await onSubmit(data);
+        await api.project.create(data);
         reset()
-        onClose()
+        onClose(true);
     }
 
     return (
@@ -52,7 +53,7 @@ export default function CreateModal({show, onClose, onSubmit}: ProjectModalProps
                     </Modal.Body>
                     <Modal.Footer>
                         <Button
-                            onClick={onClose}
+                            onClick={() => onClose(false)}
                             variant={"secondary"}
                             disabled={isSubmitting}
                         >{t("button.cancel")}</Button>

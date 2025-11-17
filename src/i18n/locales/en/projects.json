@@ -1,4 +1,9 @@
 {
+  "tabs": {
+    "active": "Active",
+    "archived": "Archived"
+  },
+
   "create": {
     "title": "Create a new project",
     "titleLabel": "Title",

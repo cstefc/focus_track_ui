@@ -13,7 +13,6 @@ export default function HomeCard({card}: HomeCardProps) {
         <Col key={card}>
             <Card>
                 <CardTitle className="text-center p-3 card_title">{t(`cards.${card}.title`)}</CardTitle>
-                <br/>
                 <CardText className={"text-center m-3 card_text"}>{t(`cards.${card}.text`)}</CardText>
             </Card>
         </Col>
