@@ -5,7 +5,7 @@ export interface FetchOptions {
     arguments: {}
 }
 
-export default class CrudRepository<T, C, U> {
+export default class CrudRepository<T, C> {
     endpoint: string;
 
     constructor(endpoint: string) {
@@ -48,13 +48,13 @@ export default class CrudRepository<T, C, U> {
         return await res as T;
     }
 
-    async update(id: string, data: U): Promise<T> {
+    async update(id: string, data: T): Promise<T> {
         const res = await apiFetch(`${this.endpoint}/${id}`, {
             headers: {
                 'Content-Type': 'application/json'
             },
             arguments: {
-                method: 'UPDATE',
+                method: 'PUT',
                 body: JSON.stringify(data),
             }
         });
@@ -62,8 +62,8 @@ export default class CrudRepository<T, C, U> {
         return await res as T;
     }
 
-    async delete(id: string) {
-        await apiFetch(`${this.endpoint}/${id}`, {
+    async delete(id: string): Promise<boolean> {
+        return await apiFetch(`${this.endpoint}/${id}`, {
             headers: {},
             arguments: {
                 method: 'DELETE',

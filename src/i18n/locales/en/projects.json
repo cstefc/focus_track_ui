@@ -1,9 +1,10 @@
 {
+  "title": "Projects",
+  "description": "Manage your projects or consult the archived projects.",
   "tabs": {
     "active": "Active",
     "archived": "Archived"
   },
-
   "create": {
     "title": "Create a new project",
     "titleLabel": "Title",
@@ -11,13 +12,16 @@
 
     "descriptionLabel": "Description",
     "descriptionPlaceholder": "Enter a description"
-
-
   },
+
   "button": {
     "createProject": "Create a new project",
     "createCategory": "Create new category",
     "cancel": "Cancel",
     "save": "Save"
+  },
+  "noProjects": {
+    "active": "You don't have any active projects yet. Start planning today and create one.",
+    "archived": "You don't have any archived project yet"
   }
 }

@@ -11,7 +11,7 @@ export interface CalendarViewProps {
 
 export default function Calendar({date, setDate}: CalendarViewProps) {
     return (
-        <Container fluid>
+        <Container fluid className={"m-3"}>
             <DateSelector date={date} setDate={setDate}/>
             <MonthView selected={date} setSelected={setDate}/>
         </Container>

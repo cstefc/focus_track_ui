@@ -8,15 +8,20 @@ export default function Planning() {
     const [date, setDate] = useState(new Date());
 
     return (
-        <Row className={"p-3"}>
+        <Row className={"m-3"}>
             <Col>
-                <Row className={"calendar-container"}>
+                <h1 className={"m-4 text"}> TODO: Add overview month stats</h1>
+            </Col>
+
+            <Col md={"auto"} className={"calendar-container justify-content-center"}>
+                <Row className={"justify-content-center align-items-center"}>
                     <DayView date={date}/>
                     <Calendar date={date} setDate={setDate}/>
                 </Row>
             </Col>
-            <Col>
-                <h1 className={"m-4 text"}> TODO: Add tools to create and remove events</h1>
+
+            <Col >
+                <h1 className={"m-4 text"}> TODO: Add overview day stats</h1>
             </Col>
         </Row>
     );

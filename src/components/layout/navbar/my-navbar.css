@@ -1,8 +1,8 @@
 .navbar {
-    background-color: var(--bs-primary) !important;
+    background-color: var(--bs-primary-color) !important;
 
     & .text {
-        color: var(--bs-secondary) !important;
+        color: var(--bs-secondary-color) !important;
     }
 
     & .navbar-logo {

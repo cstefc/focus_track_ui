@@ -1,4 +1,7 @@
 {
+  "title": "Projecten",
+  "description": "Beheer je actieve projecten of bekijk je gearchiveerde projecten.",
+
   "tabs": {
     "active": "Actief",
     "archived": "Archief"
@@ -18,6 +21,10 @@
     "createCategory": "Nieuwe categorie aanmaken",
     "cancel": "Annuleren",
     "save": "Opslaan"
+  },
+  "noProjects": {
+    "active": "Geen actieve projecten gevonden. Start vandaag nog met nieuwe plannen te maken.",
+    "archived": "Je hebt nog geen gearchiveerde project."
   }
 
 }

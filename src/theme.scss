@@ -1,7 +1,7 @@
 [data-bs-theme='light'] {
-  --bs-primary: rgb(70, 92, 136);
-  --bs-secondary: rgb(0, 0, 0);
-  --bs-accent: rgb(255, 122, 48);
+  --bs-primary-color: rgb(98, 131, 191);
+  --bs-secondary-color: rgb(0, 0, 0);
+  --bs-accent-color: rgb(255, 122, 48);
 
   --bs-primary-hover: rgba(47, 47, 47, 0.3); // 30% of primary
   --bs-secondary-hover: rgba(0, 0, 0, 0.3);
@@ -11,9 +11,9 @@
 }
 
 [data-bs-theme='dark'] {
-  --bs-primary: rgb(124, 137, 139);
-  --bs-secondary: rgb(118, 93, 5);
-  --bs-accent: rgb(142,10,1);
+  --bs-primary-color: rgb(124, 137, 139);
+  --bs-secondary-color: rgb(161, 124, 21);
+  --bs-accent-color: rgb(142,10,1);
 
   --bs-primary-hover: rgba(124, 137, 139, 0.3);
   --bs-secondary-hover: rgba(118, 93, 5, 0.3);
@@ -23,33 +23,39 @@
 }
 
 .btn-primary {
-  background-color: var(--bs-secondary-hover) !important;
-  border-color: var(--bs-secondary)!important;
+  background-color: var(--bs-accent-hover) !important;
+  border-color: var(--bs-accent-color)!important;
 }
 
 .btn-primary:hover {
-  background-color: var(--bs-secondary-hover)!important;
-  border-color: var(--bs-accent)!important;
+  background-color: var(--bs-accent-hover)!important;
+  border-color: var(--bs-secondary-color)!important;
 }
 
 .btn-primary:active {
-  background-color: var(--bs-accent) !important;
-  border-color: var(--bs-accent) !important;
+  background-color: var(--bs-accent-color) !important;
+  border-color: var(--bs-accent-color) !important;
 }
 
 .btn-secondary:hover {
-  background-color: var(--bs-accent-hover) !important;
-  border-color: var(--bs-accent) !important;
+  background-color: var(--bs-secondary-hover) !important;
+  border-color: var(--bs-secondary-color) !important;
 }
 
 .btn-secondary:active {
-  background-color: var(--bs-accent) !important;
-  border-color: var(--bs-accent) !important;
+  background-color: var(--bs-secondary-color) !important;
+  border-color: var(--bs-secondary-color) !important;
 }
 
 .nav-tabs .nav-link:not(.active) {
-  color: var(--bs-primary) !important;
+  color: var(--bs-primary-color) !important;
 }
+
+.accordion-button:not(.collapsed){
+  background-color: var(--bs-primary-hover) !important;
+  color: var(--bs-secondary-color) !important;
+}
+
 
 body {
   background-color: var(--app-bg);

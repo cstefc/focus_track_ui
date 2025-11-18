@@ -1,4 +1,4 @@
-import {string, z} from "zod";
+import {string, z, boolean} from "zod";
 
 export interface Project {
     id: number;
@@ -10,8 +10,9 @@ export interface Project {
 }
 
 export const CreateProjectForm = z.object({
-    name: string().min(1, "Project name is required."),
+    title: string().min(1, "Project title is required."),
     description: string().min(1, "Description is required."),
+    archived: boolean()
 })
 
 export type CreateProject = z.infer<typeof CreateProjectForm>;

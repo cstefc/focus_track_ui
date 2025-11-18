@@ -1,12 +1,7 @@
 .calendar-container{
-    justify-content: center;
-    align-items: center;
-
+    display: flex;
     background-color: var(--bs-primary-hover);
-    overflow: scroll;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
-    -ms-border-radius: 30px;
     border-radius: 30px;
+    padding: 1rem; /* ensure content has space */
+
 }
