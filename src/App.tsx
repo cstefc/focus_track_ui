@@ -3,38 +3,19 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import routes from "./config/routes";
 import AuthChecker from "./components/layout/auth/AuthChecker";
-import MyNavbar from "./components/layout/navbar/MyNavbar";
-import {Container, Spinner} from "react-bootstrap";
-import "./app.css";
+import MyAppBar from "@/components/ui/navbar/MyAppBar";
 import {getAuth} from "firebase/auth";
+import Loading from "@/components/ui/Loading";
+import {Box} from "@mui/material";
 
 function App() {
     const [loading, setLoading] = useState(true);
-    let height = 100;
-    let useHeight;
-    useHeight = height + "vh";
 
     getAuth().onAuthStateChanged(() => {
         setLoading(false);
     });
 
-    if (loading)
-        return (
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    height: useHeight,
-                }}
-            >
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            </div>
-        )
-            ;
+    if (loading) return (<Loading/>);
 
     return (
         <BrowserRouter
@@ -46,16 +27,18 @@ function App() {
                         key={index}
                         path={route.path}
                         element={
-                            <Container className={"application-container"} fluid>
-                                <MyNavbar/>
-                                {route.protected ? (
-                                    <AuthChecker>
+                            <>
+                                <MyAppBar/>
+                                <Box marginTop={"80px"} padding={1}>
+                                    {route.protected ? (
+                                        <AuthChecker>
+                                            <route.component/>
+                                        </AuthChecker>
+                                    ) : (
                                         <route.component/>
-                                    </AuthChecker>
-                                ) : (
-                                    <route.component/>
-                                )}
-                            </Container>
+                                    )}
+                                </Box>
+                            </>
                         }
                     />
                 ))}

@@ -1,8 +1,8 @@
-import Planning from "@/features/planning/Planning";
+import PlanningScreen from "@/features/planning/PlanningScreen";
 import Home from "@/features/home/Home";
 import Dashboard from "@/features/dashboard/Dashboard";
 import ProjectsScreen from "@/features/projects/ProjectsScreen";
-import ProjectScreen from "@/features/projects/ProjectScreen";
+import ProjectScreen from "@/features/project/ProjectScreen";
 
 export interface RouteType {
     path: string;
@@ -44,7 +44,7 @@ const routes: RouteType[] = [
     },
     {
         path: "/planning",
-        component: Planning,
+        component: PlanningScreen,
         name: "planning",
         protected: true,
         navbar: true,

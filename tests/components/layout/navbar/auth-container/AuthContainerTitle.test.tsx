@@ -1,5 +1,5 @@
 import {render, screen} from "@testing-library/react";
-import AuthContainerTitle from "../../../../../src/components/layout/navbar/auth-container/AuthContainerTitle";
+import AuthContainerTitle from "../../../../../src/components/ui/navbar/auth-container/AuthContainerTitle";
 import {User} from "firebase/auth";
 
 describe("AuthContainer", () => {

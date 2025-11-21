@@ -1,8 +1,7 @@
-import {Button, Card, Col} from "react-bootstrap";
 import {Project} from "@/api/domain/projects/Project";
-import {Archive, Trash} from "react-bootstrap-icons";
-import {useNavigate} from "react-router-dom";
-import api from "@/config/api";
+import {useState} from "react";
+import ProjectCardDisplay from "@/features/projects/components/project-cards/ProjectCardDisplay";
+import {ProjectCardEdit} from "@/features/projects/components/project-cards/ProjectCardEdit";
 
 export interface ProjectCardProps {
     project: Project;
@@ -10,43 +9,13 @@ export interface ProjectCardProps {
 }
 
 export default function ProjectCard({project, onUpdate}: ProjectCardProps) {
-    const navigate = useNavigate();
-
-    function handleClick() {
-        if (!project.archived){
-            navigate(`/projects/${project.id}`);
-        }
-    }
-
-    async function handleDelete() {
-        await api.project.delete(`${project.id}`);
-        onUpdate();
-    }
-
-    async function handleArchive() {
-        project.archived = true;
-        await api.project.update(`${project.id}`, project);
-        onUpdate();
-    }
+    const [edit, setEdit] = useState(false);
 
     return (
-        <Card className={"p-3 h-100 w-100 "} onClick={handleClick}>
-            <Card.Title>
-                {project.title}
-            </Card.Title>
-            <Card.Body>
-                {project.description}
-            </Card.Body>
-            <Col className={"d-flex justify-content-end align-items-end"}>
-                {!project.archived &&<Button variant={"outline-warning"} className={"me-2"} onClick={(e) => {
-                    e.stopPropagation(); // <-- stop card click
-                    void handleArchive();
-                }}><Archive/></Button>}
-                <Button variant={"outline-danger"} onClick={(e) => {
-                    e.stopPropagation(); // <-- stop card click
-                    void handleDelete();
-                }}><Trash/></Button>
-            </Col>
-        </Card>
-    );
+        <>
+            {!edit && <ProjectCardDisplay project={project} edit={edit} setEdit={setEdit}/>}
+            {edit && <ProjectCardEdit project={project} edit={edit} setEdit={setEdit} onUpdate={onUpdate}/>}
+        </>
+    )
+        ;
 }

@@ -1,5 +1,5 @@
 import {Status} from "../predefined/Status";
-import {number, string, z} from "zod/index";
+import {number, string, z} from "zod";
 
 export interface Step {
     id: number,
@@ -13,7 +13,8 @@ export interface Step {
 }
 
 
-export const CreateStepForm = z.object({
+export const UpdateStepForm = z.object({
+    id: number(),
     sequence: number().min(1, "Sequence is required."),
 
     objective: string().min(1, "Objective is required."),
@@ -21,6 +22,18 @@ export const CreateStepForm = z.object({
     requirements: string(),
 
     status: number()
+})
+
+export type UpdateStep = z.infer<typeof UpdateStepForm>;
+
+export const CreateStepForm = z.object({
+    sequence: number().min(1, "Sequence is required."),
+
+    objective: string().min(1, "Objective is required."),
+    description: string(),
+    requirements: string(),
+
+    status: string()
 })
 
 export type CreateStep = z.infer<typeof CreateStepForm>;

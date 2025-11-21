@@ -1,23 +1,27 @@
-import {Container, Tab, Tabs} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
-import ProjectCards from "./components/project-cards/ProjectCards";
-import {useState} from "react";
+import ProjectCards from "./components/ProjectCards";
+import React, {useState} from "react";
+import {Box, Tab, Tabs, Typography} from "@mui/material";
 
 export default function ProjectsScreen() {
     const {t} = useTranslation("projects");
-    const [activeTab, setActiveTab] = useState<string | null>("active");
+    const [activeTab, setActiveTab] = useState<number>(0);
 
     return (
-        <Container fluid className={"mt-3"}>
-            <h1>{t("title")}</h1>
-            <p>{t("description")}</p>
+        <Box padding={"24px"}>
+            <Box>
+                <Typography variant={"h3"}>{t("title")}</Typography>
+                <Typography variant={"body1"}>{t("description")}</Typography>
+            </Box>
 
-            <Tabs defaultActiveKey={"active"} onSelect={(selectedKey) => setActiveTab(selectedKey)}>
-                <Tab eventKey={"active"} title={t("tabs.active")}/>
-                <Tab eventKey={"archived"} title={t("tabs.archived")}/>
+            <Tabs value={activeTab} onChange={(event: React.SyntheticEvent, newValue: number) => {
+                setActiveTab(newValue);
+            }}>
+                <Tab label={t("tabs.active")} key={"active"}/>
+                <Tab label={t("tabs.archived")} key={"archived"}/>
             </Tabs>
 
-            <ProjectCards showWithArchived={activeTab !== "active"}/>
-        </Container>
+            <ProjectCards showWithArchived={activeTab !== 0}/>
+        </Box>
     );
 };

@@ -1,4 +1,4 @@
-import NavbarRoutes from "../../../../src/components/layout/navbar/NavbarRoutes";
+import AppBarRoutes from "../../../../src/components/ui/navbar/routes/AppBarRoutes";
 import {render, screen} from "@testing-library/react";
 import routes from "@/config/routes";
 import {fakeAuth, test_user} from "../../../setup";
@@ -13,7 +13,7 @@ describe("Navbar Routes", () => {
         // WHEN
         render(
             <MemoryRouter>
-                <NavbarRoutes onNavigate={onNavigate}/>
+                <AppBarRoutes onNavigate={onNavigate}/>
             </MemoryRouter>
         );
 
@@ -32,7 +32,7 @@ describe("Navbar Routes", () => {
         // WHEN
         render(
             <MemoryRouter>
-                <NavbarRoutes onNavigate={onNavigate}/>
+                <AppBarRoutes onNavigate={onNavigate}/>
             </MemoryRouter>
         );
         screen.debug()

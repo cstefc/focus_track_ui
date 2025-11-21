@@ -1,30 +1,44 @@
 {
   "title": "Projecten",
   "description": "Beheer je actieve projecten of bekijk je gearchiveerde projecten.",
-
   "tabs": {
     "active": "Actief",
     "archived": "Archief"
   },
-
+  "edit": {
+    "projectTitle": "Bewerk project",
+    "goalTitle": "Bewerk doel"
+  },
   "create": {
-    "title": "Nieuw project aanmaken",
+    "projectTitle": "Nieuw project aanmaken",
+    "goalTitle": "Nieuw doel aanmaken"
+  },
+  "forms": {
     "titleLabel": "Titel",
     "titlePlaceholder": "Voer een titel in",
 
     "descriptionLabel": "Beschrijving",
     "descriptionPlaceholder": "Voer een beschrijving in"
   },
-
+  "warning": {
+    "title": "Waarschuwing!",
+    "delete": {
+      "description": "Je staat op het punt om je project te verwijderen. Dit is onomkeerbaar als je wenst verder te gaan druk op het vinkje."
+    },
+    "archive": {
+      "description": "Je staat op het punt om je project te verwijderen. Dit is onomkeerbaar als je wenst verder te gaan druk op het vinkje."
+    }
+  },
   "button": {
     "createProject": "Nieuw project aanmaken",
-    "createCategory": "Nieuwe categorie aanmaken",
+    "createGoal": "Definieer een nieuw doel",
     "cancel": "Annuleren",
-    "save": "Opslaan"
+    "save": "Opslaan",
+    "back": "Ga terug naar het overzicht"
   },
   "noProjects": {
     "active": "Geen actieve projecten gevonden. Start vandaag nog met nieuwe plannen te maken.",
     "archived": "Je hebt nog geen gearchiveerde project."
-  }
-
+  },
+  "noGoals": "Je blijkt nog geen doelen te hebben in dit project. Wacht niet en start met je success te plannen!"
 }

@@ -1,39 +1,51 @@
-import {createContext, ReactNode, useContext, useEffect, useState} from "react";
-import {themes} from "@/config/themes";
-
-export interface ThemeContextValue {
-    theme: string;
-    setTheme: (newTheme: string) => void;
-}
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+import {createContext, ReactNode, useContext, useMemo, useState} from "react";
+import {themes} from "@/config/theme";
+import {ThemeProvider} from "@mui/material/styles";
+import {CssBaseline} from "@mui/material";
 
 export interface ThemeContextProps {
-    children?: ReactNode;
+    mode: string;
+    changeMode: (newTheme: string) => void;
 }
-export const ThemeProvider = ({children}: ThemeContextProps) => {
-    const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "dark");
 
-    useEffect(() => {
-        document.documentElement.setAttribute("data-bs-theme", theme);
-        localStorage.setItem("theme", theme);
-    }, [theme]);
-
-    const changeTheme = (newTheme: string) => {
-        if (themes.includes(newTheme)) {
-            localStorage.setItem("theme", newTheme);
-            setTheme(newTheme);
-        }
-    }
-
-    return(
-        <ThemeContext.Provider value={{theme: theme, setTheme: changeTheme}}>
-            {children}
-        </ThemeContext.Provider>
-    );
-}
+const ThemeContext = createContext<ThemeContextProps>({
+    mode: "dark",
+    changeMode: () => {
+    },
+});
 
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (!context) throw new Error("useTheme must be used within ThemeContext");
     return context;
+}
+
+export interface CustomThemeProviderProps {
+    children?: ReactNode;
+}
+
+export const CustomThemeProvider = ({children}: CustomThemeProviderProps) => {
+    const saved = localStorage.getItem("theme");
+    const [mode, setMode] = useState<string>(saved ? saved : "dark");
+
+    const changeMode = (newTheme: string) => {
+        if (newTheme in themes) {
+            localStorage.setItem("theme", newTheme);
+            setMode(newTheme);
+        }
+    }
+
+    const theme = useMemo(() => {
+        localStorage.setItem("theme", mode);
+        return mode in themes ? themes[mode] : themes["dark"];
+    }, [mode]);
+
+    return (
+        <ThemeContext.Provider value={{mode: mode, changeMode}}>
+            <ThemeProvider theme={theme}>
+                <CssBaseline/>
+                {children}
+            </ThemeProvider>
+        </ThemeContext.Provider>
+    );
 }

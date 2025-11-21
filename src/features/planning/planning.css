@@ -1,7 +1,0 @@
-.calendar-container{
-    display: flex;
-    background-color: var(--bs-primary-hover);
-    border-radius: 30px;
-    padding: 1rem; /* ensure content has space */
-
-}

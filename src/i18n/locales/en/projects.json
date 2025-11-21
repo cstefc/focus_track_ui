@@ -5,8 +5,15 @@
     "active": "Active",
     "archived": "Archived"
   },
+  "edit": {
+    "projectTitle": "Edit Project",
+    "goalTitle": "Edit Goal"
+  },
   "create": {
-    "title": "Create a new project",
+    "projectTitle": "Create a new project",
+    "goalTitle": "Create a new project"
+  },
+  "forms": {
     "titleLabel": "Title",
     "titlePlaceholder": "Enter a title",
 
@@ -14,14 +21,28 @@
     "descriptionPlaceholder": "Enter a description"
   },
 
+  "warning": {
+    "title": "Warning!",
+
+    "delete": {
+      "description": "You're going to delete this project, this cannot be undone. If you wish to continue press the check icon."
+    },
+
+    "archive": {
+      "description": "You're about to archive this project, this cannot be undone. If you wish to continue, press the check icon."
+    }
+  },
+
   "button": {
     "createProject": "Create a new project",
-    "createCategory": "Create new category",
+    "createGoal": "Define a new goal",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "back": "Go back to the overview"
   },
   "noProjects": {
     "active": "You don't have any active projects yet. Start planning today and create one.",
     "archived": "You don't have any archived project yet"
-  }
+  },
+  "noGoals": "You don't seem to have any goals for this project. Don't wait and start to plan your success!"
 }
