@@ -23,11 +23,8 @@ export default function ProjectCardDisplay({project, edit, setEdit}: ProjectCard
     }
 
     return (
-        <Card onClick={handleClick}  sx={{
-            padding: "16px",
-            paddingBottom: "8px",
-            margin: "8px",
-        }}>
+        <Card onClick={handleClick}
+              sx={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column' }}>
             <CardContent>
                 <Typography variant={"h5"}>{project.title}</Typography>
                 <Typography variant={"body1"}>{project.description}</Typography>

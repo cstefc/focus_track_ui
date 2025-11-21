@@ -36,11 +36,9 @@ export default function ProjectCards({showWithArchived}: ProjectScreenProps) {
             <CreateProjectDialog visible={!showWithArchived} onSave={handleUpdate}/>
 
             {/** List the project cards*/}
-            <Grid container>
-                {projects.map((project, index) => project.archived === showWithArchived ?
-                    <Grid key={index} justifyContent={"stretch"}>
-                        <ProjectCard project={project} onUpdate={handleUpdate}/>
-                    </Grid> : null)
+            <Grid container spacing={2}>
+                {projects.map((project) => project.archived === showWithArchived ?
+                    <ProjectCard project={project} onUpdate={handleUpdate}/> : null)
                 }
             </Grid>
 
@@ -49,7 +47,8 @@ export default function ProjectCards({showWithArchived}: ProjectScreenProps) {
 
             {/** Show message when there aren't any projects */}
             {projects.filter(projects => projects.archived === showWithArchived).length == 0 &&
-                <CenterMessage><Typography variant={"body1"}>{t(`noProjects.${items_name}`)}</Typography></CenterMessage>}
+                <CenterMessage><Typography
+                    variant={"body1"}>{t(`noProjects.${items_name}`)}</Typography></CenterMessage>}
         </>
     );
 }
