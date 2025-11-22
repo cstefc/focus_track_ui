@@ -8,12 +8,11 @@ import EditIcon from "@mui/icons-material/Edit";
 
 export interface ProjectCardDisplay {
     project: Project;
-    edit: boolean;
-    setEdit: (status: boolean) => void;
+    toggleEdit: () => void;
 }
 
 
-export default function ProjectCardDisplay({project, edit, setEdit}: ProjectCardDisplay) {
+export default function ProjectCardDisplay({project, toggleEdit}: ProjectCardDisplay) {
     const navigate = useNavigate();
 
     function handleClick() {
@@ -35,7 +34,7 @@ export default function ProjectCardDisplay({project, edit, setEdit}: ProjectCard
                             color={"primary"}
                             onClick={e => {
                                 e.stopPropagation();
-                                setEdit(!edit);
+                                toggleEdit();
                             }}
                         >
                             <EditIcon/>

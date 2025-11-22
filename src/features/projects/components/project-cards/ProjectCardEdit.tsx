@@ -1,5 +1,4 @@
 import {Project, UpdateProject, UpdateProjectForm} from "@/api/domain/projects/Project";
-import api from "@/config/api";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
@@ -7,46 +6,53 @@ import EditPanel from "@/components/ui/EditPanel";
 import {Box, TextField, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import {deleteApi, sendApi} from "@/api/domain/api";
 
 export interface ProjectCardEditProps {
+    projects: Project[];
+    setProjects: (projects: Project[]) => void;
     project: Project;
-    edit: boolean;
-    setEdit: (edit: boolean) => void;
-    onUpdate: () => void;
+    toggleEdit: () => void;
 }
 
-export function ProjectCardEdit({project, edit, setEdit, onUpdate}: ProjectCardEditProps) {
+export function ProjectCardEdit({project, projects, setProjects, toggleEdit}: ProjectCardEditProps) {
     const {register, handleSubmit, formState: {errors}, reset} = useForm<UpdateProject>({
         resolver: zodResolver(UpdateProjectForm),
         defaultValues: {
             id: project.id,
             title: project.title,
             description: project.description,
-            archived: false
+            archived: project.archived
         },
     });
     const {t} = useTranslation("projects");
 
     async function handleDelete() {
-        await api.project.delete(`${project.id}`);
-        onUpdate();
+        void deleteApi(`/projects/?id=${project.id}`);
+        setProjects(projects.filter((p) => p.id !== project.id));
+        toggleEdit()
     }
 
-    async function handleArchive() {
-        project.archived = true;
-        await api.project.update(`${project.id}`, project);
-        onUpdate();
+    async function handleArchive(data: UpdateProject) {
+        data.archived = true;
+        const result = await sendApi<Project>(`/projects`, "PUT", data);
+        if (result){
+            setProjects(projects.map((project) => project.id == data.id ? result : project));
+        }
+        toggleEdit()
     }
 
     async function handleCancel() {
         reset();
-        setEdit(false);
+        toggleEdit()
     }
 
     async function updateHandler(data: UpdateProject) {
-        await api.project.update(`${project.id}`, data);
-        onUpdate();
-        setEdit(!edit);
+        const result = await sendApi<Project>(`/projects`, "PUT", data);
+        if (result){
+            setProjects(projects.map((project) => project.id == data.id ? result : project));
+        }
+        toggleEdit()
     }
 
     return (
@@ -65,7 +71,8 @@ export function ProjectCardEdit({project, edit, setEdit, onUpdate}: ProjectCardE
                      sx={{display: "flex", flexDirection: "column", gap: 2}}
                 >
                     <TextField
-                        label={t("edit.titleLabel")}
+                        label={t("forms.titleLabel")}
+                        placeholder={t("forms.titlePlaceholder")}
                         {...register("title")}
                         error={!!errors.title}
                         helperText={errors.title?.message}
@@ -73,14 +80,14 @@ export function ProjectCardEdit({project, edit, setEdit, onUpdate}: ProjectCardE
                     />
 
                     <TextField
-                        label={t("edit.descriptionLabel")}
+                        label={t("forms.descriptionLabel")}
+                        placeholder={t("forms.descriptionPlaceholder")}
                         {...register("description")}
                         error={!!errors.description}
-                        helperText={errors.description?.message}
                         fullWidth
                     />
 
-                    <EditPanel handleDelete={handleDelete} handleArchive={handleArchive} handleCancel={handleCancel}/>
+                    <EditPanel handleSave={handleSubmit(updateHandler)} handleDelete={handleDelete} handleArchive={handleSubmit(handleArchive)} handleCancel={handleCancel}/>
                 </Box>
             </CardContent>
         </Card>

@@ -1,25 +1,27 @@
-import React from "react";
 import {Goal} from "@/api/domain/projects/Goal";
-import GoalAccordionDisplay from "@/features/project/components/goals/GoalAccordionDisplay";
 import GoalAccordionEdit from "@/features/project/components/goals/GoalAccordionEdit";
-import StepTable from "@/features/project/components/steps/StepTable";
+import GoalAccordionDisplay from "@/features/project/components/goals/GoalAccordionDisplay";
 import {Accordion, AccordionDetails} from "@mui/material";
+import StepTable from "@/features/project/components/steps/StepTable";
+import React, {useState} from "react";
 
-export interface GoalAccordionItemProps {
+export interface GoalAccordionProps {
     goal: Goal;
+    goals: Goal[];
+    setGoals: (goals: Goal[]) => void;
 }
 
-export default function GoalAccordion({goal}: GoalAccordionItemProps) {
-    const [edit, setEdit] = React.useState(false);
+export function GoalAccordion({goal, goals, setGoals}: GoalAccordionProps) {
+    const [edit, setEdit] = useState(false)
 
     return (
         <Accordion key={goal.id}>
-            {edit ? <GoalAccordionEdit goal={goal} setEdit={setEdit}/> :
-                <GoalAccordionDisplay goal={goal} edit={edit} setEdit={setEdit}/>
+            {edit ? <GoalAccordionEdit goal={goal} goals={goals} setGoals={setGoals} setEdit={setEdit}/> :
+                <GoalAccordionDisplay goal={goal} goals={goals} setGoals={setGoals} edit={edit} setEdit={setEdit}/>
             }
             <AccordionDetails>
-                <StepTable goalId={goal.id} steps={goal.steps}/>
+                <StepTable goalId={goal.id}/>
             </AccordionDetails>
         </Accordion>
-    );
+    )
 }

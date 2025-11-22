@@ -1,21 +1,21 @@
-import {CreateProject, CreateProjectForm} from "@/api/domain/projects/Project";
+import {CreateProject, CreateProjectForm, Project} from "@/api/domain/projects/Project";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
-import api from "@/config/api";
 import React, {JSX, useState} from "react";
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack} from "@mui/material";
-import {theme} from "@/config/theme";
 import {ZodTextField} from "@/components/layout/forms/ZodTextField";
+import {sendApi} from "@/api/domain/api";
 
 export interface CreateProjectDialogProps {
-    onSave: () => void;
     visible: boolean;
+    projects: Project[];
+    setProjects: (projects: Project[]) => void;
 }
 
-export default function CreateProjectDialog({onSave, visible}: CreateProjectDialogProps): JSX.Element {
+export default function CreateProjectDialog({visible, projects, setProjects}: CreateProjectDialogProps): JSX.Element {
     const {t} = useTranslation("projects");
-    const [showCreateModal, setShowCreateModal] = useState(false);
+    const [showDialog, setShowDialog] = useState(false);
 
     const {register, handleSubmit, formState: {errors, isSubmitting}, reset} = useForm<CreateProject>({
         resolver: zodResolver(CreateProjectForm),
@@ -25,24 +25,26 @@ export default function CreateProjectDialog({onSave, visible}: CreateProjectDial
     });
 
     async function submitHandler(data: CreateProject) {
-        setShowCreateModal(false);
-        await api.project.create(data);
-        onSave();
-        reset();
+        setShowDialog(false);
+        const project = await sendApi<Project>("/projects", "POST", data);
+        if (project){
+            setProjects([...projects, project]);
+            reset();
+        }
     }
 
     return (
         <>
-            <Box display={"flex"} justifyContent={"flex-end"} margin={"normal"}>
+            <Box display={"flex"} justifyContent={"flex-end"} margin={2}>
                 <Button variant={"contained"} hidden={!visible}
-                        onClick={() => setShowCreateModal(true)}
+                        onClick={() => setShowDialog(true)}
                 >
                     {t("button.createProject")}
                 </Button>
             </Box>
 
             <React.Fragment>
-                <Dialog open={showCreateModal} onClose={() => setShowCreateModal(false)}
+                <Dialog open={showDialog} onClose={() => setShowDialog(false)}
                 >
                     <Box component={"form"} onSubmit={handleSubmit(submitHandler)}>
                         <DialogTitle id="alert-dialog-title">
@@ -59,8 +61,9 @@ export default function CreateProjectDialog({onSave, visible}: CreateProjectDial
                         <DialogActions>
                             <Stack direction={"row"} padding={1} spacing={1}>
                                 <Button disabled={isSubmitting} onClick={() => {
+                                    // @ts-ignore
                                     document.activeElement?.blur();
-                                    setShowCreateModal(false)
+                                    setShowDialog(false)
                                 }}>
                                     {t("button.cancel")}
                                 </Button>

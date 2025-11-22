@@ -2,7 +2,6 @@ import {boolean, number, string, z} from "zod";
 
 export interface Project {
     id: number;
-
     title: string,
     description: string,
     archived: boolean

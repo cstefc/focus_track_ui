@@ -11,14 +11,31 @@
   },
   "create": {
     "projectTitle": "Create a new project",
-    "goalTitle": "Create a new project"
+    "goalTitle": "Create a new goal"
   },
   "forms": {
     "titleLabel": "Title",
     "titlePlaceholder": "Enter a title",
 
     "descriptionLabel": "Description",
-    "descriptionPlaceholder": "Enter a description"
+    "descriptionPlaceholder": "Enter a description",
+
+    "objectiveLabel": "Objective",
+    "objectivePlaceholder": "Enter a objective",
+
+    "requirementsLabel": "Requirements",
+    "requirementsPlaceholder": "Enter needed requirements",
+
+    "statusLabel": "Status",
+
+    "editLabel": "Edit"
+  },
+  "status": {
+    "Waiting": "Waiting",
+    "NotStarted": "Not Started",
+    "Started": "Started",
+    "InProgress": "In Progress",
+    "Finished": "Finished"
   },
 
   "warning": {

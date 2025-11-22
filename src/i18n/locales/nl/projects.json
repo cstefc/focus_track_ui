@@ -18,7 +18,10 @@
     "titlePlaceholder": "Voer een titel in",
 
     "descriptionLabel": "Beschrijving",
-    "descriptionPlaceholder": "Voer een beschrijving in"
+    "descriptionPlaceholder": "Voer een beschrijving in",
+
+    "statusLabel": "Status",
+    "editLabel": "Bewerken"
   },
   "warning": {
     "title": "Waarschuwing!",

@@ -5,16 +5,30 @@ import {ProjectCardEdit} from "@/features/projects/components/project-cards/Proj
 
 export interface ProjectCardProps {
     project: Project;
-    onUpdate: () => void;
+    projects: Project[];
+    setProjects: (projects: Project[]) => void;
 }
 
-export default function ProjectCard({project, onUpdate}: ProjectCardProps) {
+export function ProjectCard({project, projects, setProjects}: ProjectCardProps) {
     const [edit, setEdit] = useState(false);
+
+    const toggleEdit = () => {
+        setEdit(!edit);
+    }
 
     return (
         <>
-            {!edit && <ProjectCardDisplay project={project} edit={edit} setEdit={setEdit}/>}
-            {edit && <ProjectCardEdit project={project} edit={edit} setEdit={setEdit} onUpdate={onUpdate}/>}
+            {!edit && <ProjectCardDisplay
+                project={project}
+                toggleEdit={toggleEdit}
+            />}
+            {edit && <ProjectCardEdit
+                project={project}
+                projects={projects}
+                setProjects={setProjects}
+                toggleEdit={toggleEdit}
+            />}
+
         </>
     )
         ;

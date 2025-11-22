@@ -24,6 +24,12 @@ export function ZodTextField<T extends FieldValues>({
             onClick={(e) => {
                 e.stopPropagation()
             }}
+            onKeyDown={(e) => {
+                if (e.key === " " || e.key === "Enter") {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
+            }}
             margin="normal"
             label={t(`forms.${itemKey}Label`)}
             placeholder={t(`forms.${itemKey}Placeholder`)}

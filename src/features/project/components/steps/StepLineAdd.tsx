@@ -1,4 +1,4 @@
-import {Step, UpdateStep, UpdateStepForm} from "@/api/domain/projects/Step";
+import {CreateStep, CreateStepForm, Step} from "@/api/domain/projects/Step";
 import {Button, MenuItem, Select, Stack, TableCell, TableRow, Typography} from "@mui/material";
 import React from "react";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -11,42 +11,38 @@ import CheckIcon from "@mui/icons-material/Check";
 import {sendApi} from "@/api/domain/api";
 
 export interface StepLineEditProps {
-    setEdit: (edit: boolean) => void;
-    step: Step;
+    setAdding: (edit: boolean) => void;
+    goalId: number;
     steps: Step[];
     setSteps: (steps: Step[]) => void;
 }
 
-export const StepLineEdit = ({setEdit, step, steps, setSteps}: StepLineEditProps) => {
+export const StepLineAdd = ({setAdding, goalId, steps, setSteps}: StepLineEditProps) => {
     const {t} = useTranslation("projects");
-    const {register, handleSubmit, formState: {errors}, control, reset} = useForm<UpdateStep>({
-        resolver: zodResolver(UpdateStepForm),
+    const sequence = steps.length > 0 ? steps[steps.length - 1].sequence + 1 : 1
+    const {register, handleSubmit, formState: {errors}, control, reset} = useForm<CreateStep>({
+        resolver: zodResolver(CreateStepForm),
         defaultValues: {
-            id: step.id,
-            sequence: step.sequence,
-            objective: step.objective,
-            description: step.description,
-            requirements: step.requirements,
-            status: step.status,
-
+            goalId: goalId,
+            sequence: sequence,
+            status: Status.NotStarted.valueOf()
         }
     });
 
-    async function submitHandler(data: UpdateStep) {
-        const result = await sendApi("/steps", "PUT", data);
-        if (result) setSteps(steps.map(s => s.id !== data.id ? s : result));
-        setEdit(false);
+    async function submitHandler(data: CreateStep) {
+        const result = await sendApi("/steps", "POST", data);
+        if (result) setSteps([...steps, result]);
     }
 
     function cancelHandler(): void {
         reset();
-        setEdit(false);
+        setAdding(false);
     }
 
     return (
-        <TableRow key={step.id} content={"form"} onSubmit={handleSubmit(submitHandler)}>
+        <TableRow key={"adding-line"} content={"form"} onSubmit={handleSubmit(submitHandler)}>
             <TableCell align="center">
-                <Typography variant={"body1"}>{step.sequence}</Typography>
+                <Typography variant={"body1"}>{sequence}</Typography>
                 <input
                     type="hidden"
                     {...register(`sequence`)}
@@ -74,7 +70,6 @@ export const StepLineEdit = ({setEdit, step, steps, setSteps}: StepLineEditProps
                 <Controller
                     name={`status`}
                     control={control}
-                    defaultValue={step.status}
                     render={({field}) => (
                         <Select
                             {...field}

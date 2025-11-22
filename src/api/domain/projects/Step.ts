@@ -27,13 +27,14 @@ export const UpdateStepForm = z.object({
 export type UpdateStep = z.infer<typeof UpdateStepForm>;
 
 export const CreateStepForm = z.object({
+    goalId: number(),
     sequence: number().min(1, "Sequence is required."),
 
     objective: string().min(1, "Objective is required."),
     description: string(),
     requirements: string(),
 
-    status: string()
+    status: number()
 })
 
 export type CreateStep = z.infer<typeof CreateStepForm>;

@@ -9,12 +9,13 @@ import CheckIcon from "@mui/icons-material/Check";
 
 
 export interface ProjectCardEditPanelProps {
+    handleSave: () => void;
     handleDelete?: () => void;
     handleArchive?: () => void;
     handleCancel?: () => void;
 }
 
-export default function EditPanel({handleDelete, handleArchive, handleCancel}: ProjectCardEditPanelProps) {
+export default function EditPanel({handleSave, handleDelete, handleArchive, handleCancel}: ProjectCardEditPanelProps) {
     const {t} = useTranslation("projects");
     const [showWarning, setShowWarning] = useState("");
 
@@ -24,6 +25,7 @@ export default function EditPanel({handleDelete, handleArchive, handleCancel}: P
         } else {
             handleDelete?.()
         }
+        setShowWarning("");
     }
 
     const handleClose = () => {
@@ -45,7 +47,7 @@ export default function EditPanel({handleDelete, handleArchive, handleCancel}: P
                         <ArchiveOutlinedIcon/>
                     </Button>
                 }
-                <Button color={"success"} variant={"outlined"} type={"submit"}>
+                <Button color={"success"} variant={"outlined"} onClick={() => handleSave()}>
                     <SaveOutlinedIcon/>
                 </Button>
                 <Button
