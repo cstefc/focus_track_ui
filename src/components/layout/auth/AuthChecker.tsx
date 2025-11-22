@@ -1,6 +1,6 @@
 import React from "react";
-import {Spinner} from "react-bootstrap";
 import useAuthCheck from "./useAuthCheck";
+import Loading from "@/components/ui/Loading";
 
 interface Props {
     children: React.ReactNode;
@@ -9,13 +9,6 @@ interface Props {
 export default function AuthChecker({children}: Props) {
     const {user, loading} = useAuthCheck();
 
-    if (loading) {
-        return (
-            <div className="d-flex justify-content-center align-items-center" style={{height: "100vh"}}>
-                <Spinner animation="border" role="status"/>
-            </div>
-        );
-    }
-
+    if (loading) return (<Loading/>);
     return (<>{user && children}</>);
 }

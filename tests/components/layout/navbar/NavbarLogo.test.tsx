@@ -1,4 +1,4 @@
-import NavbarLogo from "@/components/layout/navbar/NavbarLogo";
+import AppBarLogo from "../../../../src/components/ui/navbar/logo/AppBarLogo";
 import {render, screen} from "@testing-library/react";
 
 describe("Navbar Logo", () => {
@@ -6,7 +6,7 @@ describe("Navbar Logo", () => {
         // GIVEN
 
         // WHEN
-        render(<NavbarLogo destination={"/"} />);
+        render(<AppBarLogo destination={"/"} />);
 
         // THEN
         const image = screen.getByRole('img');

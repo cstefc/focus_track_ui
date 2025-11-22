@@ -99,7 +99,7 @@ describe('CrudRepository', () => {
                 Authorization: "Bearer mock-token",
                 "Content-Type": "application/json",
             },
-            method: "UPDATE",
+            method: "PUT",
             body: JSON.stringify(data)
         })
         expect(result).toEqual({item: "returned from server"});

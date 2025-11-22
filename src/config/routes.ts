@@ -1,7 +1,8 @@
-import Planning from "@/features/planning/Planning";
+import PlanningScreen from "@/features/planning/PlanningScreen";
 import Home from "@/features/home/Home";
 import Dashboard from "@/features/dashboard/Dashboard";
-import Projects from "@/features/projects/Projects";
+import ProjectsScreen from "@/features/projects/ProjectsScreen";
+import ProjectScreen from "@/features/project/ProjectScreen";
 
 export interface RouteType {
     path: string;
@@ -39,22 +40,29 @@ const routes: RouteType[] = [
         component: Dashboard,
         name: "dashboard",
         protected: true,
-        navbar: true,
+        navbar: false,
     },
     {
         path: "/planning",
-        component: Planning,
+        component: PlanningScreen,
         name: "planning",
         protected: true,
-        navbar: true,
+        navbar: false,
     },
     {
         path: "/projects",
-        component: Projects,
+        component: ProjectsScreen,
         name: "projects",
         protected: true,
         navbar: true,
     },
+    {
+        path: "/projects/:id",
+        component: ProjectScreen,
+        name: "Project",
+        protected: true,
+        navbar: false,
+    }
 ];
 
 export default routes;

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {Container} from "react-bootstrap";
 import {calendarList} from "@/lib/date";
 import DayButton from "./DayButton";
+import {Box} from "@mui/material";
 
 export interface MonthViewProps {
     selected: Date;
@@ -31,14 +31,16 @@ export default function MonthView({selected, setSelected}: MonthViewProps) {
     }, [selected]);
 
     return (
-        <Container className={"month-view"}>
+        <Box display={"grid"} gridTemplateColumns={"repeat(auto-fill, 1fr)"} gap={"0.25rem"} padding={"0.5rem"}
+             boxSizing={"border-box"}
+        >
             {rows.map((row: Date[], idx: number) => (
-                <div className={"week-row"} key={idx}>
+                <Box display={"grid"} gridTemplateColumns={"repeat(7, 1fr)"} gap={"0.25rem"} key={idx}>
                     {row.map((date, btn_idx: number) => (
                         <DayButton key={btn_idx} date={date} selected={selected} setSelected={setSelected}/>
                     ))}
-                </div>
+                </Box>
             ))}
-        </Container>
+        </Box>
     );
 }

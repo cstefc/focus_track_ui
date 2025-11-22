@@ -1,8 +1,7 @@
 import MonthView from "./MonthView";
 import React from "react";
 import DateSelector from "./DateSelector";
-import './calendar.css'
-import {Container} from "react-bootstrap";
+import {Box} from "@mui/material";
 
 export interface CalendarViewProps {
     date: Date;
@@ -11,9 +10,9 @@ export interface CalendarViewProps {
 
 export default function Calendar({date, setDate}: CalendarViewProps) {
     return (
-        <Container fluid>
+        <Box display={"flex"} flexDirection={"column"}>
             <DateSelector date={date} setDate={setDate}/>
             <MonthView selected={date} setSelected={setDate}/>
-        </Container>
+        </Box>
     );
 }

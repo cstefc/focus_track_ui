@@ -17,7 +17,7 @@ import nlHome from './locales/nl/home.json'
 import nlLogin from './locales/nl/login.json'
 import nlProjects from './locales/nl/projects.json'
 
-i18n
+void i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
