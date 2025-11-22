@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
 import EditPanel from "@/components/ui/EditPanel";
-import {Box, TextField, Typography} from "@mui/material";
+import {Box, CardActions, TextField, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import {deleteApi, sendApi} from "@/api/domain/api";
@@ -16,7 +16,7 @@ export interface ProjectCardEditProps {
 }
 
 export function ProjectCardEdit({project, projects, setProjects, toggleEdit}: ProjectCardEditProps) {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm<UpdateProject>({
+    const {register, handleSubmit, formState: {errors, isSubmitting}, reset} = useForm<UpdateProject>({
         resolver: zodResolver(UpdateProjectForm),
         defaultValues: {
             id: project.id,
@@ -36,7 +36,7 @@ export function ProjectCardEdit({project, projects, setProjects, toggleEdit}: Pr
     async function handleArchive(data: UpdateProject) {
         data.archived = true;
         const result = await sendApi<Project>(`/projects`, "PUT", data);
-        if (result){
+        if (result) {
             setProjects(projects.map((project) => project.id == data.id ? result : project));
         }
         toggleEdit()
@@ -49,27 +49,25 @@ export function ProjectCardEdit({project, projects, setProjects, toggleEdit}: Pr
 
     async function updateHandler(data: UpdateProject) {
         const result = await sendApi<Project>(`/projects`, "PUT", data);
-        if (result){
+        if (result) {
             setProjects(projects.map((project) => project.id == data.id ? result : project));
         }
         toggleEdit()
     }
 
     return (
-        <Card sx={{
-            padding: "16px",
-            margin: "8px",
-        }}>
-            <CardContent>
-
-                <Typography gutterBottom
-                            variant={'h5'}
-                            component={"div"}
-                            sx={{marginBottom: "16px"}}
-                >{t("edit.projectTitle")}</Typography>
+        <Card sx={{height: "100%", width: "100%", display: "flex", flexDirection: "column"}}>
+            <CardContent sx={{flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                 <Box component={"form"} onSubmit={handleSubmit(updateHandler)}
                      sx={{display: "flex", flexDirection: "column", gap: 2}}
                 >
+                    <Typography gutterBottom
+                                variant={'h5'}
+                                component={"div"}
+                                sx={{marginBottom: "16px"}}
+                    >
+                        {t("edit.projectTitle")}
+                    </Typography>
                     <TextField
                         label={t("forms.titleLabel")}
                         placeholder={t("forms.titlePlaceholder")}
@@ -87,9 +85,13 @@ export function ProjectCardEdit({project, projects, setProjects, toggleEdit}: Pr
                         fullWidth
                     />
 
-                    <EditPanel handleSave={handleSubmit(updateHandler)} handleDelete={handleDelete} handleArchive={handleSubmit(handleArchive)} handleCancel={handleCancel}/>
                 </Box>
             </CardContent>
+            <CardActions sx={{display: "flex", flexDirection: "column"}}>
+                <EditPanel handleSave={handleSubmit(updateHandler)} handleDelete={handleDelete}
+                           handleArchive={handleSubmit(handleArchive)}
+                           handleCancel={handleCancel} isSubmitting={isSubmitting}/>
+            </CardActions>
         </Card>
     )
         ;

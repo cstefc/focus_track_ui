@@ -48,11 +48,11 @@ export default function GoalAccordionEdit({goal, goals, setGoals, setEdit}: Goal
                 <Stack direction={"row"} justifyContent={"flex-end"} spacing={0}>
                     <ZodTextField translation_scope={"projects"} item={"description"} itemKey={"description"}
                                   register={register} errors={errors.description}/>
-                    <Button color={"error"} onClick={handleCancel} disabled={isSubmitting}>
-                        <CancelIcon/>
-                    </Button>
                     <Button onClick={handleSubmit(submitHandler)} disabled={isSubmitting} color={"success"} autoFocus>
                         <CheckIcon/>
+                    </Button>
+                    <Button color={"error"} onClick={handleCancel} disabled={isSubmitting}>
+                        <CancelIcon/>
                     </Button>
                 </Stack>
             </AccordionDetails>

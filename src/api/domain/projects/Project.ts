@@ -10,7 +10,7 @@ export interface Project {
 export const CreateProjectForm = z.object({
     title: string().min(1, "Project title is required."),
     description: string().min(1, "Description is required."),
-    archived: boolean()
+    archived: boolean().default(false),
 })
 
 export type CreateProject = z.infer<typeof CreateProjectForm>;

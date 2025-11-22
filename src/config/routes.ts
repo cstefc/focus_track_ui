@@ -40,14 +40,14 @@ const routes: RouteType[] = [
         component: Dashboard,
         name: "dashboard",
         protected: true,
-        navbar: true,
+        navbar: false,
     },
     {
         path: "/planning",
         component: PlanningScreen,
         name: "planning",
         protected: true,
-        navbar: true,
+        navbar: false,
     },
     {
         path: "/projects",

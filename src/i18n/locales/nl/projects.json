@@ -16,12 +16,21 @@
   "forms": {
     "titleLabel": "Titel",
     "titlePlaceholder": "Voer een titel in",
-
     "descriptionLabel": "Beschrijving",
     "descriptionPlaceholder": "Voer een beschrijving in",
-
     "statusLabel": "Status",
-    "editLabel": "Bewerken"
+    "editLabel": "Bewerken",
+    "objectiveLabel": "Doelstelling",
+    "objectivePlaceholder": "Voer een doel in",
+    "requirementsLabel": "Benodigdheden",
+    "requirementsPlaceholder": "Geef de benodigdheden op"
+  },
+  "status": {
+    "Waiting": "Wachten",
+    "NotStarted": "Niet Gestart",
+    "Started": "Gestart",
+    "InProgress": "Bezig",
+    "Finished": "Klaar"
   },
   "warning": {
     "title": "Waarschuwing!",
@@ -37,6 +46,7 @@
     "createGoal": "Definieer een nieuw doel",
     "cancel": "Annuleren",
     "save": "Opslaan",
+    "continue": "Doorgaan",
     "back": "Ga terug naar het overzicht"
   },
   "noProjects": {

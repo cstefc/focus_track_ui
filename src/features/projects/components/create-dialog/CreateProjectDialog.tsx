@@ -60,7 +60,7 @@ export default function CreateProjectDialog({visible, projects, setProjects}: Cr
 
                         <DialogActions>
                             <Stack direction={"row"} padding={1} spacing={1}>
-                                <Button disabled={isSubmitting} onClick={() => {
+                                <Button color={"secondary"} disabled={isSubmitting} onClick={() => {
                                     // @ts-ignore
                                     document.activeElement?.blur();
                                     setShowDialog(false)

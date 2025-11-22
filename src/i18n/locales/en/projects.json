@@ -55,6 +55,7 @@
     "createGoal": "Define a new goal",
     "cancel": "Cancel",
     "save": "Save",
+    "continue": "Continue",
     "back": "Go back to the overview"
   },
   "noProjects": {

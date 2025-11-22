@@ -1,4 +1,4 @@
-import {Box, Button, TableCell, TableRow} from "@mui/material";
+import {Button, Stack, TableCell, TableRow} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import React from "react";
@@ -35,14 +35,14 @@ export const StepLineDisplay = ({step, steps, setSteps, setEdit}: StepLineDispla
                 <TableCell align="center">{step.requirements}</TableCell>
                 <TableCell align="center">{t(`status.${Status[step.status]}`)}</TableCell>
                 <TableCell align="center">
-                    <Box display={"flex"} justifyContent={"flex-end"} gap={0.5}>
+                    <Stack direction={"row"}>
                         <Button onClick={() => setEdit(true)}>
                             <EditIcon/>
                         </Button>
                         <Button color={"error"} onClick={handleDelete}>
                             <DeleteOutlineIcon/>
                         </Button>
-                    </Box>
+                    </Stack>
                 </TableCell>
             </TableRow>
         </>

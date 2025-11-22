@@ -26,9 +26,8 @@ export function ZodTextField<T extends FieldValues>({
             }}
             onKeyDown={(e) => {
                 if (e.key === " " || e.key === "Enter") {
-                    e.stopPropagation();
-                    e.preventDefault();
                 }
+                e.stopPropagation()
             }}
             margin="normal"
             label={t(`forms.${itemKey}Label`)}

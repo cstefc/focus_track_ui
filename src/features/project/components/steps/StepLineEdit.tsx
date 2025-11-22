@@ -1,5 +1,5 @@
 import {Step, UpdateStep, UpdateStepForm} from "@/api/domain/projects/Step";
-import {Button, MenuItem, Select, Stack, TableCell, TableRow, Typography} from "@mui/material";
+import {Button, FormControl, InputLabel, MenuItem, Select, Stack, TableCell, TableRow, Typography} from "@mui/material";
 import React from "react";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
@@ -76,20 +76,22 @@ export const StepLineEdit = ({setEdit, step, steps, setSteps}: StepLineEditProps
                     control={control}
                     defaultValue={step.status}
                     render={({field}) => (
-                        <Select
-                            {...field}
-                            label={t("forms.statusLabel")}
-                            fullWidth
-                            error={!!errors.status}
-                        >
-                            {(Object.keys(Status) as Array<keyof typeof Status>)
-                                .filter((key) => isNaN(Number(key)))
-                                .map((key) => (
-                                    <MenuItem key={key} value={Status[key]}>
-                                        {t(`status.${key}`)}
-                                    </MenuItem>
-                                ))}
-                        </Select>
+                        <FormControl fullWidth error={!!errors.status}>
+                            <InputLabel id="status-label">{t("forms.statusLabel")}</InputLabel>
+                            <Select
+                                {...field}
+                                labelId="status-label"
+                                label={t("forms.statusLabel")}
+                            >
+                                {(Object.keys(Status) as Array<keyof typeof Status>)
+                                    .filter((key) => isNaN(Number(key)))
+                                    .map((key) => (
+                                        <MenuItem key={key} value={Status[key]}>
+                                            {t(`status.${key}`)}
+                                        </MenuItem>
+                                    ))}
+                            </Select>
+                        </FormControl>
                     )}
                 />
             </TableCell>

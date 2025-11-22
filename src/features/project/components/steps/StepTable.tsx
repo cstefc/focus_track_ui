@@ -39,12 +39,12 @@ export default function StepTable({goalId}: StepTableRowsDisplayProps) {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center">#</TableCell>
+                        <TableCell width={"5%"} align="center" >#</TableCell>
                         <TableCell align="center">{t("forms.objectiveLabel")}</TableCell>
                         <TableCell align="center">{t("forms.descriptionLabel")}</TableCell>
                         <TableCell align="center">{t("forms.requirementsLabel")}</TableCell>
-                        <TableCell align="center">{t("forms.statusLabel")}</TableCell>
-                        <TableCell align="center">{t("forms.editLabel")}</TableCell>
+                        <TableCell width={"10%"} align="center">{t("forms.statusLabel")}</TableCell>
+                        <TableCell width={"5%"} align="center">{t("forms.editLabel")}</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
