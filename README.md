@@ -29,19 +29,19 @@ Focus Track is a React application currently under development. This project dem
 - **Routing**: Navigation throughout the application is handled via a top navigation bar.
 - **Authentication**: Users are authenticated using Firebase Authentication.
 - **Authorization**: Authenticated users can access restricted pages based on their login status.
-
-> ⚠️ Note: Many pages currently contain placeholder content, as development focus has temporarily shifted to backend API implementation.
-## Roadmap
-
-The project follows a **feature-driven development approach**, starting from the front-end and then integrating with the back-end. Planned features include:
-
 - **OAuth Authentication** – Secure communication between front-end and back-end.
 - **Project Management** – Ability to create and manage projects.
 - **Plans & Steps** – Add detailed plans with steps inside projects.
+
+## Roadmap
+
+The project follows a **feature-driven development approach**, starting from the front-end and then integrating with the back-end. Planned features include:
 - **Logging Feature** – Track progress and updates within projects.
 - **Events** – Add and manage events related to goals and projects.
+- **Dashboard** – Add a dashboard showing statistics 
 
 > ⚠️ Note: These features are under development and will be gradually implemented.
+
 ## Usage / Examples
 
 ### Running the Application
@@ -80,8 +80,6 @@ VITE_FIREBASE_APP_ID
    `npm run dev`
 
 4. Open the application in your browser at [http://localhost:5173](http://localhost:5173)
-
-> ⚠️ Note: The frontend is currently a work-in-progress. Many pages contain placeholder content.
 
 ---
 
