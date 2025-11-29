@@ -3,7 +3,7 @@ import {Box, Button, MenuItem} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useTheme} from "../../../layout/theme/ThemeContext";
-import ProfileMenu from "@/components/ui/ProfileMenu";
+import ProfileMenu from "@/components/ui/appbar/auth-container/ProfileMenu";
 
 export default function ThemeBox() {
     const {t} = useTranslation("general");

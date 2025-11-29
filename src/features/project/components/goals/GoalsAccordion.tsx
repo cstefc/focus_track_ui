@@ -2,7 +2,6 @@ import {useGetApi} from "@/hooks/useGetApi";
 import {Goal} from "@/api/domain/projects/Goal";
 import React, {useEffect, useState} from "react";
 import Loading from "@/components/ui/Loading";
-import CenterMessage from "@/components/layout/CenterMessage";
 import {useTranslation} from "react-i18next";
 import {Button, Stack} from "@mui/material";
 import CreateGoalDialog from "@/features/project/components/goals/CreateGoalDialog";
@@ -36,7 +35,7 @@ export function GoalsAccordion({projectId}: GoalsAccordionProps) {
                 <CreateGoalDialog projectId={projectId} goals={goals} setGoals={setGoals}/>
             </Stack>
 
-            {(!loading && goals.length === 0) && <CenterMessage><p>{t("noGoals")}</p></CenterMessage>}
+            {(!loading && goals.length === 0) && <p>{t("noGoals")}</p>}
             {goals.sort((g1, g2) => g1.id - g2.id).map((goal: Goal, index) => (
                 <GoalAccordion key={index} goal={goal} goals={goals} setGoals={setGoals}/>
             ))}

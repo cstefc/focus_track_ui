@@ -5,7 +5,7 @@ import React from "react";
 import {Step} from "@/api/domain/projects/Step";
 import {Status} from "@/api/domain/predefined/Status";
 import {useTranslation} from "react-i18next";
-import {deleteApi} from "@/api/domain/api";
+import {deleteApi} from "@/api/api";
 
 export interface StepLineDisplayProps {
     setEdit: (edit: boolean) => void;

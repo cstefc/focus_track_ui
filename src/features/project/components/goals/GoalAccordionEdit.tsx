@@ -6,7 +6,7 @@ import {AccordionDetails, AccordionSummary, Button, Stack} from "@mui/material";
 import {ZodTextField} from "@/components/layout/forms/ZodTextField";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CheckIcon from "@mui/icons-material/Check";
-import {sendApi} from "@/api/domain/api";
+import {sendApi} from "@/api/api";
 
 export interface GoalAccordionItemEditProps {
     goal: Goal;

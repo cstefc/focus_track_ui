@@ -6,7 +6,7 @@ import EditPanel from "@/components/ui/EditPanel";
 import {Box, CardActions, TextField, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import {deleteApi, sendApi} from "@/api/domain/api";
+import {deleteApi, sendApi} from "@/api/api";
 
 export interface ProjectCardEditProps {
     projects: Project[];

@@ -1,10 +1,10 @@
 import {render, screen} from "@testing-library/react";
-import MyNavbar from "@/components/layout/navbar/MyNavbar";
+import MyNavbar from "@/components/ui/appbar/MyAppBar";
 import {fakeAuth, mockChangeLanguage, mockNavigate, test_user} from "../../../setup";
-import routes, {RouteType} from "../../../../src/config/routes";
+import routes, {RouteType} from "@/config/routes";
 import userEvent, {UserEvent} from "@testing-library/user-event";
 import {MemoryRouter} from "react-router-dom";
-import {ThemeProvider} from "@/components/layout/theme/ThemeContext";
+import {CustomThemeProvider} from "@/components/layout/theme/ThemeContext";
 
 
 describe("MyNavbar", () => {
@@ -15,23 +15,22 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
                     <MyNavbar/>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         );
-
 
         // THEN
         const logo = screen.getByText('Focus Track');
         expect(logo).toBeInTheDocument();
 
         const found_routes = screen.queryAllByText(/routes\..*/);
-        expect(found_routes.length).toBe(expected_routes.length);
+        expect(found_routes.length).toBe(expected_routes.length * 2); // Once for desktop and one for mobile
 
-        const profile_button = screen.getByText("test user");
-        expect(profile_button).toBeInTheDocument();
+        const profile_buttons = screen.queryAllByText("test user");
+        expect(profile_buttons.length).toBe(2);
     });
 
     it("renders correctly logged out", () => {
@@ -41,11 +40,11 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
                     <MyNavbar/>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         );
 
         // THEN
@@ -53,10 +52,10 @@ describe("MyNavbar", () => {
         expect(logo).toBeInTheDocument();
 
         const found_routes = screen.queryAllByText(/routes\..*/);
-        expect(found_routes.length).toBe(expected_routes.length);
+        expect(found_routes.length).toBe(expected_routes.length*2);
 
-        const login_button = screen.getByText('authentication.signIn');
-        expect(login_button).toBeInTheDocument();
+        const login_buttons = screen.getAllByText('authentication.signIn');
+        expect(login_buttons.length).toBe(2);
     });
 
     it("Logo navigates to home page", async () => {
@@ -65,11 +64,11 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
                     <MyNavbar/>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         );
 
         const logo = screen.getByText('Focus Track');
@@ -77,7 +76,7 @@ describe("MyNavbar", () => {
 
         // THEN
         expect(logo).toBeInTheDocument();
-        expect(mockNavigate).toHaveBeenCalled();
+        expect(mockNavigate).toHaveBeenCalledWith("/");
     });
 
     it("Routes work", async () => {
@@ -88,18 +87,21 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
                     <MyNavbar/>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         );
 
         for (const expected of expected_routes) {
-            await user.click(screen.getByText("routes." + expected.name));
+            const options = await screen.getAllByText("routes." + expected.name)
+            for (const option of options){
+                await user.click(option);
+                // THEN
+                expect(mockNavigate).toHaveBeenCalled();
+            }
 
-            // THEN
-            expect(mockNavigate).toHaveBeenCalled();
         }
 
     });
@@ -110,18 +112,22 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
                     <MyNavbar/>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         );
 
-        await user.click(screen.getByText("languages.en"));
-        await user.click(screen.getByText("languages.nl"));
+        const options = screen.getAllByText("EN");
+        for (const option of options){
+            await user.click(option);
+            await user.click(screen.getByText("NL"));
 
-        // THEN
-        expect(mockChangeLanguage).toHaveBeenCalledWith('nl')
+            // THEN
+            expect(mockChangeLanguage).toHaveBeenCalledWith('nl')
+        }
+
     })
 
     it("should be able to change themes", async () => {
@@ -130,18 +136,26 @@ describe("MyNavbar", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
                     <MyNavbar/>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         );
 
-        await user.click(screen.getByText("theme.dark"));
+        const options = screen.getAllByText("theme.dark");
+        expect(options.length).toBe(2);
+
+
+        await user.click(options[0]);
         await user.click(screen.getByText("theme.light"));
 
         // THEN
         expect(localStorage.getItem("theme")).toBe('light')
+
+        await user.click(options[1]);
+        await user.click(screen.getByText("theme.dark"))
+        expect(localStorage.getItem("theme")).toBe('dark');
     })
 
 })

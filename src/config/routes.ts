@@ -47,7 +47,7 @@ const routes: RouteType[] = [
         component: PlanningScreen,
         name: "planning",
         protected: true,
-        navbar: false,
+        navbar: true,
     },
     {
         path: "/projects",

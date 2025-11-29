@@ -6,7 +6,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {CreateGoal, CreateGoalForm, Goal} from "@/api/domain/projects/Goal";
 import {Priority} from "@/api/domain/predefined/Priority";
 import {ZodTextField} from "@/components/layout/forms/ZodTextField";
-import {sendApi} from "@/api/domain/api";
+import {sendApi} from "@/api/api";
 
 export interface CreateGoalDialogProps {
     projectId: string;

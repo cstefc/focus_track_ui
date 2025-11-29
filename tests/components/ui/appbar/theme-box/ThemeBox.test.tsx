@@ -1,8 +1,9 @@
 import {MemoryRouter} from "react-router-dom";
-import {ThemeProvider} from "@/components/layout/theme/ThemeContext";
+import {CustomThemeProvider} from "@/components/layout/theme/ThemeContext";
 import {render, screen} from "@testing-library/react";
-import MyNavbar from "@/components/layout/navbar/MyNavbar";
 import userEvent from "@testing-library/user-event";
+import ThemeBox from "../../../../../src/components/ui/appbar/theme-box/ThemeBox";
+import {AppBar} from "@mui/material";
 
 describe("Theme Box", () => {
 
@@ -11,13 +12,14 @@ describe("Theme Box", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
-                    <MyNavbar/>
+                    <AppBar>
+                        <ThemeBox/>
+                    </AppBar>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         )
-
         // THEN
         const selector = screen.getByText(/theme\..*/);
         expect(selector).toBeInTheDocument();
@@ -29,14 +31,15 @@ describe("Theme Box", () => {
 
         // WHEN
         render(
-            <ThemeProvider>
+            <CustomThemeProvider>
                 <MemoryRouter>
-                    <MyNavbar/>
+                    <AppBar>
+                        <ThemeBox/>
+                    </AppBar>
                 </MemoryRouter>
-            </ThemeProvider>
+            </CustomThemeProvider>
         )
         await user.click(screen.getByText(/theme.dark/));
-        screen.debug()
         await user.click(screen.getByText(/theme.light/))
 
         // THEN

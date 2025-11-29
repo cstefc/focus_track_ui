@@ -1,11 +1,8 @@
 import {Box, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
-export interface AppBarLogoProps {
-    destination?: string;
-}
 
-export default function AppBarLogo({destination = "/"}: AppBarLogoProps) {
+export default function AppBarLogo() {
     const navigate = useNavigate();
 
     return (
@@ -16,7 +13,7 @@ export default function AppBarLogo({destination = "/"}: AppBarLogoProps) {
                  "&:hover": {opacity: 0.8},
              }}
 
-             onClick={() => navigate(destination)}
+             onClick={() => navigate("/")}
         >
             {/** <Avatar
              src="/FocusTrackLogo_600x600.jpg"

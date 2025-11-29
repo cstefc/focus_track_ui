@@ -1,5 +1,5 @@
 import {render, screen} from "@testing-library/react";
-import LanguageBox from "@/components/layout/navbar/language-box/LanguageBox";
+import LanguageBox from "@/components/ui/appbar/language-box/LanguageBox";
 import i18n from "i18next";
 import {expect} from "vitest";
 import userEvent from "@testing-library/user-event";
@@ -26,9 +26,9 @@ describe("LanguageBox Component", () => {
 
         // WHEN
         render(<LanguageBox/>);
-        await user.click(screen.getByText("languages.en"));
         screen.debug()
-        await user.click(screen.getByText("languages.nl"));
+        await user.click(screen.getByText("EN"));
+        await user.click(screen.getByText("NL"));
 
         // THEN
         expect(mockChangeLanguage).toHaveBeenCalledWith('nl')

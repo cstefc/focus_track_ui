@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import routes from "./config/routes";
 import AuthChecker from "./components/layout/auth/AuthChecker";
-import MyAppBar from "@/components/ui/navbar/MyAppBar";
+import MyAppBar from "@/components/ui/appbar/MyAppBar";
 import {getAuth} from "firebase/auth";
 import Loading from "@/components/ui/Loading";
 import {Box} from "@mui/material";

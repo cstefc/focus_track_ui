@@ -1,7 +1,7 @@
 import {Box, Button, MenuItem} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
-import ProfileMenu from "@/components/ui/ProfileMenu";
+import ProfileMenu from "@/components/ui/appbar/auth-container/ProfileMenu";
 
 export default function LanguageBox() {
     const {i18n} = useTranslation();
@@ -10,6 +10,7 @@ export default function LanguageBox() {
     const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
     const handleClose = () => setAnchorEl(null);
 
+    const currentLanguage = i18n.language || "en";
     const changeLanguage = (lng: string) => {
         void i18n.changeLanguage(lng);
         handleClose();
@@ -27,13 +28,13 @@ export default function LanguageBox() {
                     },
                 }}
             >
-                {i18n.language.toUpperCase()}
+                {currentLanguage.toUpperCase()}
             </Button>
 
             <ProfileMenu anchorEl={anchorEl} handleOpen={handleOpen} handleClose={handleClose}>
                 {Object.keys(i18n.options.resources || {})
                     .map((lng) => (
-                        (lng.toUpperCase() !== i18n.language.toUpperCase()) ?
+                        (lng.toUpperCase() !== currentLanguage) ?
                         <MenuItem key={lng} onClick={() => changeLanguage(lng)}>
                             {lng.toUpperCase()}
                         </MenuItem> : null

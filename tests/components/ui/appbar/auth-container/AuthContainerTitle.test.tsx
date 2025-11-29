@@ -1,5 +1,5 @@
 import {render, screen} from "@testing-library/react";
-import AuthContainerTitle from "../../../../../src/components/ui/navbar/auth-container/AuthContainerTitle";
+import AuthContainerTitle from "@/components/ui/appbar/auth-container/AuthContainerTitle";
 import {User} from "firebase/auth";
 
 describe("AuthContainer", () => {
@@ -26,11 +26,11 @@ describe("AuthContainer", () => {
 
         // WHEN
         render(<AuthContainerTitle user={user}/>);
+        screen.debug()
 
         // THEN
-        const photo = screen.getByRole('img');
-        expect(photo).toBeInTheDocument();
-        expect(photo).not.toHaveAttribute("src", "photo.jpg");
+        const photo = screen.queryByRole('img');
+        expect(photo).not.toBeInTheDocument();
 
         const name = screen.getByText('user');
         expect(name).toBeInTheDocument();
@@ -46,7 +46,7 @@ describe("AuthContainer", () => {
         const photo = screen.queryByRole('img');
         expect(photo).not.toBeInTheDocument();
 
-        const name = screen.queryByText('user name');
+        const name = screen.queryByText('user');
         expect(name).not.toBeInTheDocument();
 
         const login = screen.getByText("authentication.signIn");

@@ -1,7 +1,7 @@
-import AppBarRoutes from "../../../../src/components/ui/navbar/routes/AppBarRoutes";
+import AppBarRoutes from "@/components/ui/appbar/routes/AppBarRoutes";
 import {render, screen} from "@testing-library/react";
 import routes from "@/config/routes";
-import {fakeAuth, test_user} from "../../../setup";
+import {fakeAuth, test_user} from "../../../../setup";
 import {MemoryRouter} from "react-router-dom";
 
 describe("Navbar Routes", () => {
@@ -13,7 +13,7 @@ describe("Navbar Routes", () => {
         // WHEN
         render(
             <MemoryRouter>
-                <AppBarRoutes onNavigate={onNavigate}/>
+                <AppBarRoutes onNavigate={onNavigate} mobile={false}/>
             </MemoryRouter>
         );
 
@@ -32,7 +32,7 @@ describe("Navbar Routes", () => {
         // WHEN
         render(
             <MemoryRouter>
-                <AppBarRoutes onNavigate={onNavigate}/>
+                <AppBarRoutes onNavigate={onNavigate} mobile={false}/>
             </MemoryRouter>
         );
         screen.debug()

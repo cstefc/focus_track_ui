@@ -1,4 +1,4 @@
-import PictureCarousel from "../../../../src/components/ui/PictureCarousel";
+import PictureCarousel from "../../../src/components/ui/PictureCarousel";
 import {render, screen} from "@testing-library/react";
 
 describe("Picture Carousel", () => {
