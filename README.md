@@ -1,5 +1,3 @@
-
-
 # Focus Track UI
 
 ![status](https://img.shields.io/badge/status-WIP-yellow)
@@ -23,7 +21,7 @@ Focus Track is a React application currently under development. This project dem
 - **Routing**: React Router DOM 7.9.4
 - **i18n / Localization**: react-i18next 16
 - **Testing**: Vitest + jsdom
-## Features (Work in Progress)
+## Features
 
 - **Environment Variables**: Sensitive information, such as API keys and credentials, is managed securely using `.env` files.
 - **Routing**: Navigation throughout the application is handled via a top navigation bar.
