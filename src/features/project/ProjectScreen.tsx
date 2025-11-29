@@ -24,7 +24,7 @@ export default function ProjectScreen() {
     }
 
     return (
-        <Box margin={"50px"}>
+        <Box padding={"50px"} >
             <Typography variant={"h3"} sx={{marginBottom: "50px"}}>
                 {project?.title}
             </Typography>

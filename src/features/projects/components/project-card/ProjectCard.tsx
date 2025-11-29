@@ -29,6 +29,8 @@ export function ProjectCard({project}: ProjectCardProps) {
         <Container sx={{
             height: "350px",
             width: "400px",
+            cursor: "pointer",
+            "&:hover": {opacity: 0.8}
         }}>
             <Card onClick={handleClick} sx={{height: "100%", width: "100%", display: "flex", flexDirection: "column"}}>
                 {!edit && <ProjectCardDisplay project={project} onEdit={onEdit}/>}

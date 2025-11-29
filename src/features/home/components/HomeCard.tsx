@@ -13,7 +13,7 @@ export default function HomeCard({card}: HomeCardProps) {
     const {t} = useTranslation("home");
 
     return (
-        <Card sx={{}}>
+        <Card sx={{height: "300px", width: "300px", margin:"50px"}}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">{t(`cards.${card}.title`)}</Typography>
                 <Typography variant="body1" component="div">{t(`cards.${card}.text`)}</Typography>

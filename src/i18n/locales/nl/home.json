@@ -1,4 +1,11 @@
 {
+  "title": "Neem de Controle over je Projecten",
+  "CTA-loggedIn": "Beheer je projecten efficiënt en blijf de baas over je werk.",
+  "CTA-loggedOut": "Start nu en log in door op de knop hieronder te klikken",
+  "button": {
+    "loggedIn": "Bekijk Projecten",
+    "loggedOut": "Log in met Google"
+  },
   "cards": {
     "success": {
       "title": "Succes: De Kracht van Consistentie",
