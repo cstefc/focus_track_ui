@@ -1,5 +1,5 @@
 import {fakeAuth, test_user} from "../setup";
-import {deleteApi, getApi, sendApi} from "../../src/api/api";
+import {deleteApi, getApi, sendApi} from "../../src/api/apiCall";
 
 interface testObject {
     item: string

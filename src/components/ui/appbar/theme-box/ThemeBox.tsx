@@ -1,9 +1,8 @@
 import {themes} from "@/config/theme";
-import {Box, Button, MenuItem} from "@mui/material";
+import {Box, Button, Menu, MenuItem} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useTheme} from "../../../layout/theme/ThemeContext";
-import ProfileMenu from "@/components/ui/appbar/auth-container/ProfileMenu";
 
 export default function ThemeBox() {
     const {t} = useTranslation("general");
@@ -23,14 +22,16 @@ export default function ThemeBox() {
             }}>
                 {t(`theme.${mode}`)}
             </Button>
-            <ProfileMenu handleOpen={handleOpen} handleClose={handleClose} anchorEl={anchorEl}>
+            <Menu id="account-menu" anchorEl={anchorEl} onClose={handleClose} onClick={handleClose} open={Boolean(anchorEl)}>
                 {Object.keys(themes).map((option) => {
                     return ((option !== mode) ?
-                        <MenuItem key={option} onClick={() => {changeMode(option)}}>
+                        <MenuItem key={option} onClick={() => {
+                            changeMode(option)
+                        }}>
                             {t(`theme.${option}`)}
                         </MenuItem> : null);
                 })}
-            </ProfileMenu>
+            </Menu>
         </Box>
     );
 }

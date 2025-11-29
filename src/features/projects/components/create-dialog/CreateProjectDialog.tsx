@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import React, {JSX, useState} from "react";
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack} from "@mui/material";
 import {ZodTextField} from "@/components/layout/forms/ZodTextField";
-import {sendApi} from "@/api/api";
+import {sendApi} from "@/api/apiCall";
 
 export interface CreateProjectDialogProps {
     visible: boolean;

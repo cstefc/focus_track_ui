@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Box} from "@mui/material";
+import {Box, Menu} from "@mui/material";
 import AuthContainerTitle from "./AuthContainerTitle";
 import AuthContainerGoogleLogin from "./AuthContainerGoogleLogin";
 import AuthContainerGoogleLogout from "./AuthContainerGoogleLogout";
 import {getAuth, signInWithPopup, signOut, User} from "firebase/auth";
-import ProfileMenu from "@/components/ui/appbar/auth-container/ProfileMenu";
 import {Providers} from "@/config/firebase";
 import {useNavigate} from "react-router-dom";
 
@@ -65,10 +64,10 @@ export default function AuthContainer({}: AuthContainerProps) {
                 <AuthContainerTitle user={user}/>
             </Box>
 
-            <ProfileMenu anchorEl={anchorEl} handleClose={handleClose} handleOpen={handleOpen}>
+            <Menu id="account-menu" anchorEl={anchorEl} onClose={handleClose} onClick={handleClose} open={Boolean(anchorEl)}>
                 <AuthContainerGoogleLogout hidden={loading || !user} handleLogout={handleSignOutWithGoogle}/>
                 <AuthContainerGoogleLogin hidden={loading || user !== null} handleLogin={handleSignInWithGoogle}/>
-            </ProfileMenu>
+            </Menu>
         </Box>
     );
 }

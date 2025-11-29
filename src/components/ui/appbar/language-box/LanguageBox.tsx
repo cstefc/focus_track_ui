@@ -1,7 +1,6 @@
-import {Box, Button, MenuItem} from "@mui/material";
+import {Box, Button, Menu, MenuItem} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
-import ProfileMenu from "@/components/ui/appbar/auth-container/ProfileMenu";
 
 export default function LanguageBox() {
     const {i18n} = useTranslation();
@@ -31,7 +30,7 @@ export default function LanguageBox() {
                 {currentLanguage.toUpperCase()}
             </Button>
 
-            <ProfileMenu anchorEl={anchorEl} handleOpen={handleOpen} handleClose={handleClose}>
+            <Menu id="account-menu" anchorEl={anchorEl} onClose={handleClose} onClick={handleClose} open={Boolean(anchorEl)}>
                 {Object.keys(i18n.options.resources || {})
                     .map((lng) => (
                         (lng.toUpperCase() !== currentLanguage) ?
@@ -39,7 +38,7 @@ export default function LanguageBox() {
                             {lng.toUpperCase()}
                         </MenuItem> : null
                     ))}
-            </ProfileMenu>
+            </Menu>
         </Box>
     );
 }

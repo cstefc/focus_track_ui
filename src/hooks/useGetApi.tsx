@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getApi} from "@/api/api";
+import {getApi} from "@/api/apiCall";
 
 export function useGetApi<T>(path: string) {
     const [loading, setLoading] = useState(true);

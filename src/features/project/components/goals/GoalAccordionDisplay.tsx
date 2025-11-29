@@ -4,7 +4,7 @@ import {Box, AccordionDetails, AccordionSummary, Button, Stack, Typography} from
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import {deleteApi} from "@/api/api";
+import {deleteApi} from "@/api/apiCall";
 
 export interface GoalAccordionItemDisplayProps {
     goal: Goal;
