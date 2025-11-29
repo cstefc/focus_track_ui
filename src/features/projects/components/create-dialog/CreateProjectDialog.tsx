@@ -1,21 +1,20 @@
-import {CreateProject, CreateProjectForm, Project} from "@/api/domain/projects/Project";
+import {CreateProject, CreateProjectForm} from "@/api/domain/projects/Project";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
 import React, {JSX, useState} from "react";
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack} from "@mui/material";
 import {ZodTextField} from "@/components/ui/forms/ZodTextField";
-import {sendApi} from "@/api/apiCall";
+import {useProjectsContext} from "@/features/projects/ProjectsScreen";
 
 export interface CreateProjectDialogProps {
     visible: boolean;
-    projects: Project[];
-    setProjects: (projects: Project[]) => void;
 }
 
-export default function CreateProjectDialog({visible, projects, setProjects}: CreateProjectDialogProps): JSX.Element {
+export default function CreateProjectDialog({visible}: CreateProjectDialogProps): JSX.Element {
     const {t} = useTranslation("projects");
     const [showDialog, setShowDialog] = useState(false);
+    const {createProject} = useProjectsContext()
 
     const {register, handleSubmit, formState: {errors, isSubmitting}, reset} = useForm<CreateProject>({
         resolver: zodResolver(CreateProjectForm),
@@ -26,11 +25,8 @@ export default function CreateProjectDialog({visible, projects, setProjects}: Cr
 
     async function submitHandler(data: CreateProject) {
         setShowDialog(false);
-        const project = await sendApi<Project>("/projects", "POST", data);
-        if (project){
-            setProjects([...projects, project]);
-            reset();
-        }
+        void createProject(data);
+        reset()
     }
 
     return (
@@ -52,9 +48,9 @@ export default function CreateProjectDialog({visible, projects, setProjects}: Cr
                         </DialogTitle>
 
                         <DialogContent>
-                            <ZodTextField translation_scope={"projects"} item={"title"} itemKey={"title"}
+                            <ZodTextField translation_scope={"projects"} item={"title"}
                                           register={register} errors={errors.title}/>
-                            <ZodTextField translation_scope={"projects"} item={"description"} itemKey={"description"}
+                            <ZodTextField translation_scope={"projects"} item={"description"}
                                           register={register} errors={errors.description}/>
                         </DialogContent>
 

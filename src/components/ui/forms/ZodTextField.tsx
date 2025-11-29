@@ -6,7 +6,6 @@ import {FieldError, FieldValues, Path, UseFormRegister} from "react-hook-form";
 export interface ZodTextFieldProps<T extends FieldValues> {
     translation_scope: string;
     item: Path<T>;
-    itemKey: string;
     register: UseFormRegister<T>;
     errors?: FieldError;
     minRows?: number;
@@ -16,7 +15,6 @@ export function ZodTextField<T extends FieldValues>({
                                                         minRows,
                                                         translation_scope,
                                                         item,
-                                                        itemKey,
                                                         register,
                                                         errors
                                                     }: ZodTextFieldProps<T>) {
@@ -32,14 +30,14 @@ export function ZodTextField<T extends FieldValues>({
                 e.stopPropagation()
             }}
             margin="dense"
-            label={t(`forms.${itemKey}Label`)}
-            placeholder={t(`forms.${itemKey}Placeholder`)}
+            label={t(`forms.${item}Label`)}
+            placeholder={t(`forms.${item}Placeholder`)}
             {...register(item)}
             error={!!errors}
             helperText={errors?.message}
-            multiline
+            multiline={Boolean(minRows)}
             minRows={minRows || 1}
-            maxRows={4}
+            maxRows={minRows? minRows + 2 : 1}
             fullWidth
         />
     );

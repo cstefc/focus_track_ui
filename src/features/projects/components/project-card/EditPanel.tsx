@@ -8,18 +8,18 @@ import CheckIcon from "@mui/icons-material/Check";
 
 
 export interface ProjectCardEditPanelProps {
-    handleSave: () => void;
-    handleDelete?: () => void;
-    handleArchive?: () => void;
-    handleCancel?: () => void;
-    isSubmitting?: boolean;
+    onSave: () => void;
+    onDelete: () => void;
+    onArchive: () => void;
+    onCancel: () => void;
+    isSubmitting: boolean;
 }
 
 export default function EditPanel({
-                                      handleSave,
-                                      handleDelete,
-                                      handleArchive,
-                                      handleCancel,
+                                      onSave,
+                                      onDelete,
+                                      onArchive,
+                                      onCancel,
                                       isSubmitting
                                   }: ProjectCardEditPanelProps) {
     const {t} = useTranslation("projects");
@@ -27,9 +27,9 @@ export default function EditPanel({
 
     const handleContinue = () => {
         if (showWarning === "archive") {
-            handleArchive?.()
+            onArchive()
         } else {
-            handleDelete?.()
+            onDelete()
         }
         setShowWarning("");
     }
@@ -47,21 +47,21 @@ export default function EditPanel({
                 }}>
                     <DeleteOutlineIcon/>
                 </Button>
-                {handleArchive &&
-                    <Button color={"info"} onClick={(event) => {
-                        event.stopPropagation();
-                        setShowWarning("archive")
-                    }}>
-                        <ArchiveOutlinedIcon/>
-                    </Button>
-                }
-                <Button color={"success"} disabled={isSubmitting} onClick={() => handleSave()}>
+
+                <Button color={"info"} onClick={(event) => {
+                    event.stopPropagation();
+                    setShowWarning("archive")
+                }}>
+                    <ArchiveOutlinedIcon/>
+                </Button>
+
+                <Button color={"success"} disabled={isSubmitting} onClick={onSave}>
                     <CheckIcon/>
                 </Button>
                 <Button
                     color={"error"} onClick={(event) => {
                     event.stopPropagation();
-                    handleCancel?.()
+                    onCancel?.()
                 }}>
                     <CancelIcon/>
                 </Button>

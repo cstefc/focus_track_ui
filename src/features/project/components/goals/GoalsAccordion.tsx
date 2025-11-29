@@ -1,12 +1,12 @@
-import {useGetApi} from "@/hooks/useGetApi";
 import {Goal} from "@/api/domain/projects/Goal";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Loading from "@/components/ui/Loading";
 import {useTranslation} from "react-i18next";
 import {Button, Stack} from "@mui/material";
-import CreateGoalDialog from "@/features/project/components/goals/CreateGoalDialog";
+import CreateGoalDialog from "@/features/project/components/goals/create-dialog/CreateGoalDialog";
 import {useNavigate} from "react-router-dom";
 import {GoalAccordion} from "@/features/project/components/goals/GoalAccordion";
+import useGoals from "@/hooks/useGoals";
 
 export interface GoalsAccordionProps {
     projectId: string;
@@ -15,14 +15,7 @@ export interface GoalsAccordionProps {
 export function GoalsAccordion({projectId}: GoalsAccordionProps) {
     const {t} = useTranslation("projects");
     const navigate = useNavigate();
-
-    const {data, loading} = useGetApi<Goal[]>(`/goals?id=${projectId}`);
-    const [goals, setGoals] = useState<Goal[]>([])
-
-    useEffect(() => {
-        if (data) setGoals(data);
-    }, [data])
-
+    const {loading, goals, createGoal, updateGoal, deleteGoal} = useGoals(projectId)
 
     if (loading) return <Loading/>
 
@@ -32,12 +25,12 @@ export function GoalsAccordion({projectId}: GoalsAccordionProps) {
                 <Button color={"secondary"} onClick={() => navigate(`/projects/`)}>
                     {t("button.back")}
                 </Button>
-                <CreateGoalDialog projectId={projectId} goals={goals} setGoals={setGoals}/>
+                <CreateGoalDialog projectId={projectId} createHandler={createGoal}/>
             </Stack>
 
             {(!loading && goals.length === 0) && <p>{t("noGoals")}</p>}
             {goals.sort((g1, g2) => g1.id - g2.id).map((goal: Goal, index) => (
-                <GoalAccordion key={index} goal={goal} goals={goals} setGoals={setGoals}/>
+                <GoalAccordion key={index} goal={goal} updateHandler={updateGoal} deleteHandler={deleteGoal}/>
             ))}
 
         </>)

@@ -8,11 +8,8 @@ import {GoalsAccordion} from "@/features/project/components/goals/GoalsAccordion
 
 export default function ProjectScreen() {
     const {id} = useParams<{ id: string }>();
-
     const {data, loading} = useGetApi<Project[]>(`/projects?id=${id}`);
-
     const [project, setProject] = useState<Project | undefined>(undefined);
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,21 +25,10 @@ export default function ProjectScreen() {
 
     return (
         <Box margin={"50px"}>
-            <Typography
-                variant={"h3"}
-                sx={{
-                    marginBottom: "50px"
-                }}
-            >
+            <Typography variant={"h3"} sx={{marginBottom: "50px"}}>
                 {project?.title}
             </Typography>
-            <Typography
-                variant={"body1"}
-                sx={{
-                    wordWrap: "break-word",
-                    marginBottom: "50px",
-                }}
-            >
+            <Typography variant={"body1"} sx={{wordWrap: "break-word", whiteSpace: "pre-line", marginBottom: "50px"}}>
                 {project?.description}
             </Typography>
 

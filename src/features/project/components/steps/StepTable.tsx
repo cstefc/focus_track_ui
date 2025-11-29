@@ -1,22 +1,8 @@
-import {Step} from "@/api/domain/projects/Step";
-import {useState, useEffect} from "react";
-import {
-    Stack,
-    Button,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    CircularProgress
-} from "@mui/material";
+import {CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 import {StepLine} from "@/features/project/components/steps/StepLine";
-import {AddOutlined} from "@mui/icons-material";
 import {useTranslation} from "react-i18next";
-import {useGetApi} from "@/hooks/useGetApi";
-import {StepLineEdit} from "@/features/project/components/steps/StepLineEdit";
 import {StepLineAdd} from "@/features/project/components/steps/StepLineAdd";
+import useSteps from "@/hooks/useSteps";
 
 export interface StepTableRowsDisplayProps {
     goalId: number;
@@ -24,13 +10,7 @@ export interface StepTableRowsDisplayProps {
 
 export default function StepTable({goalId}: StepTableRowsDisplayProps) {
     const {t} = useTranslation("projects");
-    const [steps, setSteps] = useState<Step[]>([]);
-    const {data, loading} = useGetApi<Step[]>("/steps?id=" + goalId);
-    const [adding, setAdding] = useState(false);
-
-    useEffect(() => {
-        if (data) setSteps(data)
-    }, [data]);
+    const {loading, steps, updateStep, createStep, deleteStep} = useSteps(goalId);
 
     if (loading) return <CircularProgress/>;
 
@@ -39,7 +19,7 @@ export default function StepTable({goalId}: StepTableRowsDisplayProps) {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell width={"5%"} align="center" >#</TableCell>
+                        <TableCell width={"5%"} align="center">#</TableCell>
                         <TableCell align="center">{t("forms.objectiveLabel")}</TableCell>
                         <TableCell align="center">{t("forms.descriptionLabel")}</TableCell>
                         <TableCell align="center">{t("forms.requirementsLabel")}</TableCell>
@@ -49,24 +29,10 @@ export default function StepTable({goalId}: StepTableRowsDisplayProps) {
                 </TableHead>
                 <TableBody>
                     {steps.sort((s1, s2) => s1.sequence - s2.sequence).map((step) => (
-                        <StepLine key={step.id} goalId={goalId} step={step} steps={steps} setSteps={setSteps}/>))}
-                    {adding && <StepLineAdd goalId={goalId} setAdding={setAdding} steps={steps} setSteps={setSteps}/>}
+                        <StepLine key={step.id} goalId={goalId} step={step} onUpdate={updateStep} onDelete={deleteStep}/>))}
+                    <StepLineAdd goalId={goalId} onCreate={createStep}
+                                 sequence={steps.length > 0 ? steps[steps.length - 1].sequence + 1 : 1}/>
                 </TableBody>
             </Table>
-            <Stack direction={"row"}
-                   spacing={"8px"}
-                   display={"flex"}
-                   margin={1}
-                   justifyContent={"flex-end"}
-            >
-                {!adding && <Button
-                    sx={{marginTop: "8px"}}
-                    variant={"outlined"}
-                    color={"success"}
-                    onClick={() => setAdding(true)}
-                >
-                    <AddOutlined/>
-                </Button>}
-            </Stack>
         </TableContainer>);
 }

@@ -8,16 +8,14 @@ import {ZodTextField} from "@/components/ui/forms/ZodTextField";
 import {Status} from "@/api/domain/predefined/Status";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CheckIcon from "@mui/icons-material/Check";
-import {sendApi} from "@/api/apiCall";
 
 export interface StepLineEditProps {
-    setEdit: (edit: boolean) => void;
     step: Step;
-    steps: Step[];
-    setSteps: (steps: Step[]) => void;
+    submitHandler: (date: UpdateStep) => void;
+    cancelHandler: () => void;
 }
 
-export const StepLineEdit = ({setEdit, step, steps, setSteps}: StepLineEditProps) => {
+export const StepLineEdit = ({step, submitHandler, cancelHandler}: StepLineEditProps) => {
     const {t} = useTranslation("projects");
     const {register, handleSubmit, formState: {errors}, control, reset} = useForm<UpdateStep>({
         resolver: zodResolver(UpdateStepForm),
@@ -28,20 +26,8 @@ export const StepLineEdit = ({setEdit, step, steps, setSteps}: StepLineEditProps
             description: step.description,
             requirements: step.requirements,
             status: step.status,
-
         }
     });
-
-    async function submitHandler(data: UpdateStep) {
-        const result = await sendApi("/steps", "PUT", data);
-        if (result) setSteps(steps.map(s => s.id !== data.id ? s : result));
-        setEdit(false);
-    }
-
-    function cancelHandler(): void {
-        reset();
-        setEdit(false);
-    }
 
     return (
         <TableRow key={step.id} content={"form"} onSubmit={handleSubmit(submitHandler)}>
@@ -54,20 +40,15 @@ export const StepLineEdit = ({setEdit, step, steps, setSteps}: StepLineEditProps
             </TableCell>
             <TableCell align="center">
                 <ZodTextField errors={errors?.objective} translation_scope={"projects"}
-                              item={`objective`} itemKey={"objective"}
-                              register={register}/>
+                              item={`objective`} register={register}/>
             </TableCell>
             <TableCell align="center">
                 <ZodTextField errors={errors?.description}
-                              translation_scope={"projects"} item={`description`}
-                              itemKey={"description"}
-                              register={register}/>
+                              translation_scope={"projects"} item={`description`} register={register}/>
             </TableCell>
             <TableCell align="center">
                 <ZodTextField errors={errors?.requirements}
-                              translation_scope={"projects"} item={`requirements`}
-                              itemKey={"requirements"}
-                              register={register}/>
+                              translation_scope={"projects"} item={`requirements`} register={register}/>
             </TableCell>
 
             <TableCell align="center">
@@ -98,7 +79,7 @@ export const StepLineEdit = ({setEdit, step, steps, setSteps}: StepLineEditProps
             <TableCell align="center">
                 <Stack direction={"row"}>
                     <Button color={"success"} onClick={handleSubmit(submitHandler)}><CheckIcon/></Button>
-                    <Button color={"error"} onClick={cancelHandler}><CancelIcon/></Button>
+                    <Button color={"error"} onClick={() => {reset();cancelHandler();}}><CancelIcon/></Button>
                 </Stack>
             </TableCell>
         </TableRow>

@@ -6,35 +6,18 @@ import EditIcon from "@mui/icons-material/Edit";
 
 export interface ProjectCardDisplay {
     project: Project;
-    handleEdit: () => void;
+    onEdit: () => void;
 }
 
-
-export default function ProjectCardDisplay({project, handleEdit}: ProjectCardDisplay) {
+export default function ProjectCardDisplay({project, onEdit}: ProjectCardDisplay) {
     return (
         <>
-            <CardContent
-                sx={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between"
-                }}
-            >
+            <CardContent sx={{flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                 <Box>
-                    <Typography
-                        variant="h4"
-                        sx={{
-                            marginBottom: "50px"
-                        }}
-                    >
+                    <Typography variant="h4" sx={{marginBottom: "50px"}}>
                         {project.title}
                     </Typography>
-                    <Typography
-                        variant="body1"
-                        sx={{
-                            wordBreak: "break-word"
-                        }}>
+                    <Typography variant="body1" sx={{wordBreak: "break-word", whiteSpace: "pre-line"}}>
                         {project.description}
                     </Typography>
                 </Box>
@@ -46,7 +29,7 @@ export default function ProjectCardDisplay({project, handleEdit}: ProjectCardDis
                             color={"primary"}
                             onClick={e => {
                                 e.stopPropagation();
-                                handleEdit();
+                                onEdit();
                             }}
                         >
                             <EditIcon/>

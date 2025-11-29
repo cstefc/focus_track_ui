@@ -1,31 +1,14 @@
 import {render, screen} from "@testing-library/react";
-import EditPanel from "../../../src/components/ui/EditPanel";
+import EditPanel from "../../../../src/features/projects/components/project-card/EditPanel";
 import userEvent from "@testing-library/user-event";
 
 describe("Edit Panel", () => {
-    it("should render correctly without archive", () => {
+    it("should render correctly", () => {
         // GIVEN
 
         // WHEN
-        render(<EditPanel handleSave={() => {}}/>)
-
-        // THEN
-        const deleteButton = screen.queryByTestId("DeleteOutlineIcon");
-        const archiveButton = screen.queryByTestId("ArchiveOutlinedIcon");
-        const checkButton = screen.queryByTestId("CheckIcon");
-        const cancelButton = screen.queryByTestId("CancelIcon");
-
-        expect(deleteButton).toBeInTheDocument();
-        expect(archiveButton).not.toBeInTheDocument();
-        expect(checkButton).toBeInTheDocument();
-        expect(cancelButton).toBeInTheDocument();
-    });
-
-    it("should render correctly with archive", () => {
-        // GIVEN
-
-        // WHEN
-        render(<EditPanel handleSave={() => {}} handleArchive={() => {}}/>)
+        const fun = () => {}
+        render(<EditPanel onSave={fun} onArchive={fun} onDelete={fun} onCancel={fun} isSubmitting={false}/>)
 
         // THEN
         const deleteButton = screen.queryByTestId("DeleteOutlineIcon");
@@ -45,7 +28,9 @@ describe("Edit Panel", () => {
         const saveMock = vi.fn();
 
         // WHEN
-        render(<EditPanel handleSave={saveMock}/>)
+        const fun = () => {}
+        render(<EditPanel onSave={saveMock} onArchive={fun} onDelete={fun} onCancel={fun} isSubmitting={false}/>)
+
         const saveButton = screen.getByTestId("CheckIcon");
         await user.click(saveButton);
 
@@ -59,7 +44,9 @@ describe("Edit Panel", () => {
         const deleteMock = vi.fn();
 
         // WHEN
-        render(<EditPanel handleSave={() => {}} handleDelete={deleteMock}/>)
+        const fun = () => {}
+        render(<EditPanel onSave={fun} onArchive={fun} onDelete={deleteMock} onCancel={fun} isSubmitting={false}/>)
+
         const deleteButton = screen.getByTestId("DeleteOutlineIcon");
         await user.click(deleteButton);
         await user.click(screen.getByText("button.save"));
@@ -74,7 +61,8 @@ describe("Edit Panel", () => {
         const archiveMock = vi.fn();
 
         // WHEN
-        render(<EditPanel handleSave={() => {}} handleArchive={archiveMock}/>)
+        const fun = () => {}
+        render(<EditPanel onSave={fun} onArchive={archiveMock} onDelete={fun} onCancel={fun} isSubmitting={false}/>)
         const archiveButton = screen.getByTestId("ArchiveOutlinedIcon");
         await user.click(archiveButton);
         await user.click(screen.getByText("button.save"));
@@ -87,9 +75,11 @@ describe("Edit Panel", () => {
         // GIVEN
         const user = userEvent.setup();
         const cancelMock = vi.fn();
+        const fun = () => {}
 
         // WHEN
-        render(<EditPanel handleSave={() => {}} handleCancel={cancelMock}/>)
+        render(<EditPanel onSave={fun} onArchive={fun} onDelete={fun} onCancel={cancelMock} isSubmitting={false}/>)
+
         const cancelButton = screen.getByTestId("CancelIcon");
         await user.click(cancelButton);
 

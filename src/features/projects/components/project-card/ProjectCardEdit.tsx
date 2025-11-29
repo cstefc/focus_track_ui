@@ -2,27 +2,20 @@ import {Project, UpdateProject, UpdateProjectForm} from "@/api/domain/projects/P
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
-import EditPanel from "@/components/ui/EditPanel";
+import EditPanel from "@/features/projects/components/project-card/EditPanel";
 import {Box, CardActions, Typography} from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import {ZodTextField} from "@/components/ui/forms/ZodTextField";
+import {useProjectsContext} from "@/features/projects/ProjectsScreen";
 
 export interface ProjectCardEditProps {
     project: Project;
-    handleUpdate: (updateProject: UpdateProject) => void;
-    handleArchive: (updateProject: UpdateProject) => void;
-    handleDelete: () => void;
-    handleCancel: () => void;
+    onEdit: () => void;
 }
 
-export function ProjectCardEdit({
-                                    project,
-                                    handleUpdate,
-                                    handleArchive,
-                                    handleDelete,
-                                    handleCancel,
-                                }: ProjectCardEditProps) {
+export function ProjectCardEdit({project, onEdit}: ProjectCardEditProps) {
     const {t} = useTranslation("projects");
+    const {deleteProject, archiveProject, updateProject} = useProjectsContext();
     const {register, handleSubmit, formState: {errors, isSubmitting}, reset} = useForm<UpdateProject>({
         resolver: zodResolver(UpdateProjectForm),
         defaultValues: {
@@ -33,29 +26,37 @@ export function ProjectCardEdit({
         },
     });
 
+    function onSave() {
+        handleSubmit(updateProject)();
+        onEdit();
+    }
+
+    function onArchive() {
+        handleSubmit(archiveProject)();
+        onEdit();
+    }
+
+    function onDelete() {
+        deleteProject(project.id);
+        onEdit();
+    }
+
+    function onCancel() {
+        reset();
+        onEdit();
+    }
+
     return (
         <>
-            <CardContent
-                sx={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between"
-                }}
-            >
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column"
-                    }}
-                >
+            <CardContent sx={{flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                <Box sx={{display: "flex", flexDirection: "column"}}>
                     <Typography gutterBottom variant={'h5'} component={"div"}>
                         {t("edit.projectTitle")}
                     </Typography>
 
-                    <ZodTextField translation_scope={"projects"} item={"title"} itemKey={"title"}
+                    <ZodTextField translation_scope={"projects"} item={"title"}
                                   register={register} errors={errors.title}/>
-                    <ZodTextField translation_scope={"projects"} item={"description"} itemKey={"description"}
+                    <ZodTextField translation_scope={"projects"} item={"description"}
                                   register={register} errors={errors.description} minRows={2}/>
                 </Box>
             </CardContent>
@@ -63,13 +64,10 @@ export function ProjectCardEdit({
             <CardActions>
                 <Box display={"flex"} justifyContent={"center"} width={"100%"} marginInlineEnd={"8px"}>
                     <EditPanel isSubmitting={isSubmitting}
-                               handleSave={handleSubmit(handleUpdate)}
-                               handleDelete={handleDelete}
-                               handleArchive={handleSubmit(handleArchive)}
-                               handleCancel={() => {
-                                   reset();
-                                   handleCancel();
-                               }}
+                               onSave={onSave}
+                               onDelete={onDelete}
+                               onArchive={onArchive}
+                               onCancel={onCancel}
                     />
                 </Box>
             </CardActions>

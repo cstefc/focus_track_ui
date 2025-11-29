@@ -1,26 +1,17 @@
 import React from "react";
 import {Goal} from "@/api/domain/projects/Goal";
-import {Box, AccordionDetails, AccordionSummary, Button, Stack, Typography} from "@mui/material";
+import {AccordionDetails, AccordionSummary, Box, Button, Stack, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import {deleteApi} from "@/api/apiCall";
 
 export interface GoalAccordionItemDisplayProps {
     goal: Goal;
-    goals: Goal[];
-    setGoals: (goal: Goal[]) => void;
-    edit: boolean;
-    setEdit: (state: boolean) => void;
+    handleDelete: (id: number) => void;
+    toggleEdit: () => void;
 }
 
-export default function GoalAccordionDisplay({goal, goals, setGoals, edit, setEdit}: GoalAccordionItemDisplayProps) {
-
-    async function handleDelete() {
-        void deleteApi('/goals?id=' + goal.id);
-        setGoals(goals.filter(g => g.id !== goal.id));
-    }
-
+export default function GoalAccordionDisplay({goal, handleDelete, toggleEdit}: GoalAccordionItemDisplayProps) {
     return (
         <>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
@@ -29,16 +20,9 @@ export default function GoalAccordionDisplay({goal, goals, setGoals, edit, setEd
             <AccordionDetails>
                 <Stack direction="row" alignItems="center" justifyContent="space-between">
                     <Typography variant={"body1"}>{goal.description}</Typography>
-
                     <Box>
-                        <Button onClick={() => {
-                            setEdit(!edit)
-                        }}>
-                            <EditIcon/>
-                        </Button>
-                    <Button color={'error'} onClick={handleDelete}>
-                        <DeleteOutlineIcon/>
-                    </Button>
+                        <Button onClick={toggleEdit}><EditIcon/></Button>
+                        <Button color={'error'} onClick={() => handleDelete(goal.id)}><DeleteOutlineIcon/></Button>
                     </Box>
                 </Stack>
             </AccordionDetails>

@@ -5,26 +5,15 @@ import React from "react";
 import {Step} from "@/api/domain/projects/Step";
 import {Status} from "@/api/domain/predefined/Status";
 import {useTranslation} from "react-i18next";
-import {deleteApi} from "@/api/apiCall";
 
 export interface StepLineDisplayProps {
     setEdit: (edit: boolean) => void;
     step: Step;
-    steps: Step[];
-    setSteps: (steps: Step[]) => void;
+    deleteHandler: (id: number) => void;
 }
 
-export const StepLineDisplay = ({step, steps, setSteps, setEdit}: StepLineDisplayProps) => {
+export const StepLineDisplay = ({step, deleteHandler, setEdit}: StepLineDisplayProps) => {
     const {t} = useTranslation("projects");
-
-    function handleDelete() {
-        void deleteApi("/steps?id=" + step.id);
-        const newSteps = (steps.filter(s => s.id !== step.id));
-        for (let i = 0; i < newSteps.length; i++) {
-            newSteps[i].sequence = i+1;
-        }
-        setSteps(newSteps);
-    }
 
     return (
         <>
@@ -39,7 +28,7 @@ export const StepLineDisplay = ({step, steps, setSteps, setEdit}: StepLineDispla
                         <Button onClick={() => setEdit(true)}>
                             <EditIcon/>
                         </Button>
-                        <Button color={"error"} onClick={handleDelete}>
+                        <Button color={"error"} onClick={() => deleteHandler(step.id)}>
                             <DeleteOutlineIcon/>
                         </Button>
                     </Stack>
