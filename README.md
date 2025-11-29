@@ -40,8 +40,6 @@ The project follows a **feature-driven development approach**, starting from the
 - **Events** – Add and manage events related to goals and projects.
 - **Dashboard** – Add a dashboard showing statistics 
 
-> ⚠️ Note: These features are under development and will be gradually implemented.
-
 ## Usage / Examples
 
 ### Running the Application
