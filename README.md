@@ -101,5 +101,5 @@ VITE_FIREBASE_APP_ID
 ### Example Workflow
 
 1. Open the app and sign in via Firebase Authentication.
-2. Navigate to a restricted page (e.g., dashboard) to see personalized content.
-3. Interact with the UI elements (note: most content is placeholder while the frontend is under development).
+2. Navigate to a restricted page (e.g., projects) to see personalized content.
+3. Interact with the UI elements.
