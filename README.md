@@ -3,7 +3,7 @@
 # Focus Track UI
 
 ![status](https://img.shields.io/badge/status-WIP-yellow)
-![typescript](https://img.shields.io/badge/typescript-5.9-blue?logo=typescript)
+![typescript](https://img.shields.io/badge/typescript?logo=typescript)
 ![react](https://img.shields.io/badge/react-19.2.0-blue?logo=react)
 ![vite](https://img.shields.io/badge/vite-7.1.9-purple?logo=vite)
 ![firebase](https://img.shields.io/badge/firebase-auth-orange?logo=firebase)
