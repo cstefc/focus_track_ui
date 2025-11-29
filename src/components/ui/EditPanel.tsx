@@ -15,7 +15,13 @@ export interface ProjectCardEditPanelProps {
     isSubmitting?: boolean;
 }
 
-export default function EditPanel({handleSave, handleDelete, handleArchive, handleCancel, isSubmitting}: ProjectCardEditPanelProps) {
+export default function EditPanel({
+                                      handleSave,
+                                      handleDelete,
+                                      handleArchive,
+                                      handleCancel,
+                                      isSubmitting
+                                  }: ProjectCardEditPanelProps) {
     const {t} = useTranslation("projects");
     const [showWarning, setShowWarning] = useState("");
 
@@ -35,13 +41,15 @@ export default function EditPanel({handleSave, handleDelete, handleArchive, hand
     return (
         <>
             <Stack direction="row" spacing={1}>
-                <Button color={"warning"} onClick={() => {
+                <Button color={"warning"} onClick={(event) => {
+                    event.stopPropagation();
                     setShowWarning("delete");
                 }}>
                     <DeleteOutlineIcon/>
                 </Button>
                 {handleArchive &&
-                    <Button color={"info"} onClick={() => {
+                    <Button color={"info"} onClick={(event) => {
+                        event.stopPropagation();
                         setShowWarning("archive")
                     }}>
                         <ArchiveOutlinedIcon/>
@@ -51,7 +59,8 @@ export default function EditPanel({handleSave, handleDelete, handleArchive, hand
                     <CheckIcon/>
                 </Button>
                 <Button
-                    color={"error"} onClick={() => {
+                    color={"error"} onClick={(event) => {
+                    event.stopPropagation();
                     handleCancel?.()
                 }}>
                     <CancelIcon/>

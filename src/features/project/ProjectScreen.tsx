@@ -27,9 +27,25 @@ export default function ProjectScreen() {
     }
 
     return (
-        <Box margin={"24px"}>
-            <Typography variant={"h3"}>{project?.title}</Typography>
-            <Typography variant={"body1"}>{project?.description}</Typography>
+        <Box margin={"50px"}>
+            <Typography
+                variant={"h3"}
+                sx={{
+                    marginBottom: "50px"
+                }}
+            >
+                {project?.title}
+            </Typography>
+            <Typography
+                variant={"body1"}
+                sx={{
+                    wordWrap: "break-word",
+                    marginBottom: "50px",
+                }}
+            >
+                {project?.description}
+            </Typography>
+
             <GoalsAccordion projectId={`${id}`}/>
         </Box>
     );

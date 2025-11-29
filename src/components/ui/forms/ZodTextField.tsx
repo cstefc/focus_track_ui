@@ -9,9 +9,11 @@ export interface ZodTextFieldProps<T extends FieldValues> {
     itemKey: string;
     register: UseFormRegister<T>;
     errors?: FieldError;
+    minRows?: number;
 }
 
 export function ZodTextField<T extends FieldValues>({
+                                                        minRows,
                                                         translation_scope,
                                                         item,
                                                         itemKey,
@@ -29,12 +31,15 @@ export function ZodTextField<T extends FieldValues>({
                 }
                 e.stopPropagation()
             }}
-            margin="normal"
+            margin="dense"
             label={t(`forms.${itemKey}Label`)}
             placeholder={t(`forms.${itemKey}Placeholder`)}
             {...register(item)}
             error={!!errors}
             helperText={errors?.message}
+            multiline
+            minRows={minRows || 1}
+            maxRows={4}
             fullWidth
         />
     );

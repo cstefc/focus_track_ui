@@ -4,7 +4,7 @@ import React from "react";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
 import {Controller, useForm} from "react-hook-form";
-import {ZodTextField} from "@/components/layout/forms/ZodTextField";
+import {ZodTextField} from "@/components/ui/forms/ZodTextField";
 import {Status} from "@/api/domain/predefined/Status";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CheckIcon from "@mui/icons-material/Check";

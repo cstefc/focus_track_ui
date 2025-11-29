@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Project} from "@/api/domain/projects/Project";
-import {ProjectCard} from "@/features/projects/components/project-cards/ProjectCard";
+import {ProjectCard} from "@/features/projects/components/project-card/ProjectCard";
 import {useTranslation} from "react-i18next";
 import CreateProjectDialog from "@/features/projects/components/create-dialog/CreateProjectDialog";
 import Loading from "@/components/ui/Loading";

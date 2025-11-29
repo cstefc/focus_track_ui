@@ -8,10 +8,14 @@ export default function ProjectsScreen() {
     const [activeTab, setActiveTab] = useState<number>(0);
 
     return (
-        <Box padding={"24px"}>
+        <Box padding={"50px"}>
             <Box>
-                <Typography variant={"h3"}>{t("title")}</Typography>
-                <Typography variant={"body1"}>{t("description")}</Typography>
+                <Typography variant={"h3"} sx={{marginBottom: "50px"}}>
+                    {t("title")}
+                </Typography>
+                <Typography variant={"body1"} sx={{wordWrap: "break-word", marginBottom: "50px"}}>
+                    {t("description")}
+                </Typography>
             </Box>
 
             <Tabs value={activeTab} onChange={(event: React.SyntheticEvent, newValue: number) => {

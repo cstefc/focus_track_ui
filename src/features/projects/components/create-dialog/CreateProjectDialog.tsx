@@ -4,7 +4,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
 import React, {JSX, useState} from "react";
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack} from "@mui/material";
-import {ZodTextField} from "@/components/layout/forms/ZodTextField";
+import {ZodTextField} from "@/components/ui/forms/ZodTextField";
 import {sendApi} from "@/api/apiCall";
 
 export interface CreateProjectDialogProps {

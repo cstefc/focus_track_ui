@@ -1,4 +1,4 @@
-import {ZodTextField} from "../../../../src/components/layout/forms/ZodTextField";
+import {ZodTextField} from "../../../../src/components/ui/forms/ZodTextField";
 import {render, screen} from "@testing-library/react";
 import {UseFormRegister} from "react-hook-form";
 import userEvent from "@testing-library/user-event";
