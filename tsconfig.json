@@ -25,14 +25,14 @@
       "vitest/globals",
       "@testing-library/jest-dom"
     ],
-    "baseUrl": "src",
+    // FIXED
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "*"
-      ]
+      "@/*": ["src/*"]
     }
   },
   "include": [
-    "./src vite.config.mts"
+    "./src",
+    "vite.config.mts"
   ]
 }

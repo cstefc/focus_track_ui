@@ -1,7 +1,8 @@
-import {Button, Stack} from "react-bootstrap";
 import React from "react";
-import {nextMonth, prevMonth} from "@/lib/date";
 import {useTranslation} from "react-i18next";
+import {Button, Stack, Typography} from "@mui/material";
+
+import {nextMonth, prevMonth} from "@/lib/date";
 
 export interface DateSelectorProps {
     date: Date;
@@ -10,24 +11,49 @@ export interface DateSelectorProps {
 
 export default function DateSelector({date, setDate}: DateSelectorProps) {
     const {t} = useTranslation("general");
-    const months = [t("calendar.months.january"), t("calendar.months.february"), t("calendar.months.march"), t("calendar.months.april"), t("calendar.months.may"), t("calendar.months.june"), t("calendar.months.july"), t("calendar.months.august"), t("calendar.months.september"), t("calendar.months.october"), t("calendar.months.november"), t("calendar.months.december")];
+
+    const months = [
+        t("calendar.months.january"),
+        t("calendar.months.february"),
+        t("calendar.months.march"),
+        t("calendar.months.april"),
+        t("calendar.months.may"),
+        t("calendar.months.june"),
+        t("calendar.months.july"),
+        t("calendar.months.august"),
+        t("calendar.months.september"),
+        t("calendar.months.october"),
+        t("calendar.months.november"),
+        t("calendar.months.december"),
+    ];
 
     return (
-        <Stack direction={"horizontal"} className={"justify-content-between p-2"}>
+        <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{
+                p: 2,
+            }}
+        >
             <Button
-                className={"selector-button"}
-                variant="secondary"
-                onClick={() => setDate(prevMonth(date))}
-            >{t("calendar.date_selector.prev_month")}</Button>
+                variant="outlined"
+                onClick={() => setDate(prevMonth(date))} sx={{fontSize: "clamp(0.6rem, 3vw, 1.5rem)"}}>
+                {"<<"}
+            </Button>
 
-            <p className={"month-text text p-2"}>{months[date.getMonth()] + " " + date.getFullYear()}</p>
+            <Typography variant="body1" sx={{
+                px: 2,
+                textAlign: "center",
+                fontSize: "clamp(0.6rem, 3vw, 1.5rem)"
+            }}>
+                {months[date.getMonth()] + " " + date.getFullYear()}
+            </Typography>
 
-            <Button
-                className={"selector-button"}
-                variant={'secondary'}
-                onClick={() => setDate(nextMonth(date))}
-            >{t("calendar.date_selector.next_month")}</Button>
+            <Button variant="outlined" sx={{fontSize: "clamp(0.6rem, 3vw, 1.5rem)"}}
+                    onClick={() => setDate(nextMonth(date))}>
+                {">>"}
+            </Button>
         </Stack>
-
     );
 }

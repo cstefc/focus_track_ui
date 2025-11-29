@@ -13,11 +13,14 @@ describe("Calendar", () => {
         render(<Calendar date={date} setDate={(new_date => date = new_date)}/>);
 
         // THEN
-        const button = screen.getByText('calendar.date_selector.prev_month');
-        expect(button).toBeInTheDocument();
+        const prev_button = screen.getByText('<<');
+        expect(prev_button).toBeInTheDocument();
 
         const buttons = screen.getByText("1");
         expect(buttons).toBeInTheDocument();
+
+        const nxt_button = screen.getByText('<<');
+        expect(nxt_button).toBeInTheDocument();
     });
 
     test("previous month should work", async () => {
@@ -25,13 +28,13 @@ describe("Calendar", () => {
         const user = userEvent.setup();
         const Wrapper = () => {
             const [date, setDate] = useState(new Date(2025, 10, 14));
-            return <Calendar date={date} setDate={setDate} />;
+            return <Calendar date={date} setDate={setDate}/>;
         };
 
         // WHEN
         render(<Wrapper/>);
 
-        await user.click(screen.getByText("calendar.date_selector.prev_month"));
+        await user.click(screen.getByText("<<"));
 
         // THEN
         const month = screen.getByText("calendar.months.october 2025");
@@ -43,12 +46,12 @@ describe("Calendar", () => {
         const user = userEvent.setup();
         const Wrapper = () => {
             const [date, setDate] = useState(new Date(2025, 10, 14));
-            return <Calendar date={date} setDate={setDate} />;
+            return <Calendar date={date} setDate={setDate}/>;
         };
 
         // WHEN
         render(<Wrapper/>);
-        await user.click(screen.getByText("calendar.date_selector.next_month"));
+        await user.click(screen.getByText(">>"));
 
         // THEN
         const month = screen.getByText("calendar.months.december 2025");
@@ -59,24 +62,22 @@ describe("Calendar", () => {
         // GIVEN monday 10/11/2025
         let Wrapper = () => {
             const [date, setDate] = useState(new Date(2025, 10, 10));
-            return <Calendar date={date} setDate={setDate} />;
+            return <Calendar date={date} setDate={setDate}/>;
         }
         const user = userEvent.setup();
 
         // WHEN
-        render(<Wrapper />);
-        await user.click(screen.getByText('20'));
-
+        render(<Wrapper/>);
 
         // THEN
-        const button = screen.getByText("20");
-        expect(button).toHaveClass("btn-primary");
-        expect(button).toHaveClass("weekday-button");
+        expect(screen.getByText("20")).toHaveClass("MuiButton-outlinedPrimary");
+        await user.click(screen.getByText("20"));
+        expect(screen.getByText("20")).toHaveClass("MuiButton-containedPrimary");
     });
 
     test("today default selected", () => {
         // GIVEN saturday 15/11/2025
-        let date = new Date(2025,10,15);
+        let date = new Date(2025, 10, 15);
 
         // WHEN
         render(<Calendar date={date} setDate={(newDate => date = newDate)}/>);
@@ -84,6 +85,6 @@ describe("Calendar", () => {
         // THEN
         const button = screen.getByText("15");
         expect(button).toBeInTheDocument();
-        expect(button).toHaveClass("btn-primary");
+        expect(button).toHaveClass("MuiButton-containedPrimary");
     })
 })

@@ -1,8 +1,11 @@
-import {Card, CardText, CardTitle, Col} from "react-bootstrap";
 import React from "react";
 import {useTranslation} from "react-i18next";
 
-export interface HomeCardProps{
+import {Typography} from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+
+export interface HomeCardProps {
     card: string
 }
 
@@ -10,12 +13,11 @@ export default function HomeCard({card}: HomeCardProps) {
     const {t} = useTranslation("home");
 
     return (
-        <Col key={card}>
-            <Card>
-                <CardTitle className="text-center p-3 card_title">{t(`cards.${card}.title`)}</CardTitle>
-                <br/>
-                <CardText className={"text-center m-3 card_text"}>{t(`cards.${card}.text`)}</CardText>
-            </Card>
-        </Col>
+        <Card sx={{height: "300px", width: "300px", margin:"50px"}}>
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">{t(`cards.${card}.title`)}</Typography>
+                <Typography variant="body1" component="div">{t(`cards.${card}.text`)}</Typography>
+            </CardContent>
+        </Card>
     );
 }

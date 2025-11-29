@@ -1,4 +1,12 @@
 {
+  "title": "Take Control of Your Projects",
+  "CTA-loggedIn": "Manage projects efficiently and stay on the top of your game." ,
+  "CTA-loggedOut": "Start now and log by clicking the button below",
+  "button": {
+    "loggedIn": "View Projects",
+    "loggedOut": "Google Sign In"
+  },
+
   "cards": {
     "success": {
       "title": "Success: The Power of Consistency",

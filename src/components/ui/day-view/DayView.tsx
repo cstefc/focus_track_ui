@@ -1,6 +1,7 @@
-import {Card} from "react-bootstrap";
-import './day-view.css'
 import {useTranslation} from "react-i18next";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import {Stack, Typography} from "@mui/material";
 
 interface CalendarDayProps {
     date: Date,
@@ -9,16 +10,17 @@ interface CalendarDayProps {
 export default function DayView({date}: CalendarDayProps) {
     const {t} = useTranslation("general");
     const days: string[] = ["calendar.days.sunday", "calendar.days.monday", "calendar.days.tuesday", "calendar.days.wednesday", "calendar.days.thursday", "calendar.days.friday", "calendar.days.saturday"];
-
+    const color = date.getDay() === 0 || date.getDay() === 6 ? "red" : "inherit"
     return (
-        <Card key={date.getDate()} className={"day m-3"}>
-            <Card.Title className={`${date.getDay() === 0 || date.getDay() === 6 ? "weekend" : "weekday"}`}>
-                {t(days[date.getDay()])}
-            </Card.Title>
-
-            <Card.Text className={date.getDay() === 0 || date.getDay() === 6 ? "weekend" : "weekday"}>
-                {date.getDate()}
-            </Card.Text>
+        <Card>
+            <CardContent>
+                <Stack direction={"column"} display={"flex"} alignItems={"center"} justifyContent={"center"} padding={2}
+                       spacing={1} width={120} height={120}>
+                    <Typography variant={"h5"} component={"div"} color={color}>{t(days[date.getDay()])}</Typography>
+                    <Typography variant={"h5"} component={"div"} color={color}>{date.getDate()}</Typography>
+                </Stack>
+            </CardContent>
         </Card>
-    );
+    )
+        ;
 }

@@ -12,13 +12,13 @@ describe("DateSelector", () => {
         render(<DateSelector date={date} setDate={new_date => date = new_date}/>);
 
         // THEN
-        const prevBtn = screen.getByText("calendar.date_selector.prev_month");
+        const prevBtn = screen.getByText("<<");
         expect(prevBtn).toBeInTheDocument();
 
         const month = screen.getByText("calendar.months.november 2025");
         expect(month).toBeInTheDocument();
 
-        const nextBtn = screen.getByText("calendar.date_selector.next_month");
+        const nextBtn = screen.getByText(">>");
         expect(nextBtn).toBeInTheDocument();
 
     })
@@ -34,7 +34,7 @@ describe("DateSelector", () => {
         // WHEN
         render(<Wrapper/>);
 
-        await user.click(screen.getByText("calendar.date_selector.prev_month"));
+        await user.click(screen.getByText("<<"));
 
         // THEN
         const month = screen.getByText("calendar.months.october 2025");
@@ -51,7 +51,7 @@ describe("DateSelector", () => {
 
         // WHEN
         render(<Wrapper/>);
-        await user.click(screen.getByText("calendar.date_selector.next_month"));
+        await user.click(screen.getByText(">>"));
 
         // THEN
         const month = screen.getByText("calendar.months.december 2025");

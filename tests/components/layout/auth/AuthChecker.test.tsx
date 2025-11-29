@@ -17,7 +17,7 @@ describe("AuthChecker", () => {
         render(<AuthChecker><p>This shouldn't be rendered</p></AuthChecker>);
 
         // THEN
-        const spinner = screen.getByRole('status')
+        const spinner = screen.getByRole('progressbar')
         expect(spinner).toBeInTheDocument();
         const text = screen.queryByText("This shouldn't be rendered");
         expect(text).not.toBeInTheDocument();

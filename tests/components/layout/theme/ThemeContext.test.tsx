@@ -1,67 +1,85 @@
-import {ThemeProvider, useTheme} from "@/components/layout/theme/ThemeContext";
-import {render, renderHook, screen} from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import {CustomThemeProvider} from "../../../../src/components/layout/theme/ThemeContext";
+import {render, screen} from "@testing-library/react";
+import {useTheme} from "@/components/layout/theme/ThemeContext";
 
 
 describe('ThemeContext', () => {
-    it("should be used inside a theme context", () => {
+    it("should render without crashing", () => {
         // GIVEN
-
-        // WHEN
-        expect(() => renderHook(() => useTheme()))
-            // THEN
-            .toThrow();
-    })
-
-    it("should be default dark", () => {
-        // GIVEN
-        localStorage.removeItem("theme");
-
-        function TestConsumer() {
-            const {theme} = useTheme();
-            return (
-                <span data-testid="theme-value">{theme}</span>
-            );
+        const TestComponent = () => {
+            return (<p>This should render</p>);
         }
 
         // WHEN
         render(
-            <ThemeProvider>
-                <TestConsumer/>
-            </ThemeProvider>
-        );
+            <CustomThemeProvider>
+                <TestComponent/>
+            </CustomThemeProvider>
+
+        )
 
         // THEN
-        const theme = screen.getByTestId('theme-value');
-        expect(theme).toHaveTextContent("dark")
-    })
+        expect(screen.getByText("This should render")).toBeInTheDocument();
+    });
 
-    it("should change theme", async () => {
+    it("should save the theme to localstorage", () => {
         // GIVEN
-        localStorage.removeItem("theme");
-        const user = userEvent.setup();
-        function TestConsumer() {
-            const {theme, setTheme} = useTheme();
-            return (
-                <div>
-                    <span data-testid="theme-value">{theme}</span>
-                    <button data-testid="set-light" onClick={() => setTheme("light")}>
-                        Set Light
-                    </button>
-                </div>
-            );
+        const TestComponent = () => {
+            return (<p>This should render</p>);
         }
 
         // WHEN
         render(
-            <ThemeProvider>
-                <TestConsumer/>
-            </ThemeProvider>
-        );
+            <CustomThemeProvider>
+                <TestComponent/>
+            </CustomThemeProvider>
+
+        )
 
         // THEN
-        expect(localStorage.getItem("theme")).toEqual("dark");
-        await user.click(screen.getByTestId('set-light'));
-        expect(localStorage.getItem("theme")).toEqual("light");
-    })
+        expect(localStorage.getItem("theme")).toEqual("dark")
+    });
+
+    it("should provide the theme in the child components", () => {
+        // GIVEN
+        const TestComponent = () => {
+            const {mode} = useTheme();
+
+            return (<p>{mode}</p>);
+        }
+
+        // WHEN
+        render(
+            <CustomThemeProvider>
+                <TestComponent/>
+            </CustomThemeProvider>
+
+        )
+
+        // THEN
+        expect(screen.getByText("dark")).toBeInTheDocument();
+    });
+
+    it("should be able to change the theme", () => {
+        // GIVEN
+        const TestComponent = () => {
+            const {mode, changeMode} = useTheme();
+            changeMode("light");
+            return (<p>{mode}</p>);
+        }
+
+        // WHEN
+        render(
+            <CustomThemeProvider>
+                <TestComponent/>
+            </CustomThemeProvider>
+
+        )
+
+        // THEN
+        expect(screen.getByText("light")).toBeInTheDocument();
+        expect(localStorage.getItem("theme")).toEqual("light")
+    });
+
+
 })
