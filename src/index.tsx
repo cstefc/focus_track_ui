@@ -4,14 +4,22 @@ import "./i18n"
 
 import {createRoot} from 'react-dom/client';
 import {CustomThemeProvider} from "@/components/layout/theme/ThemeContext";
+import {Typography} from "@mui/material";
 
+const isDev = import.meta.env.VITE_DEV === "true";
 const container = document.getElementById('root');
 const root = createRoot(container!)
-
 root.render(
-    <React.StrictMode>
+    isDev ? (
+        <React.StrictMode>
+            <CustomThemeProvider>
+                <Typography content={"h3"}>STRICT!!!</Typography>
+                <App/>
+            </CustomThemeProvider>
+        </React.StrictMode>
+    ) : (
         <CustomThemeProvider>
-            <App />
+            <App/>
         </CustomThemeProvider>
-    </React.StrictMode>
+    )
 )
