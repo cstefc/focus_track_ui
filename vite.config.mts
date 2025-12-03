@@ -20,6 +20,11 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
         },
     },
+    build:{
+        outDir:'build',
+        sourcemap: false,
+        minify:"esbuild"
+    },
     test: {
         include: ['tests/**/*.{test,spec}.{ts,tsx}'],
         globals: true,

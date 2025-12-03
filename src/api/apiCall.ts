@@ -1,10 +1,12 @@
 import {getAuth} from "firebase/auth";
+const API = import.meta.env.VITE_API_URL;
+
 
 export async function getApi<T>(path: string) {
     const auth = getAuth();
     if (auth.currentUser) {
         try {
-            const result = await fetch(`/api${path}`, {
+            const result = await fetch(`${API}${path}`, {
                 method: "GET",
                 headers: {
                     Authorization: auth.currentUser ? `Bearer ${await auth.currentUser.getIdToken()}` : '',
@@ -25,7 +27,7 @@ export async function sendApi<T>(path: string, method: string, body: any) {
     const auth = getAuth();
     if (auth.currentUser) {
         try {
-            const result = await fetch(`/api${path}`, {
+            const result = await fetch(`${API}${path}`, {
                 method: method.toUpperCase(),
                 body: JSON.stringify(body),
                 headers: {
@@ -50,7 +52,7 @@ export function deleteApi(path: string) {
     const auth = getAuth();
     if (auth.currentUser) {
         auth.currentUser.getIdToken().then(idToken => {
-            void fetch(`/api${path}`, {
+            void fetch(`${API}${path}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: auth.currentUser ? `Bearer ${idToken}` : '',
