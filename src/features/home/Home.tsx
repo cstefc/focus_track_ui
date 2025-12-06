@@ -2,11 +2,11 @@ import {Avatar, Box, Button, Stack, Typography} from "@mui/material";
 import HomeCard from "@/features/home/components/HomeCard";
 import {getAuth, signInWithPopup} from "firebase/auth";
 import {useTranslation} from "react-i18next";
-import React from "react";
+import React, {JSX} from "react";
 import {Providers} from "@/config/firebase";
 import {useNavigate} from "react-router-dom";
 
-export default function Home() {
+export default function Home(): JSX.Element {
     const {t} = useTranslation("home");
     const cards: string[] = ["success", "productivity", "tracking"]
     const currentUser = getAuth().currentUser;
@@ -78,7 +78,7 @@ export default function Home() {
             </Box>
 
             <Box display={"flex"} justifyContent={"center"} width={"100%"}>
-                {cards.map((card, index) => <HomeCard key={index} card={card}/>)}
+                {cards.map((card) => <HomeCard key={card} card={card}/>)}
             </Box>
 
         </Stack>

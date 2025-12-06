@@ -1,14 +1,20 @@
-FROM node:20-alpine
-LABEL authors="cstefc"
-
+FROM node:20-alpine AS build
 WORKDIR /app
 
 COPY package.json ./package.json
+COPY src ./src
+COPY .env ./.env
+COPY tsconfig.json ./tsconfig.json
+COPY vite.config.mts ./vite.config.mts
+COPY index.html ./index.html
 
 RUN npm install .
 RUN npm install -g serve
+RUN npm run build
 
-# Copy build output
+FROM node:20-alpine
+WORKDIR /app
+
 COPY build ./build
 
 # Expose port

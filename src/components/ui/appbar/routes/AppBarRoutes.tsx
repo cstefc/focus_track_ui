@@ -13,7 +13,7 @@ export interface AppBarRoutesProps {
 
 export default function AppBarRoutes({mobile, onNavigate}: AppBarRoutesProps) {
     const {t} = useTranslation("general");
-    const [user, setUser] = useState<User | null>(getAuth().currentUser);
+    const [user, setUser] = useState<User | null>(() => getAuth().currentUser);
 
     useEffect(() => {
         return getAuth().onAuthStateChanged((user) => setUser(user));
@@ -21,16 +21,16 @@ export default function AppBarRoutes({mobile, onNavigate}: AppBarRoutesProps) {
 
     return (
         <>
-            {routes.map((route: RouteType, index: number) => {
+            {routes.map((route: RouteType) => {
                 if (route.navbar && ((user !== null) === route.protected)) {
                     return (
                         mobile
-                            ? <MenuItem key={index} sx={{textTransform: "none"}}
+                            ? <MenuItem key={route.name} sx={{textTransform: "none"}}
                                         onClick={() => onNavigate(route.path)}>
                                 <Typography variant={"body1"}>{t(`routes.${route.name}`)}</Typography>
                             </MenuItem>
                             :
-                            <Box key={index} color="inherit" sx={{
+                            <Box key={route.name} color="inherit" sx={{
                                 cursor: "pointer", textTransform: "none",
                                 "&:hover": {opacity: 0.8}
                             }} onClick={() => onNavigate(route.path)}>

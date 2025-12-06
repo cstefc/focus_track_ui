@@ -22,9 +22,9 @@ function App() {
             basename="/"
         >
             <Routes>
-                {routes.map((route, index) => (
+                {routes.map((route) => (
                     <Route
-                        key={index}
+                        key={route.name}
                         path={route.path}
                         element={
                             <>

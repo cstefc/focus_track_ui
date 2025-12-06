@@ -29,8 +29,8 @@ export function GoalsAccordion({projectId}: GoalsAccordionProps) {
             </Stack>
 
             {(!loading && goals.length === 0) && <p>{t("noGoals")}</p>}
-            {goals.sort((g1, g2) => g1.id - g2.id).map((goal: Goal, index) => (
-                <GoalAccordion key={index} goal={goal} updateHandler={updateGoal} deleteHandler={deleteGoal}/>
+            {goals.sort((g1, g2) => g1.id - g2.id).map((goal: Goal) => (
+                <GoalAccordion key={goal.id} goal={goal} updateHandler={updateGoal} deleteHandler={deleteGoal}/>
             ))}
 
         </>)
