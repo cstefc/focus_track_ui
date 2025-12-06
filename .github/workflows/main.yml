@@ -2,14 +2,16 @@ name: Enforce PR source branch
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   check-source:
     runs-on: ubuntu-latest
     steps:
-      - name: Check PR source
-        if: ${{ github.event.pull_request.head.ref != 'development' }}
+      - name: Fail if PR is not from development
         run: |
-          echo "Pull request must come from 'development' branch!"
-          exit 1
+          if [[ "${{ github.event.pull_request.head.ref }}" != "development" ]]; then
+            echo "Pull request must come from 'development' branch!"
+            exit 1
+          fi
+
