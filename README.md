@@ -1,14 +1,12 @@
-
-
 # Focus Track UI
 
 ![status](https://img.shields.io/badge/status-WIP-yellow)
-![typescript](https://img.shields.io/badge/typescript-5.9-blue?logo=typescript)
-![react](https://img.shields.io/badge/react-19.2.0-blue?logo=react)
-![vite](https://img.shields.io/badge/vite-7.1.9-purple?logo=vite)
-![firebase](https://img.shields.io/badge/firebase-auth-orange?logo=firebase)
-![bootstrap](https://img.shields.io/badge/bootstrap-5.3-purple?logo=bootstrap)
-![tests](https://img.shields.io/badge/tests-vitest-lightgrey)
+![typescript](https://img.shields.io/badge/typescript-5.9.3-blue?logo=typescript&logoColor=white)
+![react](https://img.shields.io/badge/react-19.2.0-blue?logo=react&logoColor=white)
+![vite](https://img.shields.io/badge/vite-7.2.4-purple?logo=vite&logoColor=white)
+![firebase](https://img.shields.io/badge/firebase-12.6.0-orange?logo=firebase&logoColor=white)
+![mui](https://img.shields.io/badge/MUI‑Material‑UI-7.3.5-007FFF?logo=mui&logoColor=white)
+![vitest](https://img.shields.io/badge/tests‑with‑Vitest-lightgrey?logo=vitest&logoColor=black)
 
 Focus Track is a React application currently under development. This project demonstrates my skills in React and TypeScript, with a focus on building a modular, feature-driven frontend. The final product will allow users to track personal projects and tasks, including a dedicated sport tracking feature. The backend API, which supports this application, can be found on my GitHub [here](https://github.com/cstefc/focus_track_api) and will be updated as new features are added to the frontend.
 
@@ -23,25 +21,23 @@ Focus Track is a React application currently under development. This project dem
 - **Routing**: React Router DOM 7.9.4
 - **i18n / Localization**: react-i18next 16
 - **Testing**: Vitest + jsdom
-## Features (Work in Progress)
+## Features
 
 - **Environment Variables**: Sensitive information, such as API keys and credentials, is managed securely using `.env` files.
 - **Routing**: Navigation throughout the application is handled via a top navigation bar.
 - **Authentication**: Users are authenticated using Firebase Authentication.
 - **Authorization**: Authenticated users can access restricted pages based on their login status.
-
-> ⚠️ Note: Many pages currently contain placeholder content, as development focus has temporarily shifted to backend API implementation.
-## Roadmap
-
-The project follows a **feature-driven development approach**, starting from the front-end and then integrating with the back-end. Planned features include:
-
 - **OAuth Authentication** – Secure communication between front-end and back-end.
 - **Project Management** – Ability to create and manage projects.
 - **Plans & Steps** – Add detailed plans with steps inside projects.
+
+## Roadmap
+
+The project follows a **feature-driven development approach**, starting from the front-end and then integrating with the back-end. Planned features include:
 - **Logging Feature** – Track progress and updates within projects.
 - **Events** – Add and manage events related to goals and projects.
+- **Dashboard** – Add a dashboard showing statistics 
 
-> ⚠️ Note: These features are under development and will be gradually implemented.
 ## Usage / Examples
 
 ### Running the Application
@@ -81,8 +77,6 @@ VITE_FIREBASE_APP_ID
 
 4. Open the application in your browser at [http://localhost:5173](http://localhost:5173)
 
-> ⚠️ Note: The frontend is currently a work-in-progress. Many pages contain placeholder content.
-
 ---
 
 ### Authentication
@@ -103,5 +97,5 @@ VITE_FIREBASE_APP_ID
 ### Example Workflow
 
 1. Open the app and sign in via Firebase Authentication.
-2. Navigate to a restricted page (e.g., dashboard) to see personalized content.
-3. Interact with the UI elements (note: most content is placeholder while the frontend is under development).
+2. Navigate to a restricted page (e.g., projects) to see personalized content.
+3. Interact with the UI elements.
