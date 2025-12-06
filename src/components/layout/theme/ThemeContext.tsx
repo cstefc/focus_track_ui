@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useContext, useMemo, useState} from "react";
+import {createContext, ReactNode, use, useMemo, useState} from "react";
 import {themes} from "@/config/theme";
 import {ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
@@ -15,7 +15,7 @@ const ThemeContext = createContext<ThemeContextProps>({
 });
 
 export const useTheme = () => {
-    const context = useContext(ThemeContext);
+    const context = use(ThemeContext);
     if (!context) throw new Error("useTheme must be used within ThemeContext");
     return context;
 }
@@ -41,11 +41,11 @@ export const CustomThemeProvider = ({children}: CustomThemeProviderProps) => {
     }, [mode]);
 
     return (
-        <ThemeContext.Provider value={{mode: mode, changeMode}}>
+        <ThemeContext value={{mode: mode, changeMode}}>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
                 {children}
             </ThemeProvider>
-        </ThemeContext.Provider>
+        </ThemeContext>
     );
 }

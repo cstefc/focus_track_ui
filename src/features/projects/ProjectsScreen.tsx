@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next";
 import ProjectCards from "./components/ProjectCards";
-import React, {createContext, useContext, useState} from "react";
+import React, {createContext, use, useState} from "react";
 import {Box, Tab, Tabs, Typography} from "@mui/material";
 import useProjects from "@/hooks/useProjects";
 
@@ -12,7 +12,7 @@ export default function ProjectsScreen() {
     const projects = useProjects();
 
     return (
-        <ProjectsContext.Provider value={projects}>
+        <ProjectsContext value={projects}>
             <Box padding={"50px"}>
                 <Box>
                     <Typography variant={"h3"} sx={{marginBottom: "50px"}}>
@@ -32,13 +32,13 @@ export default function ProjectsScreen() {
 
                 <ProjectCards showWithArchived={activeTab !== 0}/>
             </Box>
-        </ProjectsContext.Provider>
+        </ProjectsContext>
     );
 };
 
 
 export const useProjectsContext = () => {
-    const ctx = useContext(ProjectsContext);
+    const ctx = use(ProjectsContext);
     if (!ctx) throw new Error("useProjectsContext must be used within a project");
     return ctx;
 }

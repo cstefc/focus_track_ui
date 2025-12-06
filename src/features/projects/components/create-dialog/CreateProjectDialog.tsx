@@ -57,8 +57,6 @@ export default function CreateProjectDialog({visible}: CreateProjectDialogProps)
                         <DialogActions>
                             <Stack direction={"row"} padding={1} spacing={1}>
                                 <Button color={"secondary"} disabled={isSubmitting} onClick={() => {
-                                    // @ts-ignore
-                                    document.activeElement?.blur();
                                     setShowDialog(false)
                                 }}>
                                     {t("button.cancel")}

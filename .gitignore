@@ -26,4 +26,3 @@ yarn-error.log*
 .env
 dev.md
 build/*
-package-lock.json

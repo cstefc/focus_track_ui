@@ -23,13 +23,13 @@ export async function getApi<T>(path: string) {
     return null;
 }
 
-export async function sendApi<T>(path: string, method: string, body: any) {
+export async function sendApi<T>(path: string, method: string, body: string) {
     const auth = getAuth();
     if (auth.currentUser) {
         try {
             const result = await fetch(`${API}${path}`, {
                 method: method.toUpperCase(),
-                body: JSON.stringify(body),
+                body: body,
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: auth.currentUser ? `Bearer ${await auth.currentUser.getIdToken()}` : '',

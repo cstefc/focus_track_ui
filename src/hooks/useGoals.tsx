@@ -8,16 +8,17 @@ export default function useGoals(projectId: string) {
     const [goals, setGoals] = useState<Goal[]>([])
 
     useEffect(() => {
-        if (data) setGoals(data);
-    }, [data])
+        // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
+        if (data) setGoals(() => data);
+    }, [loading])
 
     async function createGoal(goalData: CreateGoal) {
-        const result = await sendApi<Goal>("/goals", "POST", goalData)
+        const result = await sendApi<Goal>("/goals", "POST", JSON.stringify(goalData))
         if (result) setGoals([...goals, result])
     }
 
     async function updateGoal(updateGoal: UpdateGoal) {
-        const goal = await sendApi<Goal>("/goals", "PUT", updateGoal)
+        const goal = await sendApi<Goal>("/goals", "PUT", JSON.stringify(updateGoal))
         if (goal) setGoals(goals.map(g => g.id !== goal.id ? g : goal));
     }
 

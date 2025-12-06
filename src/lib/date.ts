@@ -5,7 +5,7 @@ export function isLeapYear(year: number): boolean {
 }
 
 export function prevMonth(date: Date) {
-    let newDate = new Date(date);
+    const newDate = new Date(date);
     if (newDate.getMonth() > 0) {
         if (months_length[date.getMonth()-1] < date.getDate()){
             newDate.setDate(months_length[date.getMonth()-1]);
@@ -22,7 +22,7 @@ export function prevMonth(date: Date) {
 }
 
 export function nextMonth(date: Date) {
-    let newDate = new Date(date);
+    const newDate = new Date(date);
     if (newDate.getMonth() < 11) {
         if (date.getDate() > months_length[date.getMonth()+ 1]){
             newDate.setDate(months_length[date.getMonth()+1]);

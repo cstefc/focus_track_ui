@@ -4,7 +4,7 @@ import DayView from "@/components/ui/day-view/DayView";
 import Calendar from "@/components/ui/calendar/Calendar";
 
 export default function PlanningScreen() {
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState(() => new Date());
 
     return (
         <Stack display={"flex"} direction={"row"} justifyContent={"center"}>

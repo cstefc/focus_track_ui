@@ -25,8 +25,6 @@ export function ZodTextField<T extends FieldValues>({
                 e.stopPropagation()
             }}
             onKeyDown={(e) => {
-                if (e.key === " " || e.key === "Enter") {
-                }
                 e.stopPropagation()
             }}
             margin="dense"
