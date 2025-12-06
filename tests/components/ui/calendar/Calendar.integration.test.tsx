@@ -16,7 +16,7 @@ describe("Calendar", () => {
         const prev_button = screen.getByText('<<');
         expect(prev_button).toBeInTheDocument();
 
-        const buttons = screen.getByText("1");
+        const buttons = screen.getByText("15");
         expect(buttons).toBeInTheDocument();
 
         const nxt_button = screen.getByText('<<');

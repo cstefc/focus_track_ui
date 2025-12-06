@@ -51,6 +51,8 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     needs: lint   # only runs if lint passes
+    env:
+      VITE_API_URL: "/api"
     steps:
       - uses: actions/checkout@v4
 
