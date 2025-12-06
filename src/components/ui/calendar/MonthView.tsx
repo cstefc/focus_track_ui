@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {calendarList} from "@/lib/date";
 import DayButton from "./DayButton";
 import {Box} from "@mui/material";
@@ -9,35 +9,28 @@ export interface MonthViewProps {
 }
 
 export default function MonthView({selected, setSelected}: MonthViewProps) {
-    const [rows, setRows] = useState<Date[][]>(get_rows(selected));
+    const rows: Date[][] = [];
 
-    function get_rows(date: Date): Date[][] {
-        const days: Date[] = calendarList(date);
-        let rows: Date[][] = [];
-        let curr: Date[] = []
-        for (let i = 0; i < days.length; i++) {
-            if (i > 0 && i % 7 === 0) {
-                rows.push(curr);
-                curr = []
-            }
-            curr.push(days[i]);
+    const days: Date[] = calendarList(selected);
+    let curr: Date[] = []
+    for (let i = 0; i < days.length; i++) {
+        if (i > 0 && i % 7 === 0) {
+            rows.push(curr);
+            curr = []
         }
-        rows.push(curr);
-        return rows;
+        curr.push(days[i]);
     }
-
-    useEffect(() => {
-        setRows(get_rows(selected));
-    }, [selected]);
+    rows.push(curr);
 
     return (
         <Box display={"grid"} gridTemplateColumns={"repeat(auto-fill, 1fr)"} gap={"0.25rem"} padding={"0.5rem"}
              boxSizing={"border-box"}
         >
-            {rows.map((row: Date[], idx: number) => (
-                <Box display={"grid"} gridTemplateColumns={"repeat(7, 1fr)"} gap={"0.25rem"} key={idx}>
-                    {row.map((date, btn_idx: number) => (
-                        <DayButton key={btn_idx} date={date} selected={selected} setSelected={setSelected}/>
+            {rows.map((row: Date[]) => (
+                <Box display={"grid"} gridTemplateColumns={"repeat(7, 1fr)"} gap={"0.25rem"}
+                     key={"week: " + row[0].getTime()}>
+                    {row.map((date) => (
+                        <DayButton key={date.getTime()} date={date} selected={selected} setSelected={setSelected}/>
                     ))}
                 </Box>
             ))}

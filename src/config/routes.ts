@@ -3,10 +3,11 @@ import Home from "@/features/home/Home";
 import Dashboard from "@/features/dashboard/Dashboard";
 import ProjectsScreen from "@/features/projects/ProjectsScreen";
 import ProjectScreen from "@/features/project/ProjectScreen";
+import {JSX} from "react";
 
 export interface RouteType {
     path: string;
-    component: any;
+    component: () => JSX.Element;
     name: string;
     protected: boolean;
     navbar: boolean;

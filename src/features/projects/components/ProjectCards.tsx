@@ -27,8 +27,8 @@ export default function ProjectCards({showWithArchived}: ProjectScreenProps) {
 
             {/** List the project cards*/}
             <Grid container spacing={2}>
-                {projects.sort((p1, p2) => p1.id - p2.id).map((p, index: number) => p.archived === showWithArchived ?
-                    <ProjectCard key={index} project={p}/> : null)}
+                {projects.sort((p1, p2) => p1.id - p2.id).map((p) => p.archived === showWithArchived ?
+                    <ProjectCard key={p.id} project={p}/> : null)}
             </Grid>
 
             {/** Show message when there aren't any projects */}

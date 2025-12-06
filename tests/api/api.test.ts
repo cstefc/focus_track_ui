@@ -44,7 +44,7 @@ describe('Api methods', () => {
         });
 
         // WHEN
-        const result = await sendApi<testObject>('/test', "POST", data);
+        const result = await sendApi<testObject>('/test', "POST", JSON.stringify(data));
 
         // THEN
         expect(mockFetch).toHaveBeenCalledWith("/api/test", {
@@ -67,7 +67,7 @@ describe('Api methods', () => {
         });
 
         // WHEN
-        const result = await sendApi("/test", "PUT", data);
+        const result = await sendApi("/test", "PUT", JSON.stringify(data));
 
         // THEN
         expect(mockFetch).toHaveBeenCalledWith("/api/test", {
@@ -137,7 +137,7 @@ describe('Api methods', () => {
         fakeAuth.currentUser = null;
 
         // WHEN
-        const result = await sendApi('/test', "PUT", {});
+        const result = await sendApi('/test', "PUT", JSON.stringify({}));
 
         // THEN
         expect(mockFetch).not.toHaveBeenCalled();
@@ -152,7 +152,7 @@ describe('Api methods', () => {
         })
 
         // WHEN
-        const result = await sendApi("/test", "PUT", {});
+        const result = await sendApi("/test", "PUT", JSON.stringify({}));
 
         // THEN
         expect(mockFetch).toHaveBeenCalledWith("/api/test", {

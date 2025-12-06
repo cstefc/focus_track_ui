@@ -46,8 +46,6 @@ export default function CreateGoalDialog({projectId, createHandler}: CreateGoalD
                     </DialogContent>
                     <DialogActions>
                         <Button disabled={isSubmitting} onClick={() => {
-                            // @ts-ignore
-                            document.activeElement?.blur();
                             reset();
                             setShow(false)
                         }}>

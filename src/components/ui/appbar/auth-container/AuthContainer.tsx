@@ -7,12 +7,7 @@ import {getAuth, signInWithPopup, signOut, User} from "firebase/auth";
 import {Providers} from "@/config/firebase";
 import {useNavigate} from "react-router-dom";
 
-export interface AuthContainerProps {
-}
-
-export default function AuthContainer({}: AuthContainerProps) {
-
-
+export default function AuthContainer() {
     const auth = getAuth();
     const [user, setUser] = useState<User | null>(auth.currentUser);
     useEffect(() => {
@@ -24,8 +19,6 @@ export default function AuthContainer({}: AuthContainerProps) {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const handleOpen = (event: React.MouseEvent<HTMLElement>) => setAnchorEl(event.currentTarget);
     const handleClose = () => {
-        // @ts-ignore
-        document.activeElement?.blur();
         setAnchorEl(null);
     }
 

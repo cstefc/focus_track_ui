@@ -9,10 +9,10 @@ describe('Home', () => {
         render(<Home />);
 
         // THEN
-        const pictures = screen.queryAllByRole('img');
-        const cards = screen.queryAllByText(/cards\.[^.]*\.title/);
+        const picture = screen.queryByRole('img');
+        expect(picture).toBeInTheDocument();
 
-        expect(pictures.length >= 3).toBe(true);
+        const cards = screen.queryAllByText(/cards\.[^.]*\.title/);
         expect(cards).toHaveLength(3);
     })
 })

@@ -8,16 +8,17 @@ export default function useSteps(goalId: number) {
     const {data, loading} = useGetApi<Step[]>("/steps?id=" + goalId);
 
     useEffect(() => {
+        // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
         if (data) setSteps(data)
-    }, [data]);
+    }, [loading]);
 
     async function createStep(createData: CreateStep) {
-        const result = await sendApi<Step>("/steps", "POST", createData);
+        const result = await sendApi<Step>("/steps", "POST", JSON.stringify(createData));
         if (result) setSteps([...steps, result]);
     }
 
     async function updateStep(data: UpdateStep) {
-        const result = await sendApi<Step>("/steps", "PUT", data);
+        const result = await sendApi<Step>("/steps", "PUT", JSON.stringify(data));
         if (result) setSteps(steps.map(s => s.id !== data.id ? s : result));
     }
 
