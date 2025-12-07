@@ -27,7 +27,16 @@ jobs:
           password: ${{ github.token }}
 
       - name: Build Docker Image
-        run: docker build -t ghcr.io/cstefc/focus_track_ui:${{ github.sha }} .
+        run: docker build \
+          --build-arg VITE_FIREBASE_API_KEY="${{ secrets.VITE_FIREBASE_API_KEY }}" \
+          --build-arg VITE_FIREBASE_AUTH_DOMAIN="${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" \
+          --build-arg VITE_FIREBASE_PROJECT_ID="${{ secrets.VITE_FIREBASE_PROJECT_ID }}" \
+          --build-arg VITE_FIREBASE_STORAGE_BUCKET="${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" \
+          --build-arg VITE_FIREBASE_MESSAGING_SENDER_ID="${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" \
+          --build-arg VITE_FIREBASE_APP_ID="${{ secrets.VITE_FIREBASE_APP_ID }}" \
+          --build-arg VITE_API_URL="${{ secrets.VITE_API_URL }}" \
+          --build-arg VITE_DEV="false" \
+          -t ghcr.io/cstefc/focus_track_ui:${{ github.sha }} .
 
       - name: Tag latest
         run: docker tag ghcr.io/cstefc/focus_track_ui:${{ github.sha }} ghcr.io/cstefc/focus_track_ui:latest
