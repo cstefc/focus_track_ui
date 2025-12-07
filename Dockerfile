@@ -23,6 +23,7 @@ ENV VITE_DEV=$VITE_DEV
 
 # Copy source code
 COPY tsconfig.json vite.config.mts index.html package.json package-lock.json ./
+COPY public ./public
 COPY src ./src
 
 # Install dependencies
