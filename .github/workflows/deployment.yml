@@ -24,7 +24,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ github.token }}
 
       - name: Build Docker Image
         run: docker build -t ghcr.io/cstefc/focus_track_ui:${{ github.sha }} .
