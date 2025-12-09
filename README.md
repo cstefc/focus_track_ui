@@ -23,7 +23,7 @@ Focus Track is a React application for tracking personal projects and tasks, inc
 - **Authentication:** Firebase Authentication (supports OAuth providers like Google)  
 - **i18n / Localization:** react-i18next  
 - **Testing:** Vitest  
-- **Backend:** Custom API (WIP)  
+- **Backend:** [Custom API](https://github.com/cstefc/focus_track_api)
 - **Environment & Deployment:** `.env` configuration, branch protection, and status rules  
 
 ---
