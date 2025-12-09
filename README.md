@@ -7,6 +7,7 @@
 ![firebase](https://img.shields.io/badge/firebase-orange?logo=firebase&logoColor=white)
 ![mui](https://img.shields.io/badge/MUI‑Material‑UI-007FFF?logo=mui&logoColor=white)
 ![i18n](https://img.shields.io/badge/i18n-enabled-brightgreen)
+![dark mode](https://img.shields.io/badge/dark%20mode-✓-000000?style=flat&logoColor=white)
 ![vitest](https://img.shields.io/badge/tests‑with‑Vitest-lightgrey?logo=vitest&logoColor=black)
 
 Focus Track is a React application currently under development. This project demonstrates my skills in React and TypeScript, with a focus on building a modular, feature-driven frontend. The final product will allow users to track personal projects and tasks, including a dedicated sport tracking feature. The backend API, which supports this application, can be found on my GitHub [here](https://github.com/cstefc/focus_track_api) and will be updated as new features are added to the frontend.
