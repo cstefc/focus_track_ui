@@ -1,11 +1,11 @@
 # Focus Track UI
 
 ![status](https://img.shields.io/badge/status-WIP-yellow)
-![typescript](https://img.shields.io/badge/typescript-5.9.3-blue?logo=typescript&logoColor=white)
-![react](https://img.shields.io/badge/react-19.2.0-blue?logo=react&logoColor=white)
-![vite](https://img.shields.io/badge/vite-7.2.4-purple?logo=vite&logoColor=white)
-![firebase](https://img.shields.io/badge/firebase-12.6.0-orange?logo=firebase&logoColor=white)
-![mui](https://img.shields.io/badge/MUI‑Material‑UI-7.3.5-007FFF?logo=mui&logoColor=white)
+![typescript](https://img.shields.io/badge/typescript-blue?logo=typescript&logoColor=white)
+![react](https://img.shields.io/badge/react-blue?logo=react&logoColor=white)
+![vite](https://img.shields.io/badge/vite-purple?logo=vite&logoColor=white)
+![firebase](https://img.shields.io/badge/firebase-orange?logo=firebase&logoColor=white)
+![mui](https://img.shields.io/badge/MUI‑Material‑UI-007FFF?logo=mui&logoColor=white)
 ![vitest](https://img.shields.io/badge/tests‑with‑Vitest-lightgrey?logo=vitest&logoColor=black)
 
 Focus Track is a React application currently under development. This project demonstrates my skills in React and TypeScript, with a focus on building a modular, feature-driven frontend. The final product will allow users to track personal projects and tasks, including a dedicated sport tracking feature. The backend API, which supports this application, can be found on my GitHub [here](https://github.com/cstefc/focus_track_api) and will be updated as new features are added to the frontend.
@@ -14,30 +14,30 @@ Focus Track is a React application currently under development. This project dem
 
 - **Backend**: [Custom backend API (WIP)](https://github.com/cstefc/focus_track_api)
 - **Language**: TypeScript
+- **Framework**: React
+- **UI / Styling**: Material UI
+- **Bundler / Build Tool**: Vite
+- **Routing**: React Router DOM
 - **Authentication**: Firebase Authentication
-- **Front-end**: React 19 + TypeScript (WIP)
-- **Bundler / Build Tool**: Vite 7.1.9
-- **UI / Styling**: React Bootstrap 2.10.10, Bootstrap 5.3.8, Emotion 11
-- **Routing**: React Router DOM 7.9.4
-- **i18n / Localization**: react-i18next 16
-- **Testing**: Vitest + jsdom
+- **i18n / Localization**: react-i18next
+- **Testing**: Vitest
 - **Branch protection and status rules**
 
 ## Features
-
 - **Environment Variables**: Sensitive information, such as API keys and credentials, is managed securely using `.env` files.
 - **Routing**: Navigation throughout the application is handled via a top navigation bar.
 - **Authentication**: Users are authenticated using Firebase Authentication.
 - **Authorization**: Authenticated users can access restricted pages based on their login status.
 - **OAuth Authentication** – Secure communication between front-end and back-end.
+  
 - **Project Management** – Ability to create and manage projects.
-- **Plans & Steps** – Add detailed plans with steps inside projects.
+- **Goals & Steps** – Add detailed plans with steps inside projects.
 
 ## Roadmap
 
 The project follows a **feature-driven development approach**, starting from the front-end and then integrating with the back-end. Planned features include:
+- **Events** – Add and manage events related to goals and projects; better planning and an imporved UX to finish tasks.
 - **Logging Feature** – Track progress and updates within projects.
-- **Events** – Add and manage events related to goals and projects.
 - **Dashboard** – Add a dashboard showing statistics 
 
 ## Usage / Examples
@@ -51,7 +51,7 @@ The project follows a **feature-driven development approach**, starting from the
 - Get Firebase Web App Configuration: [https://firebase.google.com/docs/web/setup#config-object](https://firebase.google.com/docs/web/setup#config-object)
 - Firebase Authentication Setup Guide: [https://firebase.google.com/docs/auth/web/start](https://firebase.google.com/docs/auth/web/start)
 
-Required environment variables for your `.env` file:
+Required environment variables (define in a `.env`-file or in terminal):
 
 ```
 VITE_FIREBASE_API_KEY
@@ -59,11 +59,10 @@ VITE_FIREBASE_AUTH_DOMAIN
 VITE_FIREBASE_PROJECT_ID  
 VITE_FIREBASE_STORAGE_BUCKET  
 VITE_FIREBASE_MESSAGING_SENDER_ID  
-VITE_FIREBASE_APP_ID  
+VITE_FIREBASE_APP_ID
+VITE_API_URL
+VITE_DEV
 ```
-
-
-> ⚠️ Keep this file private and do not commit it to version control.
 
 ---
 
@@ -93,7 +92,7 @@ VITE_FIREBASE_APP_ID
 
 - Use the top navigation bar to switch between available pages.
 - Routing is handled through React Router DOM.
-
+  
 ---
 
 ### Example Workflow
