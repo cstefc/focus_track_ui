@@ -28,23 +28,28 @@ export default function MyMobileAppBar() {
             {<AppBarLogo/>}
 
             <Drawer open={open} onClose={() => setOpen(false)}>
-                <List>
-                    {currentRoutes.map((route: RouteType) =>
-                        <ListItem
-                            key={route.name}
-                            color="inherit"
-                            onClick={() => navigate(route.path)}
-                            sx={{
-                                cursor: "pointer", textTransform: "none",
-                                "&:hover": {opacity: 0.8}
-                            }}
-                        >
-                            <ListItemText primary={t(`routes.${route.name}`)}/>
-                        </ListItem>
-                    )}
-                    <LanguageBox/>
-                    <ThemeBox/>
-                </List>
+                <Box display={"flex"} flexDirection={"column"} height={"100%"} justifyContent={"space-between"}>
+                    <List>
+                        {currentRoutes.map((route: RouteType) =>
+                            <ListItem
+                                key={route.name}
+                                color="inherit"
+                                onClick={() => navigate(route.path)}
+                                sx={{
+                                    cursor: "pointer", textTransform: "none",
+                                    "&:hover": {opacity: 0.8}
+                                }}
+                            >
+                                <ListItemText primary={t(`routes.${route.name}`)}/>
+                            </ListItem>
+                        )}
+                    </List>
+
+                    <Box paddingTop={"auto"}>
+                        <LanguageBox/>
+                        <ThemeBox/>
+                    </Box>
+                </Box>
             </Drawer>
 
             <Stack direction={"row"} marginInlineStart={"auto"} display={{md: "none"}}>
