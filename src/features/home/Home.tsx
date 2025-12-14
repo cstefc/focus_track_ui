@@ -1,4 +1,4 @@
-import {Avatar, Box, Button, Stack, Typography} from "@mui/material";
+import {Avatar, Box, Button, Grid, Stack, Typography} from "@mui/material";
 import HomeCard from "@/features/home/components/HomeCard";
 import {getAuth, signInWithPopup} from "firebase/auth";
 import {useTranslation} from "react-i18next";
@@ -77,9 +77,9 @@ export default function Home(): JSX.Element {
                 </Button>
             </Box>
 
-            <Box display={"flex"} justifyContent={"center"} width={"100%"}>
+            <Grid container spacing={1} justifyContent={"center"}>
                 {cards.map((card) => <HomeCard key={card} card={card}/>)}
-            </Box>
+            </Grid>
 
         </Stack>
     );
