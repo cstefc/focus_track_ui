@@ -1,4 +1,4 @@
-import {Box, Button, Menu, MenuItem} from "@mui/material";
+import {Box, Button, ListItem, ListItemText, Menu, MenuItem, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 
@@ -6,7 +6,7 @@ export default function LanguageBox() {
     const {i18n} = useTranslation();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-    const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
+    const handleOpen = (event: React.MouseEvent<HTMLLIElement>) => setAnchorEl(event.currentTarget);
     const handleClose = () => setAnchorEl(null);
 
     const currentLanguage = i18n.language || "en";
@@ -16,24 +16,26 @@ export default function LanguageBox() {
     };
 
     return (
-        <Box display={"flex"} alignItems={"center"}>
-            <Button
+        <Box display={"flex"} alignItems={"flex-start"}>
+            <ListItem
+                key={currentLanguage}
                 onClick={handleOpen}
-                color="inherit"
                 sx={{
-                    "&:hover": {
-                        backgroundColor: "transparent",
-                        opacity: 0.8,
-                    },
+                    cursor: "pointer", textTransform: "none",
+                    "&:hover": {opacity: 0.8}
                 }}
             >
-                {currentLanguage.toUpperCase()}
-            </Button>
+                <ListItemText primary={currentLanguage.toUpperCase()} />
+            </ListItem>
 
-            <Menu id="account-menu" anchorEl={anchorEl} onClose={handleClose} onClick={handleClose} open={Boolean(anchorEl)}>
+            <Menu id="account-menu"
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  onClick={handleClose}
+                  open={Boolean(anchorEl)}>
                 {Object.keys(i18n.options.resources || {})
                     .map((lng) => (
-                        (lng.toUpperCase() !== currentLanguage) ?
+                        (lng.toUpperCase() !== currentLanguage.toUpperCase()) ?
                         <MenuItem key={lng} onClick={() => changeLanguage(lng)}>
                             {lng.toUpperCase()}
                         </MenuItem> : null
