@@ -5,6 +5,7 @@ import {Box, Typography} from "@mui/material";
 import Loading from "@/components/ui/Loading";
 import {useGetApi} from "@/hooks/useGetApi";
 import {GoalsAccordion} from "@/features/project/components/goals/GoalsAccordion";
+import {EmptyPage} from "@/components/layout/EmptyPage";
 
 export default function ProjectScreen(): JSX.Element {
     const {id} = useParams<{ id: string }>();
@@ -27,15 +28,18 @@ export default function ProjectScreen(): JSX.Element {
     }
 
     return (
-        <Box padding={"50px"}>
-            <Typography variant={"h3"} sx={{marginBottom: "50px"}}>
-                {project?.title}
-            </Typography>
-            <Typography variant={"body1"} sx={{wordWrap: "break-word", whiteSpace: "pre-line", marginBottom: "50px"}}>
-                {project?.description}
-            </Typography>
+        <EmptyPage>
+            <Box>
+                <Typography variant={"h3"} sx={{marginBottom: "50px"}}>
+                    {project?.title}
+                </Typography>
+                <Typography variant={"body1"}
+                            sx={{wordWrap: "break-word", whiteSpace: "pre-line", marginBottom: "50px"}}>
+                    {project?.description}
+                </Typography>
 
-            <GoalsAccordion projectId={`${id}`}/>
-        </Box>
+                <GoalsAccordion projectId={`${id}`}/>
+            </Box>
+        </EmptyPage>
     );
 }
