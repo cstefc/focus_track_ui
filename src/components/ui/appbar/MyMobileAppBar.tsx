@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Drawer, IconButton, List, ListItem, ListItemText, Stack, Typography} from "@mui/material";
+import {Box, Drawer, IconButton, List, ListItem, ListItemText, Stack} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBarLogo from "./logo/AppBarLogo";
 import ThemeBox from "./theme-box/ThemeBox";

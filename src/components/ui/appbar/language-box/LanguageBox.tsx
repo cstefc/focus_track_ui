@@ -1,4 +1,4 @@
-import {Box, Button, ListItem, ListItemText, Menu, MenuItem, Typography} from "@mui/material";
+import {Box, ListItem, ListItemText, Menu, MenuItem} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 
