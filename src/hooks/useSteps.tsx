@@ -13,8 +13,13 @@ export default function useSteps(goalId: number) {
     }, [loading]);
 
     async function createStep(createData: CreateStep) {
-        const result = await sendApi<Step>("/steps", "POST", JSON.stringify(createData));
-        if (result) setSteps([...steps, result]);
+        const payload = {
+            ...createData,
+            sequence: steps.length + 1
+        };
+
+        const result = await sendApi<Step>("/steps", "POST", JSON.stringify(payload));
+        if (result) setSteps(() => [...steps, result]);
     }
 
     async function updateStep(data: UpdateStep) {
