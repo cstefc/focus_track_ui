@@ -23,7 +23,6 @@ export const StepLineAdd = ({goalId, onCreate, sequence}: StepLineEditProps) => 
         resolver: zodResolver(CreateStepForm),
         defaultValues: {
             goalId: goalId,
-            sequence: sequence,
             status: Status.NotStarted.valueOf()
         }
     });
@@ -50,10 +49,6 @@ export const StepLineAdd = ({goalId, onCreate, sequence}: StepLineEditProps) => 
             {adding && <TableRow key={"adding-line"}>
                 <TableCell align="center">
                     <Typography variant={"body1"}>{sequence}</Typography>
-                    <input
-                        type="hidden"
-                        {...register(`sequence`)}
-                    />
                 </TableCell>
                 <TableCell align="center">
                     <ZodTextField errors={errors?.objective} translation_scope={"projects"}
