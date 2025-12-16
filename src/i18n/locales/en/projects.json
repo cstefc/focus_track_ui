@@ -42,11 +42,11 @@
     "title": "Warning!",
 
     "delete": {
-      "description": "You're going to delete this project, this cannot be undone. If you wish to continue press the check icon."
+      "description": "Are you sure you want to delete this project? This action cannot be undone."
     },
 
     "archive": {
-      "description": "You're about to archive this project, this cannot be undone. If you wish to continue, press the check icon."
+      "description": "Are you sure you want to archive this project? This action cannot be undone."
     }
   },
 

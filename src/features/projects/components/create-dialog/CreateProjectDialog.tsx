@@ -26,7 +26,7 @@ export default function CreateProjectDialog({visible}: CreateProjectDialogProps)
     async function submitHandler(data: CreateProject) {
         setShowDialog(false);
         void createProject(data);
-        reset()
+        reset();
     }
 
     return (

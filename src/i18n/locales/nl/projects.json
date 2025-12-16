@@ -35,10 +35,10 @@
   "warning": {
     "title": "Waarschuwing!",
     "delete": {
-      "description": "Je staat op het punt om je project te verwijderen. Dit is onomkeerbaar als je wenst verder te gaan druk op het vinkje."
+      "description": "Weet je zeker dat je dit project wilt verwijderen? Dit kan niet ongedaan worden gemaakt."
     },
     "archive": {
-      "description": "Je staat op het punt om je project te verwijderen. Dit is onomkeerbaar als je wenst verder te gaan druk op het vinkje."
+      "description": "Weet je zeker dat je dit project wilt archiveren? Dit kan niet ongedaan worden gemaakt."
     }
   },
   "button": {
