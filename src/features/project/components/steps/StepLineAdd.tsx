@@ -1,9 +1,9 @@
 import {CreateStep, CreateStepForm} from "@/api/domain/projects/Step";
 import {
     Box,
-    Button, FormControl,
+    Button,
+    FormControl,
     InputLabel,
-    ListSubheader,
     MenuItem,
     Select,
     Stack,
@@ -80,12 +80,11 @@ export const StepLineAdd = ({goalId, onCreate, sequence}: StepLineEditProps) => 
                     <Controller
                         name="status"
                         control={control}
-                        render={({ field }) => (
+                        render={({field}) => (
                             <FormControl fullWidth error={!!errors.status}>
                                 <InputLabel id="statusLabel">
                                     {t("forms.statusLabel")}
                                 </InputLabel>
-
                                 <Select
                                     {...field}
                                     labelId="statusLabel"
