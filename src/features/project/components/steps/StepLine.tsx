@@ -13,7 +13,6 @@ export interface StepLineProps {
 export const StepLine = ({step, onUpdate, onDelete}: StepLineProps) => {
     const [editing, setEditing] = React.useState(false);
 
-
     async function handleSubmit(data: UpdateStep) {
         setEditing(false);
         onUpdate(data);
