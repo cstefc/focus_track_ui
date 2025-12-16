@@ -75,7 +75,7 @@ export default function EditPanel({
                         {t("button.cancel")}
                     </Button>
                     <Button variant={"contained"} color={"primary"} onClick={handleContinue}>
-                        {t("button.save")}
+                        {t("button.continue")}
                     </Button>
                 </DialogActions>
             </Dialog>
