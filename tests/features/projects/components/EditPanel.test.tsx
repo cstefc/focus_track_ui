@@ -49,7 +49,7 @@ describe("Edit Panel", () => {
 
         const deleteButton = screen.getByTestId("DeleteOutlineIcon");
         await user.click(deleteButton);
-        await user.click(screen.getByText("button.save"));
+        await user.click(screen.getByText("button.continue"));
 
         // THEN
         expect(deleteMock).toHaveBeenCalled()
@@ -65,7 +65,7 @@ describe("Edit Panel", () => {
         render(<EditPanel onSave={fun} onArchive={archiveMock} onDelete={fun} onCancel={fun} isSubmitting={false}/>)
         const archiveButton = screen.getByTestId("ArchiveOutlinedIcon");
         await user.click(archiveButton);
-        await user.click(screen.getByText("button.save"));
+        await user.click(screen.getByText("button.continue"));
 
         // THEN
         expect(archiveMock).toHaveBeenCalled()
