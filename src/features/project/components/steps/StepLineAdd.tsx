@@ -1,5 +1,16 @@
 import {CreateStep, CreateStepForm} from "@/api/domain/projects/Step";
-import {Box, Button, MenuItem, Select, Stack, TableCell, TableRow, Typography} from "@mui/material";
+import {
+    Box,
+    Button, FormControl,
+    InputLabel,
+    ListSubheader,
+    MenuItem,
+    Select,
+    Stack,
+    TableCell,
+    TableRow,
+    Typography
+} from "@mui/material";
 import React, {useState} from "react";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslation} from "react-i18next";
@@ -67,23 +78,28 @@ export const StepLineAdd = ({goalId, onCreate, sequence}: StepLineEditProps) => 
                 </TableCell>
                 <TableCell align="center">
                     <Controller
-                        name={`status`}
+                        name="status"
                         control={control}
-                        render={({field}) => (
-                            <Select
-                                {...field}
-                                label={t("forms.statusLabel")}
-                                fullWidth
-                                error={!!errors.status}
-                            >
-                                {(Object.keys(Status) as Array<keyof typeof Status>)
-                                    .filter((key) => isNaN(Number(key)))
-                                    .map((key) => (
-                                        <MenuItem key={key} value={Status[key]}>
-                                            {t(`status.${key}`)}
-                                        </MenuItem>
-                                    ))}
-                            </Select>
+                        render={({ field }) => (
+                            <FormControl fullWidth error={!!errors.status}>
+                                <InputLabel id="statusLabel">
+                                    {t("forms.statusLabel")}
+                                </InputLabel>
+
+                                <Select
+                                    {...field}
+                                    labelId="statusLabel"
+                                    label={t("forms.statusLabel")}
+                                >
+                                    {(Object.keys(Status) as Array<keyof typeof Status>)
+                                        .filter(key => isNaN(Number(key)))
+                                        .map(key => (
+                                            <MenuItem key={key} value={Status[key]}>
+                                                {t(`status.${key}`)}
+                                            </MenuItem>
+                                        ))}
+                                </Select>
+                            </FormControl>
                         )}
                     />
                 </TableCell>
@@ -96,5 +112,6 @@ export const StepLineAdd = ({goalId, onCreate, sequence}: StepLineEditProps) => 
             </TableRow>}
         </>
 
-    );
+    )
+        ;
 }
