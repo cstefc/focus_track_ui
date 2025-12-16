@@ -14,7 +14,7 @@ export interface GoalAccordionItemDisplayProps {
 export default function GoalAccordionDisplay({goal, handleDelete, toggleEdit}: GoalAccordionItemDisplayProps) {
     return (
         <>
-            <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon color={"primary"}/>}>
                 <Typography variant={"h4"}>{goal.title}</Typography>
             </AccordionSummary>
             <AccordionDetails>
