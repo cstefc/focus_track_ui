@@ -14,7 +14,7 @@ export default function ProjectScreen(): JSX.Element {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (data !== null) {
+        if (data !== null && data !== undefined && data.length > 0) {
             // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
             setProject(() => data?.[0]);
         }
