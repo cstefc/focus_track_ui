@@ -1,6 +1,6 @@
 import {render, screen, waitFor} from "@testing-library/react";
-import CreateProjectDialog from "../../../../../src/features/projects/components/create-dialog/CreateProjectDialog";
-import {useProjectsAttributes} from "../../../../../src/hooks/useProjects";
+import CreateProjectDialog from "@/features/projects/components/create-dialog/CreateProjectDialog";
+import {useProjectsAttributes} from "@/hooks/useProjects";
 import userEvent from "@testing-library/user-event";
 
 const mockedCreateProject = vi.fn()
