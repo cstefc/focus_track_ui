@@ -3,6 +3,7 @@ import {render, screen, waitFor} from "@testing-library/react";
 import {ProjectCard} from "@/features/projects/components/project-card/ProjectCard";
 import userEvent from "@testing-library/user-event";
 import {useProjectsAttributes} from "../../../../../src/hooks/useProjects";
+import {mockNavigate} from "../../../../setup";
 
 const mockedUpdate = vi.fn()
 const mockedArchive = vi.fn()
@@ -50,7 +51,24 @@ describe("ProjectCard", () => {
         await waitFor(() => {
             expect(screen.getByTestId("CheckIcon")).toBeInTheDocument();
         })
+    })
 
+    it("should navigate to project page when clicked", async () => {
+        // GIVEN
+        const project = {
+            id: 1,
+            title: "Test Project",
+            description: "Test description",
+            archived: false
+        } as Project
+        const user = userEvent.setup()
+        // WHEN
+        render(<ProjectCard project={project}/>)
+        await user.click(screen.getByText("Test Project"))
 
+        // THEN
+        await waitFor(() => {
+            expect(mockNavigate).toHaveBeenCalledWith("/projects/1");
+        })
     })
 })

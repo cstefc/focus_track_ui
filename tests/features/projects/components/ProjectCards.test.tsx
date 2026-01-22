@@ -63,7 +63,7 @@ describe("ProjectCards", () => {
 
         // WHEN
         render(<ProjectCards showWithArchived={false}/> )
-        screen.debug()
+
         // THEN
         expect(screen.getByRole("progressbar")).toBeInTheDocument()
 

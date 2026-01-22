@@ -32,7 +32,6 @@ describe("CreateProjectDialog", () => {
 
     it("should toggle visibility when button clicked", async () => {
         // GIVEN
-        const visibility = false
         const user = userEvent.setup()
 
         // WHEN
