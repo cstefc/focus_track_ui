@@ -35,7 +35,6 @@ describe('Home', () => {
 
         // WHEN
         render(<Home />)
-        screen.debug()
 
         // THEN
         const button = screen.queryByRole('button')

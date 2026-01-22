@@ -72,21 +72,20 @@ describe("CreateProjectDialog", () => {
 
     it("should check input", async () => {
         // GIVEN
-        const title: string = ""
         const description: string = "description"
         const user = userEvent.setup()
 
         // WHEN
         render(<CreateProjectDialog/>)
-        await user.click(screen.getByText("create.projectsTitle"))
-        await user.type(screen.getByPlaceholderText('forms.titlePlaceholder'), title)
+        await user.click(screen.getByText("button.createProject"))
+        await user.clear(screen.getByPlaceholderText('forms.titlePlaceholder'))
         await user.type(screen.getByPlaceholderText("forms.descriptionPlaceholder"), description)
         await user.click(screen.getByText('button.save'))
 
         // THEN
         await waitFor(() => {
             expect(mockedCreateProject).not.toHaveBeenCalledWith({
-                title: title,
+                title: "",
                 description: description,
                 archived: false,
             })

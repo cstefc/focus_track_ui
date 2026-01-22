@@ -1,16 +1,24 @@
-import {render, screen} from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import {ProjectCardEdit} from "@/features/projects/components/project-card/ProjectCardEdit";
 import {Project} from "@/api/domain/projects/Project";
-import {useProjectsContext} from "@/features/projects/ProjectsScreen";
+import {useProjectsAttributes} from "../../../../../src/hooks/useProjects";
+import userEvent from "@testing-library/user-event";
 
-vi.mock("@/features/projects/ProjectScreen", () => ({
-    useProjectsContext: vi.fn(),
+const mockedUpdate = vi.fn()
+const mockedArchive = vi.fn()
+const mockedDelete = vi.fn()
+vi.mock("@/features/projects/ProjectsScreen", () => ({
+    useProjectsContext: () => ({
+        updateProject: mockedUpdate,
+        deleteProject: mockedDelete,
+        archiveProject: mockedArchive,
+    } as Partial<useProjectsAttributes>),
 }));
+const onEdit = vi.fn()
 
-const mockedUseProjects = vi.mocked(useProjectsContext);
 
 describe("project card edit", () => {
-    it("should render correctly", async () => {
+    it("should render correctly", () => {
         // GIVEN
         const project: Project = {
             id: 1,
@@ -18,32 +26,101 @@ describe("project card edit", () => {
             description: "test description",
             archived: false,
         }
-        const edit = vi.fn()
 
         // WHEN
-        render(<ProjectCardEdit project={project} onEdit={edit}/>)
-
+        render(<ProjectCardEdit project={project} onEdit={onEdit}/>)
         // THEN
-        expect(screen.queryByText("test project")).toBeInTheDocument();
-        expect(screen.queryByText("test description")).toBeInTheDocument();
+        expect(screen.getByPlaceholderText("forms.titlePlaceholder")).toHaveValue("test project");
+        expect(screen.getByPlaceholderText("forms.descriptionPlaceholder")).toHaveValue("test description");
     })
 
-
-    it("should load initial state", () => {
+    it("should call onEdit when cancel is clicked", async () => {
         // GIVEN
+        const project: Project = {
+            id: 1,
+            title: "test project",
+            description: "test description",
+            archived: false,
+        }
+        const user = userEvent.setup()
 
         // WHEN
+        render(<ProjectCardEdit project={project} onEdit={onEdit}/>)
+        await user.click(screen.getByTestId("CancelIcon"))
 
         // THEN
+        await waitFor(() => {
+                expect(onEdit).toHaveBeenCalled()
+            }
+        )
 
     })
 
-    it("should call onEdit when action is clicked", async () => {
+    it("should call update function", async () => {
         // GIVEN
+        const project: Project = {
+            id: 1,
+            title: "test project",
+            description: "test description",
+            archived: false,
+        }
+        const user = userEvent.setup()
 
         // WHEN
+        render(<ProjectCardEdit project={project} onEdit={onEdit}/>)
+        await user.click(screen.getByTestId("CheckIcon"))
 
         // THEN
+        await waitFor(() => {
+                expect(onEdit).toHaveBeenCalled()
+                expect(mockedUpdate).toHaveBeenCalled()
+            }
+        )
+    })
 
+    it("should call archive function", async () => {
+        // GIVEN
+        const project: Project = {
+            id: 1,
+            title: "test project",
+            description: "test description",
+            archived: false,
+        }
+        const user = userEvent.setup()
+
+        // WHEN
+        render(<ProjectCardEdit project={project} onEdit={onEdit}/>)
+        await user.click(screen.getByTestId("ArchiveOutlinedIcon"))
+        await user.click(screen.getByText("button.continue"))
+
+        // THEN
+        await waitFor(() => {
+                expect(onEdit).toHaveBeenCalled()
+                expect(mockedArchive).toHaveBeenCalled()
+            }
+        )
+    })
+
+    it("should call delete function", async () => {
+        // GIVEN
+        const project: Project = {
+            id: 1,
+            title: "test project",
+            description: "test description",
+            archived: false,
+        }
+        const user = userEvent.setup()
+
+        // WHEN
+        render(<ProjectCardEdit project={project} onEdit={onEdit}/>)
+        await user.click(screen.getByTestId("DeleteOutlineIcon"))
+        await user.click(screen.getByText("button.continue"))
+
+        // THEN
+        await waitFor(() => {
+                expect(onEdit).toHaveBeenCalled()
+                expect(mockedDelete).toHaveBeenCalled()
+            }
+        )
     })
 })
